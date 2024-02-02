@@ -1,3 +1,5 @@
+/* Importing goole the outfit google font */
+
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&family=Roboto:wght@400;500;700&display=swap');
 
 body {
@@ -104,7 +106,7 @@ nav > .logo{
 
 .intro > .desc > p{
     width: clamp(0px, 100%, 460px);
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .intro > .profile > img{
@@ -115,7 +117,8 @@ nav > .logo{
     /* background-color: rgb(85, 80, 73); */
     width: 90%;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .services > .title{
@@ -124,6 +127,7 @@ nav > .logo{
     gap: 16px;
     font-size: 24px;
     padding-left: 100px;
+    margin-bottom: 50px;
 }
 
 .title > .line{
@@ -134,9 +138,48 @@ nav > .logo{
     background-color: #fff;
 }
 
+.myservices{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.myservices > div >img{
+    width: 90px;
+    height: 90px;
+}
+
+.myservices > div{
+    border: 1px solid #fff;
+    width: 280px;
+    height: 290px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.myservices > div > p{
+    margin: 0px;
+    font-size: 16px;
+}
 
 
 
+
+
+@media screen and (max-width: 1300px){
+    .services{
+        width: 96%;
+    }
+
+    .myservices > div{
+        width: 220px;
+    }
+}
 
 @media screen and (max-width: 990px) {
     .navlinks > ul, .socials > ul{
@@ -165,6 +208,32 @@ nav > .logo{
 
     .profile{
         align-items: flex-end;
+    }
+
+    .services{
+        width: 96%;
+        margin-top: 30px;
+    }
+
+    .services > .title{
+        padding-left: 0px;
+        text-align: center;
+    }
+
+    .myservices > div >img{
+        width: 70px;
+        height: 70px; 
+    }
+
+    .myservices > div{
+        width: 200px;
+        height: 300px;
+    }
+
+    .myservices{
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 30px;
     }
 }
 
@@ -235,4 +304,12 @@ nav > .logo{
         justify-content: center;
     }
 
+}
+
+@media screen and (max-width: 622px){
+    .services{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }

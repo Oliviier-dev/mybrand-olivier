@@ -26,8 +26,9 @@ body {
 }
 
 nav{
-    /* background-color: black; */
+    /* background-color: rgb(0, 0, 0); */
     height: 80px;
+    width: 94%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -109,6 +110,30 @@ nav > .logo{
 .intro > .profile > img{
     width: 360px;
 }
+
+.services{
+    /* background-color: rgb(85, 80, 73); */
+    width: 90%;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.services > .title{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 24px;
+    padding-left: 100px;
+}
+
+.title > .line{
+    position: relative;
+    top: 2px;
+    width: 80px;
+    height: 3px;
+    background-color: #fff;
+}
+
 
 
 

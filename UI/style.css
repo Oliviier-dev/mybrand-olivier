@@ -13,6 +13,7 @@ body {
 
 .hamburger{
     display: none;
+    cursor: pointer;
 }
 
 .hamburger > span{
@@ -88,6 +89,8 @@ nav > .logo{
         font-size: 18px;
     }
 }
+
+
 
 @media screen and (max-width: 675px) {
     body{

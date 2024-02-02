@@ -26,6 +26,7 @@ body {
 }
 
 nav{
+    background-color: black;
     height: 80px;
     display: flex;
     align-items: center;
@@ -36,7 +37,7 @@ nav{
 
 nav > .navlinks > ul > li{
     display: inline;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 400;
 }
 
@@ -69,9 +70,76 @@ nav > .logo{
     border-radius: 24px;
 }
 
+.intro{
+    padding: 30px 20px;
+    width: 90%;
+    margin: auto;
+    background-color: rgb(25, 84, 65);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile, .desc{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro > .desc > h1{
+    width: clamp(0px, 100%, 460px);
+    font-size: 44px;
+    margin-bottom: 0px;
+}
+
+.intro > .desc > h2{
+    width: clamp(0px, 100%, 460px);
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 32px;
+}
+
+.intro > .desc > p{
+    width: clamp(0px, 100%, 460px);
+    font-size: 22px;
+}
+
+.intro > .profile > img{
+    width: 360px;
+}
+
+
+
+
 @media screen and (max-width: 990px) {
     .navlinks > ul, .socials > ul{
         gap: 20px;
+    }
+
+    .intro > .desc > h1{
+        font-size: 34px;
+    }
+
+    .intro > .desc > h2{
+        font-size: 22px;
+    }
+
+    .intro > .desc > p{
+        font-size: 18px;
+    }
+
+    .intro > .profile > img{
+        width: 280px;
+    }
+
+    .intro{
+        padding: 10px;
+    }
+
+    .profile{
+        align-items: flex-end;
     }
 }
 
@@ -81,6 +149,10 @@ nav > .logo{
         margin: auto;
     }
 
+    nav{
+        height: 60px;
+    }
+
     nav > .logo{
         font-size: 20px;
     }
@@ -88,9 +160,11 @@ nav > .logo{
     nav > .navlinks > ul > li{
         font-size: 18px;
     }
+
+    .intro > .desc > p{
+        font-size: 16px;
+    }
 }
-
-
 
 @media screen and (max-width: 675px) {
     body{
@@ -114,4 +188,22 @@ nav > .logo{
         width: 86%;
         margin: auto;
     }
+
+    .intro > .profile > img{
+        margin-top: 20px;
+        width: 200px;
+    }
+
+    .intro > .desc > h1{
+        margin-top: 10px;
+    }
+
+    .intro{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
 }

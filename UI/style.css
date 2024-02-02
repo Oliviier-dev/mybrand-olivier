@@ -11,6 +11,19 @@ body {
     margin: auto;
 }
 
+.hamburger{
+    display: none;
+}
+
+.hamburger > span{
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 2px;
+}
+
 nav{
     height: 80px;
     display: flex;

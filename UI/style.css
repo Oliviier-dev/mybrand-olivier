@@ -54,3 +54,48 @@ nav > .logo{
     justify-content: center;
     border-radius: 24px;
 }
+
+@media screen and (max-width: 990px) {
+    .navlinks > ul, .socials > ul{
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    body{
+        width: 92%;
+        margin: auto;
+    }
+
+    nav > .logo{
+        font-size: 20px;
+    }
+
+    nav > .navlinks > ul > li{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 675px) {
+    body{
+        width: 86%;
+        margin: auto;
+    }
+
+    .navlinks{
+        display: none;
+    }
+
+    .socials{
+        display: none;
+    }
+
+    .hamburger{
+        display: block;
+    }
+
+    nav{
+        width: 86%;
+        margin: auto;
+    }
+}

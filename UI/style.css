@@ -113,7 +113,7 @@ nav > .logo{
     width: 360px;
 }
 
-.services{
+.services, .skills{
     /* background-color: rgb(85, 80, 73); */
     width: 90%;
     margin: auto;
@@ -121,7 +121,7 @@ nav > .logo{
     margin-bottom: 50px;
 }
 
-.services > .title{
+.services > .title, .skills> .title{
     display: flex;
     align-items: center;
     gap: 16px;
@@ -167,7 +167,33 @@ nav > .logo{
     font-size: 16px;
 }
 
+.myskills > div{
+    width: 250px;
+    padding: 20px 10px;
+    /* height: 340px; */
+    border: 1px solid #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+}
 
+.myskills > div > h3{
+    margin: 20px 0px;
+}
+
+.myskills > div > p{
+    margin: 0px;
+}
+
+.myskills{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
 
 
@@ -215,7 +241,7 @@ nav > .logo{
         margin-top: 30px;
     }
 
-    .services > .title{
+    .services > .title, .skills > .title{
         padding-left: 0px;
         text-align: center;
     }
@@ -236,6 +262,9 @@ nav > .logo{
         gap: 30px;
     }
 }
+
+
+
 
 @media screen and (max-width: 720px) {
     body{
@@ -306,10 +335,12 @@ nav > .logo{
 
 }
 
-@media screen and (max-width: 622px){
+@media screen and (max-width: 622px) {
     .services{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 }
+
+

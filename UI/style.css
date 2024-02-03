@@ -256,6 +256,22 @@ nav > .logo{
     background-position: center;
 }
 
+.myworks > div > .desc > .buttons{
+    margin-top: 20px;
+    display: flex;
+    gap: 30px;
+}
+
+.myworks > div > .desc > .buttons > button{
+    padding: 12px 36px;
+    border-radius: 26px;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    background-color: #1840CF;
+    font-size: 18px;
+}
+
 
 
 
@@ -332,6 +348,14 @@ nav > .logo{
     }
 }
 
+@media screen and (max-width: 897px) {
+
+    .myworks > div > .desc > .buttons > button{
+        font-size: 16px;
+        padding: 12px 22px;
+    }
+}
+
 
 @media screen and (max-width: 728px){
     .skills{
@@ -361,6 +385,10 @@ nav > .logo{
 
     .intro > .desc > p{
         font-size: 16px;
+    }
+
+    .myworks > div > .desc > .buttons{
+        gap: 16px;
     }
 }
 
@@ -438,6 +466,10 @@ nav > .logo{
         flex: 1;
     }
 
+    .myworks > div > .desc > .buttons > button{
+        padding: 12px 30px;
+    }
+
 }
 
 @media screen and (max-width: 622px) {
@@ -491,5 +523,16 @@ nav > .logo{
 
     .myworks > .desc > p{
         width: 100%;
+    }
+
+    .myworks > div > .desc > .buttons{
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 360px){
+    .myworks > div > .desc > .buttons {
+        display: flex;
+        flex-direction: column;
     }
 }

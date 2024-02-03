@@ -121,7 +121,7 @@ nav > .logo{
     margin-bottom: 50px;
 }
 
-.services > .title, .skills> .title, .works > .title{
+.services > .title, .skills> .title, .works > .title, .getintouch > .title{
     display: flex;
     align-items: center;
     gap: 16px;
@@ -338,7 +338,7 @@ nav > .logo{
         margin: auto;
     }
 
-    .services > .title, .skills > .title, .works > .title{
+    .services > .title, .skills > .title, .works > .title, .getintouch > .title{
         padding-left: 0px;
         text-align: center;
         justify-content: center;

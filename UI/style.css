@@ -228,6 +228,10 @@ nav > .logo{
     align-items: flex-start;
 }
 
+.myworks > div > .desc > h3{
+    margin-bottom: 0px;
+}
+
 .myworks > div > .desc > p{
     width: clamp(0px, 100%, 400px);
     font-size: 18px;
@@ -300,9 +304,15 @@ nav > .logo{
         margin-top: 30px;
     }
 
-    .services > .title, .skills > .title{
+    .works{
+        width: 96%;
+        margin: auto;
+    }
+
+    .services > .title, .skills > .title, .works > .title{
         padding-left: 0px;
         text-align: center;
+        justify-content: center;
     }
 
     .myservices > div >img{
@@ -398,7 +408,35 @@ nav > .logo{
         justify-content: center;
     }
 
-    
+    .myworks > div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 70px;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .myworks > div > .desc{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .myworks > div > .desc > h3{
+        margin: 10px 0px;
+    }
+
+    .myworks > div > .desc > p{
+        margin: 0px 0px 6px 0px;
+    }
+
+    .myworks > div > .image{
+        width: 300px;
+        min-height: 350px;
+        flex: 1;
+    }
 
 }
 
@@ -441,5 +479,17 @@ nav > .logo{
         width: 70px;
         height: 70px;
         border-radius: 50%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .myworks > div > .image{
+        width: 100%;
+        min-height: 300px;
+        flex: 1;
+    }
+
+    .myworks > .desc > p{
+        width: 100%;
     }
 }

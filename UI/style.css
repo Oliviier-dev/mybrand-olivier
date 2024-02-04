@@ -365,6 +365,42 @@ input:not(:placeholder-shown) + span{
 }
 
 
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.info > h2{
+    margin-bottom: 0px;
+}
+
+.info > div{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.phys-address{
+    display: flex;
+    flex-direction: column;
+}
+
+.info > div > img{
+    width: 40px;
+    height: 40px;
+}
+.email{
+    width: 30px;
+    height: 30px;
+}
+
+.info > div > div >h4{
+    margin: 3px 0px;
+}
+
 
 
 
@@ -453,12 +489,6 @@ input:not(:placeholder-shown) + span{
         font-size: 16px;
         padding: 12px 22px;
     }
-
-    .contactme{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 }
 
 
@@ -467,6 +497,20 @@ input:not(:placeholder-shown) + span{
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .getintouch{
+        width: 96%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contactme, .info{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -617,6 +661,10 @@ input:not(:placeholder-shown) + span{
         height: 70px;
         border-radius: 50%;
     }
+
+    .myworks{
+        width: 96%;
+    }
 }
 
 @media screen and (max-width: 400px){
@@ -639,5 +687,13 @@ input:not(:placeholder-shown) + span{
     .myworks > div > .desc > .buttons {
         display: flex;
         flex-direction: column;
+    }
+
+    .getintouch{
+        width: 100%;
+    }
+
+    .info > div{
+        gap: 10px;
     }
 }

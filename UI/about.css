@@ -74,12 +74,34 @@ nav > .logo{
     background-color: #1840CF;
     padding: 4px 18px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     border-radius: 24px;
 }
 
+.desc{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
 
+.desc > .profile{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.desc > .profile > img{
+    width: 100%;
+}
+
+.desc > .intro{
+    flex: 1.5;
+}
 
 
 
@@ -87,6 +109,10 @@ nav > .logo{
     /* making the navlinks responsive */
     .navlinks > ul, .socials > ul{ 
         gap: 20px;
+    }
+
+    .desc{
+        width: 90%;
     }
 }
 
@@ -107,6 +133,8 @@ nav > .logo{
     nav > .navlinks > ul > li{
         font-size: 18px;
     }
+
+    
 }
 
 @media screen and (max-width: 675px) {

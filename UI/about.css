@@ -134,7 +134,14 @@ nav > .logo{
         font-size: 18px;
     }
 
-    
+    .desc{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .desc > .profile > img{
+        width: 70%;
+    }
 }
 
 @media screen and (max-width: 675px) {

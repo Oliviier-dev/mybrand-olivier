@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&family=Roboto:wght@400;500;700&display=swap');
 
+/* General body styles */
+
 body {
     font-family: 'Helvetica', sans-serif;
     margin: 0;
@@ -12,6 +14,8 @@ body {
     width: 86%;
     margin: auto;
 }
+
+/* styling the hamburger menu for smaller screens */
 
 .hamburger{
     display: none;
@@ -26,6 +30,8 @@ body {
     border-radius: 4px;
     padding: 2px;
 }
+
+/* styling the navbar */
 
 nav{
     /* background-color: rgb(0, 0, 0); */
@@ -72,6 +78,8 @@ nav > .logo{
     justify-content: center;
     border-radius: 24px;
 }
+
+/* Styling the introduction section */
 
 .intro{
     padding: 30px 20px;
@@ -121,6 +129,8 @@ nav > .logo{
     margin-bottom: 50px;
 }
 
+/* Styling all the page's titles */
+
 .services > .title, .skills> .title, .works > .title, .getintouch > .title{
     display: flex;
     align-items: center;
@@ -137,6 +147,8 @@ nav > .logo{
     height: 3px;
     background-color: #fff;
 }
+
+/* Styling myservices section */
 
 .myservices{
     display: flex;
@@ -166,6 +178,8 @@ nav > .logo{
     margin: 0px;
     font-size: 16px;
 }
+
+/* Styling myskills section */
 
 .myskills > div > img{
     width: 100px;
@@ -199,6 +213,8 @@ nav > .logo{
     gap: 30px;
     flex-wrap: wrap;
 }
+
+/* Styling myworks section */
 
 .myworks{
     width: 90%;
@@ -272,6 +288,8 @@ nav > .logo{
     font-size: 18px;
 }
 
+/* Styking the view more button on myworks section */
+
 .viewbtn{
     width: 260px;
     font-size: 16px;
@@ -284,6 +302,8 @@ nav > .logo{
     background-color: #1840CF;
     font-size: 16px;
 }
+
+/* Styling the contact me section */
 
 .contactme{
     display: flex;
@@ -316,6 +336,8 @@ nav > .logo{
     flex: 1;
     width: 415px;
 }
+
+/* Styling the contact me form */
 
 form{
     width: 263px;
@@ -365,6 +387,8 @@ input:not(:placeholder-shown) + span{
 }
 
 
+/* Styling the info section */
+
 .info {
     display: flex;
     flex-direction: column;
@@ -401,6 +425,8 @@ input:not(:placeholder-shown) + span{
     margin: 3px 0px;
 }
 
+/* Styling the footer */
+
 footer {
     margin: 0px 0px 30px 0px;
     text-align: center;
@@ -411,7 +437,12 @@ footer {
 
 
 
+/* Media queries for making the page responsive */
+
+/* Screens under 1300px wide */
+
 @media screen and (max-width: 1300px){
+    /* making the myservices section reponsive */
     .services{
         width: 96%;
     }
@@ -421,10 +452,15 @@ footer {
     }
 }
 
+
+/* screens under 990px wide */
+
 @media screen and (max-width: 990px) {
+    /* making the navlinks responsive */
     .navlinks > ul, .socials > ul{
         gap: 20px;
     }
+    /* making the intro section responsive */
 
     .intro > .desc > h1{
         font-size: 34px;
@@ -449,16 +485,21 @@ footer {
     .profile{
         align-items: flex-end;
     }
+    /* making the my services section responsive */
 
     .services{
         width: 96%;
         margin-top: 30px;
     }
 
+    /* making the myworks sectoìion responsive */
+
     .works{
         width: 96%;
         margin: auto;
     }
+
+    /* adjusting the titles in the center for less screen size */
 
     .services > .title, .skills > .title, .works > .title, .getintouch > .title{
         padding-left: 0px;
@@ -468,7 +509,7 @@ footer {
 
     .myservices > div >img{
         width: 70px;
-        height: 70px; 
+        height: 70px;
     }
 
     .myservices > div{
@@ -489,6 +530,9 @@ footer {
     }
 }
 
+
+/* screens under 897px */
+
 @media screen and (max-width: 897px) {
 
     .myworks > div > .desc > .buttons > button{
@@ -497,6 +541,8 @@ footer {
     }
 }
 
+
+/* screens under 728px */
 
 @media screen and (max-width: 728px){
     .skills{
@@ -519,6 +565,8 @@ footer {
         flex-direction: column;
     }
 }
+
+/* screens under 720px */
 
 @media screen and (max-width: 720px) {
     body{
@@ -546,6 +594,10 @@ footer {
         gap: 16px;
     }
 }
+
+
+/* screens under 675px */
+
 
 @media screen and (max-width: 675px) {
     body{
@@ -627,6 +679,9 @@ footer {
 
 }
 
+
+/* screens under 622px */
+
 @media screen and (max-width: 622px) {
     .services{
         display: flex;
@@ -634,6 +689,9 @@ footer {
         align-items: center;
     }
 }
+
+
+/* screens under 445px */
 
 
 @media screen and (max-width: 445px) {
@@ -673,6 +731,10 @@ footer {
     }
 }
 
+
+/* screens under 400px */
+
+
 @media screen and (max-width: 400px){
     .myworks > div > .image{
         width: 100%;
@@ -688,6 +750,8 @@ footer {
         gap: 10px;
     }
 }
+
+/* screens under 360px */
 
 @media screen and (max-width: 360px){
     .myworks > div > .desc > .buttons {

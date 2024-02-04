@@ -285,6 +285,86 @@ nav > .logo{
     font-size: 16px;
 }
 
+.contactme{
+    display: flex;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 60px;
+}
+
+.contact{
+    flex: 1;
+}
+
+.contact > p{
+    width: clamp(0px, 100%, 240px);
+}
+
+.register > button{
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 12px;
+    width: 140px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.info{
+    flex: 1;
+    width: 415px;
+}
+
+form{
+    width: 263px;
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    margin-bottom: 15px;
+    position: relative;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+    font-size: 14px;
+}
+
+input, textarea{
+    width: 263px;
+    padding: 10px 0px;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 16px;
+    background-color: #0B0621;
+    border: none;
+    outline: none;
+}
+
+textarea{
+    padding: 0px;
+}
+
+input::placeholder{
+    opacity: 0;
+}
+
+label > span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(30px);
+    transition-duration: 300ms;
+    font-size: 16px;
+}
+
+label:focus-within > span,
+input:not(:placeholder-shown) + span{
+    transform:translateY(10px);
+}
+
+
 
 
 
@@ -359,6 +439,12 @@ nav > .logo{
         justify-content: space-around;
         gap: 30px;
     }
+
+    .contactme{
+        width: 94%;
+        margin: auto;
+        gap: 30px;
+    }
 }
 
 @media screen and (max-width: 897px) {
@@ -366,6 +452,12 @@ nav > .logo{
     .myworks > div > .desc > .buttons > button{
         font-size: 16px;
         padding: 12px 22px;
+    }
+
+    .contactme{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 

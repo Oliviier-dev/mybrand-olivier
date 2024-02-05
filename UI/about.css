@@ -134,6 +134,7 @@ nav > .logo{
 
 footer{
     text-align: center;
+    margin-bottom: 20px;
 }
 
 
@@ -200,5 +201,28 @@ footer{
     nav{
         width: 86%;
         margin: auto;
+    }
+}
+
+@media screen and (max-width: 420px){
+    .intro > h1:first-child{
+        font-size: 34px;
+        margin-bottom: 0px;
+    }
+    
+    .intro > h3:nth-child(2){
+        color: #41F348;
+        margin-top: 0px;
+        margin-bottom: 16px;
+        font-size: 16px;
+    }
+
+    .buttons{
+        gap: 10px;
+    }
+
+    .buttons > button{
+        padding: 12px 12px;
+        font-size: 16px;
     }
 }

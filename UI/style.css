@@ -552,11 +552,15 @@ footer {
     }
 
     .getintouch{
-        width: 96%;
+        width: 94%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+
+    .getintouch > .contactme{
+        margin-left: 20px;
     }
 
     .contactme, .info{
@@ -760,7 +764,12 @@ footer {
     }
 
     .getintouch{
-        width: 100%;
+        width: 90%;
+        margin: auto;
+    }
+
+    .getintouch > .contactme{
+    margin-left: 20px;
     }
 
     .info > div{

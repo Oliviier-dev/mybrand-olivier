@@ -80,6 +80,8 @@ nav > .logo{
     border-radius: 24px;
 }
 
+/* styling the descriptions ection */
+
 .desc{
     min-height: 70vh;
     width: 80%;
@@ -116,6 +118,8 @@ nav > .logo{
     margin-bottom: 16px;
 }
 
+/* Styling the resume and github buttons */
+
 .buttons{
     display: flex;
     gap: 20px;
@@ -132,6 +136,8 @@ nav > .logo{
     font-size: 16px;
 }
 
+/* styling the footer */
+
 footer{
     text-align: center;
     margin-bottom: 20px;
@@ -143,7 +149,7 @@ footer{
 
 @media screen and (max-width: 990px) {
     /* making the navlinks responsive */
-    .navlinks > ul, .socials > ul{ 
+    .navlinks > ul, .socials > ul{
         gap: 20px;
     }
 
@@ -153,7 +159,7 @@ footer{
 }
 
 @media screen and (max-width: 720px) {
-    body{ 
+    body{
         width: 92%;
         margin: auto;
     }
@@ -181,7 +187,7 @@ footer{
 }
 
 @media screen and (max-width: 675px) {
-    body{ 
+    body{
         width: 86%;
         margin: auto;
     }
@@ -209,7 +215,7 @@ footer{
         font-size: 34px;
         margin-bottom: 0px;
     }
-    
+
     .intro > h3:nth-child(2){
         color: #41F348;
         margin-top: 0px;

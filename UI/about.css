@@ -81,9 +81,11 @@ nav > .logo{
 }
 
 .desc{
+    min-height: 70vh;
     width: 80%;
     margin: auto;
     display: flex;
+    align-items: center;
     margin-top: 40px;
     margin-bottom: 40px;
 }
@@ -102,6 +104,39 @@ nav > .logo{
 .desc > .intro{
     flex: 1.5;
 }
+
+.intro > h1:first-child{
+    font-size: 48px;
+    margin-bottom: 0px;
+}
+
+.intro > h3:nth-child(2){
+    color: #41F348;
+    margin-top: 0px;
+    margin-bottom: 16px;
+}
+
+.buttons{
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.buttons > button{
+    padding: 14px 18px;
+    border: none;
+    background-color: #1840CF;
+    color: #fff;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+footer{
+    text-align: center;
+}
+
+
 
 
 

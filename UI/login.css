@@ -84,13 +84,13 @@ nav > .logo{
     background-color: #3c3850;
     border-radius: 14px;
     width: 60%;
-    min-height: 70vh;
+    min-height: 65vh;
     margin: auto;
     margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 30px; 
+    padding: 30px 0px;  
 }
 
 .register{
@@ -173,6 +173,11 @@ input:not(:placeholder-shown) + span{
     justify-content: space-between;
 }
 
+footer{
+    text-align: center;
+    margin: 30px 0px;
+}
+
 
 
 
@@ -227,4 +232,40 @@ input:not(:placeholder-shown) + span{
         width: 86%;
         margin: auto;
     }
+
+    .loginform{
+        width: 90%;
+    }
+
+    .login-button{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 410px){
+    .loginform > h2:first-child{
+        font-size: 20px;
+    }
+
+    input{
+        width: 260px;
+    }
+
+    .help{
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 6px;
+        margin-bottom: 30px;
+    }
+
+    .help > span{
+        margin-bottom: 0px;
+    }
+}
+
+@media screen and (max-width: 360px){
+    input{
+        width: 200px;
+    }
+
 }

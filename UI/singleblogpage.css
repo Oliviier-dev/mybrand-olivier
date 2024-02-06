@@ -79,6 +79,28 @@ nav > .logo{
     border-radius: 24px;
 }
 
+.article{
+    width: 750px;
+    margin: auto;
+}
+
+.article > .image{
+    width: 750px;
+    height: 400px;
+    background: url(images/IMG-7870.JPG);
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+.article > .title{
+    font-weight: bold;
+    width: clamp(0px, 100%, 500px);
+    font-size: 18px;
+}
+
 
 
 

@@ -105,12 +105,15 @@ nav > .logo{
 
 .description > p{
     font-size: 18px;
+    text-align: center;
 }
 
 .blogs{
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .blog{
@@ -123,16 +126,37 @@ nav > .logo{
     justify-content: center;
 }
 
-.blogimage{
+.blog1 > .blogimage{
+    background: url(images/IMG-7864.JPG);   
+}
+
+.blog2 > .blogimage{
+    background: url(images/IMG-7868.JPG);   
+}
+
+.blog3 > .blogimage{
+    background: url(images/IMG-7869.JPG);   
+}
+
+.blog4 > .blogimage{
+    background: url(images/IMG-7870.JPG);   
+}
+
+.blog5 > .blogimage{
+    background: url(images/IMG-7864.JPG);   
+}
+
+.blog > .blogimage ,.blogimage{
     width: 290px;
     height: 180px;
-    background: url(images/IMG-7864.JPG);
+    /* background: url(images/IMG-7864.JPG); */
     background-size: cover;
     background-position: center;
     margin: auto;
     margin-bottom: 8px;
     margin-top: 0px;
 }
+
 
 .desc, .info, .snippet, .author{
     width: 290px;

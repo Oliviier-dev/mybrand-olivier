@@ -101,6 +101,32 @@ nav > .logo{
     font-size: 18px;
 }
 
+.info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 40px;
+    border-bottom: 2px solid #fff;
+}
+
+.writer{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.writer > .image{
+    width: 40px;
+    height: 40px;
+    background-color: #BBB6B6;
+    border-radius: 50%;
+}
+
+.date{
+    display: flex;
+    gap: 30px;
+}
+
 
 
 

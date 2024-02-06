@@ -128,7 +128,7 @@ nav > .logo{
 }
 
 .body{
-    margin-top: 40px;
+    margin: 40px 0px;
     line-height: 1.4;
 }
 
@@ -140,6 +140,16 @@ nav > .logo{
     /* making the navlinks responsive */
     .navlinks > ul, .socials > ul{
         gap: 20px;
+    }
+
+    .article{
+        width: 500px;
+        margin: auto;
+    }
+
+    .article > .image{
+        width: 500px;
+        height: 400px;
     }
 }
 
@@ -183,5 +193,49 @@ nav > .logo{
     nav{
         width: 86%;
         margin: auto;
+    }
+
+    .article{
+        width: 400px;
+        margin: auto;
+    }
+
+    .article > .image{
+        width: 400px;
+        height: 300px;
+    }
+
+    .date{
+        display: flex;
+        gap: 10px;
+    }
+
+    .article > .title{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 530px){
+    .article{
+        width: 94%;
+        margin: auto;
+    }
+
+    .article > .image{
+        width: 96%;
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 390px){
+    .info{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .info > .date{
+        padding-left: 8px;
     }
 }

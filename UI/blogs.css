@@ -107,12 +107,18 @@ nav > .logo{
     font-size: 18px;
 }
 
+.blogs{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
 .blog{
     width: 340px;
     height: 460px;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
     display: flex;
-    /* gap: 10px; */
+    border-radius: 14px;
     flex-direction: column;
     justify-content: center;
 }
@@ -128,7 +134,7 @@ nav > .logo{
     margin-top: 0px;
 }
 
-.desc, .info{
+.desc, .info, .snippet, .author{
     width: 290px;
     margin: auto;
     display: flex;
@@ -152,8 +158,27 @@ nav > .logo{
 .info > .reactions{
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
 }
+
+.author{
+    display: flex;
+}
+
+.writer{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.author > .writer > .image{
+    width: 40px;
+    height: 40px;
+    background-color: #BBB6B6;
+    border-radius: 50%;
+}
+
+
 
 
 @media screen and (max-width: 990px) {

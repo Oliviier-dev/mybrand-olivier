@@ -232,4 +232,51 @@ footer{
         width: 86%;
         margin: auto;
     }
+
+    .signupform{
+        width: 90%;
+    }
+
+    .signupform > h2{
+        font-size: 20px;
+    }
+
+    .signup-button{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 440px){
+    .signupform, input{
+        background-color: #0B0621;
+    }
+}
+
+
+@media screen and (max-width: 410px){
+    .loginform > h2:first-child{
+        font-size: 20px;
+    }
+
+    input{
+        width: 260px;
+    }
+
+    .help{
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 6px;
+        margin-bottom: 30px;
+    }
+
+    .help > span{
+        margin-bottom: 0px;
+    }
+}
+
+@media screen and (max-width: 360px){
+    input{
+        width: 200px;
+    }
+
 }

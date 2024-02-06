@@ -242,6 +242,12 @@ footer{
     }
 }
 
+@media screen and (max-width: 440px){
+    .loginform, input{
+        background-color: #0B0621;
+    }
+}
+
 @media screen and (max-width: 410px){
     .loginform > h2:first-child{
         font-size: 20px;

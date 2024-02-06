@@ -80,6 +80,33 @@ nav > .logo{
     border-radius: 24px;
 }
 
+.description{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.description > .title{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 24px;
+}
+
+.title > .line{
+    position: relative;
+    top: 2px;
+    width: 80px;
+    height: 3px;
+    background-color: #fff;
+}
+
+.description > p{
+    font-size: 18px;
+}
+
 
 
 

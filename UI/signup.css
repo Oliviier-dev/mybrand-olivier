@@ -80,6 +80,100 @@ nav > .logo{
     border-radius: 24px;
 }
 
+.signupform{
+    background-color: #3c3850;
+    border-radius: 14px;
+    width: 60%;
+    min-height: 65vh;
+    margin: auto;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0px;  
+}
+
+.register{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+label{
+    margin-bottom: 15px;
+    position: relative;
+    border-bottom: 2px solid #fff;
+    color: #BBB;
+    font-size: 14px;
+}
+
+input{
+    width: 290px;
+    padding: 10px 0px;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    outline: none;
+    background-color: #3c3850;
+}
+
+input::placeholder{
+    opacity: 0;
+}
+
+label > span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(30px);
+    transition-duration: 300ms;
+    color: #fff;
+}
+
+label:focus-within > span,
+input:not(:placeholder-shown) + span{
+    transform:translateY(10px);
+}
+
+.signup-button{
+    /* margin-top: 70px; */
+    width: 40%;
+    height: 48px;
+    color: #fff;
+    background-color: #980C0C;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.help{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 30px;
+    margin-top: 6px;
+}
+
+.help > span{
+    color: #0D46D9;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
 
 
 

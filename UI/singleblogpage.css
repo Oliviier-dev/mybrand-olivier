@@ -189,6 +189,10 @@ nav > .logo{
         margin: auto;
     }
 
+    .reactions{
+        margin-bottom: 30px;
+    }
+
     .article > .image{
         width: 500px;
         height: 400px;
@@ -242,6 +246,10 @@ nav > .logo{
         margin: auto;
     }
 
+    .reactions{
+        margin-bottom: 30px;
+    }
+
     .article > .image{
         width: 400px;
         height: 300px;
@@ -272,6 +280,7 @@ nav > .logo{
     .reactions{
         gap: 10px;
         width: 320px;
+        margin-bottom: 30px;
     }
 
     .react > div > span:first-child{

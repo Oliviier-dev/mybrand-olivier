@@ -129,7 +129,49 @@ nav > .logo{
 
 .body{
     margin: 40px 0px;
+    font-size: 17px;
     line-height: 1.4;
+}
+
+.reactions{
+    display: flex;
+    align-items: center;
+    width: 750px;
+    margin: auto;
+    gap: 20px;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.reactions > .react{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.react > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background-color: #D9D9D9;
+    color: #000;
+    padding: 1px 14px;
+    border-radius: 26px;
+    cursor: pointer;
+}
+
+.reactions > div:first-child > span{
+    font-size: 22px;
+}
+
+.react > div > span > img{
+    width: 24px;
+    height: 24px;
+}
+
+.react > div > span:first-child{
+    font-size: 24px;
 }
 
 

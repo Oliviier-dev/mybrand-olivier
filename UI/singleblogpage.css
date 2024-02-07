@@ -227,6 +227,47 @@ nav > .logo{
     font-size: 18px;
 }
 
+.topcomments{
+    width: 750px;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.topcomments > span:first-child{
+    font-size: 22px;
+}
+
+.content > h4,  .content > p{
+    margin: 0px;
+}
+
+.items{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.items > .item{
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.item > .content{
+    display: flex;
+    margin-top: 6px;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.imagee{
+    min-width: 60px;
+    height: 60px;
+    background-color: #BBB6B6;
+    border-radius: 50%;
+}
+
 
 
 
@@ -236,7 +277,7 @@ nav > .logo{
         gap: 20px;
     }
 
-    .article, .reactions, .comments{
+    .article, .reactions, .comments,.topcomments{
         width: 500px;
         margin: auto;
     }
@@ -293,7 +334,7 @@ nav > .logo{
         margin: auto;
     }
 
-    .article, .reactions, .comments{
+    .article, .reactions, .comments, .topcomments{
         width: 400px;
         margin: auto;
     }
@@ -318,7 +359,7 @@ nav > .logo{
 }
 
 @media screen and (max-width: 530px){
-    .article, .reactions, .comments{
+    .article, .reactions, .comments, .topcomments{
         width: 94%;
         margin: auto;
     }

@@ -236,7 +236,7 @@ nav > .logo{
         gap: 20px;
     }
 
-    .article, .reactions{
+    .article, .reactions, .comments{
         width: 500px;
         margin: auto;
     }
@@ -293,7 +293,7 @@ nav > .logo{
         margin: auto;
     }
 
-    .article, .reactions{
+    .article, .reactions, .comments{
         width: 400px;
         margin: auto;
     }
@@ -318,7 +318,7 @@ nav > .logo{
 }
 
 @media screen and (max-width: 530px){
-    .article, .reactions{
+    .article, .reactions, .comments{
         width: 94%;
         margin: auto;
     }
@@ -350,6 +350,23 @@ nav > .logo{
 
     .react > div{
         padding: 1px 8px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .commentform > div > input{
+        width: 250px;
+    }
+
+    .commentform > div > textarea{
+        width: 250px;
+    }
+
+    .comments > button{
+        position: absolute;
+        width: 100px;
+        left: 170px;
+        padding: 12px 20px;
     }
 }
 

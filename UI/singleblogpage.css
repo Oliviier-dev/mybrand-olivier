@@ -339,6 +339,10 @@ nav > .logo{
         margin: auto;
     }
 
+    .topcomments{
+        margin-top: 70px;
+    }
+
     .reactions{
         margin-bottom: 30px;
     }
@@ -362,6 +366,10 @@ nav > .logo{
     .article, .reactions, .comments, .topcomments{
         width: 94%;
         margin: auto;
+    }
+
+    .topcomments{
+        margin-top: 70px;
     }
 
     .article > .image{

@@ -184,7 +184,7 @@ nav > .logo{
         gap: 20px;
     }
 
-    .article{
+    .article, .reactions{
         width: 500px;
         margin: auto;
     }
@@ -237,7 +237,7 @@ nav > .logo{
         margin: auto;
     }
 
-    .article{
+    .article, .reactions{
         width: 400px;
         margin: auto;
     }
@@ -258,7 +258,7 @@ nav > .logo{
 }
 
 @media screen and (max-width: 530px){
-    .article{
+    .article, .reactions{
         width: 94%;
         margin: auto;
     }
@@ -266,6 +266,29 @@ nav > .logo{
     .article > .image{
         width: 96%;
         height: 300px;
+    }
+}
+@media screen and (max-width: 500px){
+    .reactions{
+        gap: 10px;
+        width: 320px;
+    }
+
+    .react > div > span:first-child{
+        font-size: 18px;
+    }
+    
+    .reactions > div:first-child > span{
+        font-size: 18px;
+    }
+
+    .react > div > span > img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .react > div{
+        padding: 1px 8px;
     }
 }
 

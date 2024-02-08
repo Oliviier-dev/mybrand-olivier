@@ -136,6 +136,11 @@ nav > .logo{
     font-size: 16px;
 }
 
+.buttons > button:nth-child(2) > a{
+    color: #fff;
+    text-decoration: none;
+}
+
 /* styling the footer */
 
 footer{

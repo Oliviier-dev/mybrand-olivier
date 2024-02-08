@@ -153,12 +153,29 @@ nav > .logo{
 
 
 
+@media screen and (max-width: 1020px){
+    .analytics{
+        width: 700px;
+    }
+}
+
 @media screen and (max-width: 990px) {
     /* making the navlinks responsive */
     .navlinks > ul, .socials > ul{
         gap: 20px;
     }
 }
+
+@media screen and (max-width: 830px){
+    .blogs > .header{
+        width: 500px;
+    }
+
+    .analytics{
+        width: 600px;
+    }
+}
+
 
 @media screen and (max-width: 720px) {
     body{
@@ -176,6 +193,19 @@ nav > .logo{
 
     nav > .navlinks > ul > li{
         font-size: 18px;
+    }
+
+    .blog{
+        display: flex;
+        flex-direction: column;
+        border: none;
+        padding-left: 0px;
+        gap: 20px;
+    }
+
+    .blog > .desc{
+        padding-left: 14px;
+        border-left: 8px solid  #B0A8A8;
     }
 }
 
@@ -200,5 +230,35 @@ nav > .logo{
     nav{
         width: 86%;
         margin: auto;
+    }
+
+    .blogs > .header{
+        width: 380px;
+    }
+
+    .desc > h3{
+        margin-bottom: 6px;
+    }
+
+    .analytics{
+        width: 460px;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .analytics{
+        padding: 0px 10px;
+    }
+    .blogs > .header{
+        width: 280px;
+    }
+
+    .desc > h3{
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    .analytics{
+        width: 340px;
     }
 }

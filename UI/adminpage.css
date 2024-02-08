@@ -79,8 +79,77 @@ nav > .logo{
     border-radius: 24px;
 }
 
+.analytics{
+    width: 900px;
+    margin: auto;
+    margin-top: 10px;
+}
 
+.blogs{
+    display: flex;
+    flex-direction: column;
+}
 
+.blogs > .header{
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.allblogs{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.blog{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding-left: 16px;
+    border-left: 12px solid #B0A8A8;
+    /* max-height: 100px; */
+}
+
+.createnew-btn{
+    background-color: #1840CF;
+    padding: 10px 18px;
+    font-size: 17px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    color: #fff;
+    border: none;
+}
+
+.desc{
+    padding: 6px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.desc > p, .desc > h3{
+    margin: 0px;
+}
+
+.buttons{
+    display: flex;
+    gap: 10px;
+}
+
+.buttons > button{
+    width: 70px;
+    border: none;
+    padding: 6px 0px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
 
 

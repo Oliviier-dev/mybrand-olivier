@@ -80,7 +80,7 @@ nav > .logo{
 }
 
 .createblogdiv{
-    width: 730px;
+    width: 750px;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -125,6 +125,12 @@ textarea{
     .navlinks > ul, .socials > ul{
         gap: 20px;
     }
+
+    .createblogdiv{
+        width: 500px;
+        margin: auto;
+        margin-bottom: 40px;
+    }
 }
 
 @media screen and (max-width: 720px) {
@@ -144,6 +150,12 @@ textarea{
     nav > .navlinks > ul > li{
         font-size: 18px;
     }
+
+    .createblogdiv{
+        width: 460px;
+        margin: auto;
+        margin-bottom: 40px;
+    }   
 }
 
 @media screen and (max-width: 675px) {
@@ -167,5 +179,48 @@ textarea{
     nav{
         width: 86%;
         margin: auto;
+    }
+
+    .createblogdiv{
+        width: 400px;
+        margin: auto;
+        margin-bottom: 40px;
+    }   
+
+    .item > input, textarea{
+        padding: 14px 20px;
+        font-size: 16px;
+        max-width: 400px;
+        max-height: 48px;
+    }
+}
+
+@media screen and (max-width: 525px){
+    .createblogdiv{
+        width: 340px;
+        margin: auto;
+        margin-bottom: 40px;
+    } 
+
+    .item > input, textarea{
+        padding: 10px 20px;
+        font-size: 16px;
+        max-width: 300px;
+        max-height: 44px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .createblogdiv{
+        width: 300px;
+        margin: auto;
+        margin-bottom: 40px;
+    } 
+
+    .item > input, textarea{
+        padding: 10px 20px;
+        font-size: 16px;
+        max-width: 240px;
+        max-height: 44px;
     }
 }

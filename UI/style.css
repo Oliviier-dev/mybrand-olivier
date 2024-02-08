@@ -303,6 +303,11 @@ nav > .logo{
     font-size: 16px;
 }
 
+button > a {
+    color: #fff;
+    text-decoration: none;
+}
+
 /* Styling the contact me section */
 
 .contactme{

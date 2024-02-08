@@ -1,0 +1,268 @@
+/* Importing goole the outfit google font */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&family=Roboto:wght@400;500;700&display=swap');
+
+/* General body styles */
+
+body {
+    font-family: 'Helvetica', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0B0621;
+    color: #fff;
+    line-height: 1.4;
+    width: 86%;
+    margin: auto;
+}
+
+/* styling the hamburger menu for smaller screens */
+
+.hamburger{
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger > span{
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+/* styling the navbar */
+
+nav{
+    /* background-color: rgb(0, 0, 0); */
+    height: 80px;
+    width: 94%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Outfit', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav > .navlinks > ul > li{
+    display: inline;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+nav > .logo > a, .navlinks > ul > li > a{
+    text-decoration: none;
+    color: #fff;
+}
+
+nav > .logo{
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.navlinks > ul, .socials > ul{
+    display: flex;
+    gap: 46px;
+    align-items: center;
+    padding: 10px;
+    list-style: none;
+    margin: 0px;
+    padding-inline-start: 0px;
+}
+
+.login-btn{
+    background-color: #1840CF;
+    padding: 4px 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+}
+
+.description{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.description > .title{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 24px;
+}
+
+.title > .line{
+    position: relative;
+    top: 2px;
+    width: 80px;
+    height: 3px;
+    background-color: #fff;
+}
+
+.description > p{
+    font-size: 18px;
+    text-align: center;
+}
+
+.blogs{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.blog{
+    width: 340px;
+    height: 460px;
+    border: 2px solid #fff;
+    display: flex;
+    border-radius: 14px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.blog1 > .blogimage{
+    background: url(images/IMG-7864.JPG);   
+}
+
+.blog2 > .blogimage{
+    background: url(images/IMG-7868.JPG);   
+}
+
+.blog3 > .blogimage{
+    background: url(images/IMG-7869.JPG);   
+}
+
+.blog4 > .blogimage{
+    background: url(images/IMG-7870.JPG);   
+}
+
+.blog5 > .blogimage{
+    background: url(images/IMG-7864.JPG);   
+}
+
+.blog > .blogimage ,.blogimage{
+    width: 290px;
+    height: 180px;
+    /* background: url(images/IMG-7864.JPG); */
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+    margin-bottom: 8px;
+    margin-top: 0px;
+}
+
+
+.desc, .info, .snippet, .author{
+    width: 290px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    justify-content: flex-start;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.desc > .category{
+    background-color: #5A5C5C;
+    padding: 6px 18px;
+    border-radius: 20px;
+}
+
+.info{
+    margin-top: 20px;
+}
+
+.info > .reactions{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.snippet > p{
+    margin: 10px 0px;
+}
+
+.author{
+    display: flex;
+}
+
+.writer{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.author > .writer > .image{
+    width: 40px;
+    height: 40px;
+    background-color: #BBB6B6;
+    border-radius: 50%;
+}
+
+footer {
+    margin: 0px 0px 30px 0px;
+    text-align: center;
+    font-size: 18px;
+}
+
+
+
+
+@media screen and (max-width: 990px) {
+    /* making the navlinks responsive */
+    .navlinks > ul, .socials > ul{
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    body{
+        width: 92%;
+        margin: auto;
+    }
+
+    nav{
+        height: 60px;
+    }
+
+    nav > .logo{
+        font-size: 20px;
+    }
+
+    nav > .navlinks > ul > li{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 675px) {
+    body{
+        width: 86%;
+        margin: auto;
+    }
+
+    .navlinks{
+        display: none;
+    }
+
+    .socials{
+        display: none;
+    }
+
+    .hamburger{
+        display: block;
+    }
+
+    nav{
+        width: 86%;
+        margin: auto;
+    }
+}

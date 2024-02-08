@@ -149,6 +149,14 @@ nav > .logo{
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
+    transition: all ease 0.5s;
+    border: 1px solid #F0F0F0;
+}
+
+.buttons > button:hover{
+    background-color: #0000;
+    color: #F0F0F0;
+    border: 1px solid #F0F0F0;
 }
 
 .pages{
@@ -264,6 +272,16 @@ nav > .logo{
     .blog > .desc{
         padding-left: 14px;
         border-left: 8px solid  #B0A8A8;
+    }
+
+    .comment{
+        display: flex;
+        flex-direction: column;
+        gap: 20px; 
+    }
+
+    .commentsdesc{
+        width: 100%;
     }
 }
 

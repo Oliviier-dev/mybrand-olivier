@@ -126,6 +126,11 @@ nav > .logo{
     border: none;
 }
 
+.createnew-btn > a{
+    color: #fff;
+    text-decoration: none;
+}
+
 .desc{
     padding: 6px 0px;
     display: flex;

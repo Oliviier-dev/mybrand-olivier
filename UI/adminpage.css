@@ -191,7 +191,7 @@ nav > .logo{
     color: #F0F0F0;
 }
 
-.commentsdesc > .image{
+.commentsdesc > .image, .messagedesc > .image{
     min-width: 60px;
     min-height: 60px;
     background-color: #BBB6B6;
@@ -199,21 +199,31 @@ nav > .logo{
     margin-top: 4px;
 }
 
-.commentsdesc{
+.commentsdesc, .messagedesc{
     display: flex;
     align-items: flex-start;
     gap: 12px;
     width: 80%;
 }
 
-.commentsdesc > div > h3, .commentsdesc > div > p{
+.commentsdesc > div > h3, .commentsdesc > div > p, .messagedesc > div > h3, .messagedesc > div >p{
     margin: 0px;
-}
+} 
 
 .comment{
     display: flex;
     align-items: center;
     gap: 40px;
+}
+
+.messages{
+    margin-bottom: 40px;
+}
+
+.allmessages{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 
@@ -280,7 +290,7 @@ nav > .logo{
         gap: 20px; 
     }
 
-    .commentsdesc{
+    .commentsdesc, .messagedesc{
         width: 100%;
     }
 }

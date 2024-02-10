@@ -298,6 +298,10 @@ footer {
         width: 500px;
         height: 400px;
     }
+
+    .topcomments{
+        margin-top: 70px;
+    }
 }
 
 @media screen and (max-width: 720px) {

@@ -1,0 +1,282 @@
+/* Importing goole the outfit google font */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&family=Roboto:wght@400;500;700&display=swap');
+
+/* General body styles */
+
+body {
+    font-family: 'Helvetica', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0B0621;
+    color: #fff;
+    line-height: 1.4;
+    width: 86%;
+    margin: auto;
+}
+
+/* styling the hamburger menu for smaller screens */
+
+.hamburger{
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger > span{
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+/* styling the navbar */
+
+nav{
+    /* background-color: rgb(0, 0, 0); */
+    height: 80px;
+    width: 94%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Outfit', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav > .navlinks > ul > li{
+    display: inline;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+nav > .logo > a, .navlinks > ul > li > a{
+    text-decoration: none;
+    color: #fff;
+}
+
+nav > .logo{
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.navlinks > ul, .socials > ul{
+    display: flex;
+    gap: 46px;
+    align-items: center;
+    padding: 10px;
+    list-style: none;
+    margin: 0px;
+    padding-inline-start: 0px;
+}
+
+.login-btn{
+    background-color: #1840CF;
+    padding: 4px 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+}
+
+.signupform{
+    background-color: #3c3850;
+    border-radius: 14px;
+    width: 60%;
+    min-height: 65vh;
+    margin: auto;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0px;  
+}
+
+.register{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+label{
+    margin-bottom: 15px;
+    position: relative;
+    border-bottom: 2px solid #fff;
+    color: #BBB;
+    font-size: 14px;
+}
+
+input{
+    width: 290px;
+    padding: 10px 0px;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    outline: none;
+    background-color: #3c3850;
+}
+
+input::placeholder{
+    opacity: 0;
+}
+
+label > span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(30px);
+    transition-duration: 300ms;
+    color: #fff;
+}
+
+label:focus-within > span,
+input:not(:placeholder-shown) + span{
+    transform:translateY(10px);
+}
+
+.signup-button{
+    /* margin-top: 70px; */
+    width: 40%;
+    height: 48px;
+    color: #fff;
+    background-color: #980C0C;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.help{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 30px;
+    margin-top: 6px;
+}
+
+.help > span{
+    color: #0D46D9;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+footer{
+    text-align: center;
+    margin: 30px 0px;
+}
+
+
+
+
+
+
+@media screen and (max-width: 990px) {
+    /* making the navlinks responsive */
+    .navlinks > ul, .socials > ul{ 
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    body{ 
+        width: 92%;
+        margin: auto;
+    }
+
+    nav{
+        height: 60px;
+    }
+
+    nav > .logo{
+        font-size: 20px;
+    }
+
+    nav > .navlinks > ul > li{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 675px) {
+    body{ 
+        width: 86%;
+        margin: auto;
+    }
+
+    .navlinks{
+        display: none;
+    }
+
+    .socials{
+        display: none;
+    }
+
+    .hamburger{
+        display: block;
+    }
+
+    nav{
+        width: 86%;
+        margin: auto;
+    }
+
+    .signupform{
+        width: 90%;
+    }
+
+    .signupform > h2{
+        font-size: 20px;
+    }
+
+    .signup-button{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 440px){
+    .signupform, input{
+        background-color: #0B0621;
+    }
+}
+
+
+@media screen and (max-width: 410px){
+    .loginform > h2:first-child{
+        font-size: 20px;
+    }
+
+    input{
+        width: 260px;
+    }
+
+    .help{
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 6px;
+        margin-bottom: 30px;
+    }
+
+    .help > span{
+        margin-bottom: 0px;
+    }
+}
+
+@media screen and (max-width: 360px){
+    input{
+        width: 200px;
+    }
+
+}

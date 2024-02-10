@@ -299,6 +299,10 @@ footer {
         height: 400px;
     }
 
+    .commentform > button{
+        margin-bottom: 50px;
+    }
+
     .topcomments{
         margin-top: 70px;
     }

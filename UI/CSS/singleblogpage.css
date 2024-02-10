@@ -87,7 +87,7 @@ nav > .logo{
 .article > .image{
     width: 750px;
     height: 400px;
-    background: url(images/IMG-7870.JPG);
+    background: url(../images/IMG-7870.JPG);
     background-size: cover;
     background-position: center;
     margin: auto;

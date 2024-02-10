@@ -15,6 +15,11 @@ body {
     margin: auto;
 }
 
+a, a:hover, a:visited,a:active{
+    text-decoration: none;
+    color: #fff;
+}
+
 /* styling the hamburger menu for smaller screens */
 
 .hamburger{
@@ -129,23 +134,23 @@ nav > .logo{
 }
 
 .blog1 > .blogimage{
-    background: url(images/IMG-7864.JPG);   
+    background: url(../images/IMG-7864.JPG);   
 }
 
 .blog2 > .blogimage{
-    background: url(images/IMG-7868.JPG);   
+    background: url(../images/IMG-7868.JPG);   
 }
 
 .blog3 > .blogimage{
-    background: url(images/IMG-7869.JPG);   
+    background: url(../images/IMG-7869.JPG);   
 }
 
 .blog4 > .blogimage{
-    background: url(images/IMG-7870.JPG);   
+    background: url(../images/IMG-7870.JPG);   
 }
 
 .blog5 > .blogimage{
-    background: url(images/IMG-7864.JPG);   
+    background: url(../images/IMG-7864.JPG);   
 }
 
 .blog > .blogimage ,.blogimage{

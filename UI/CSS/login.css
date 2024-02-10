@@ -15,6 +15,11 @@ body {
     margin: auto;
 }
 
+a, a:hover, a:visited,a:active{
+    text-decoration: none;
+    color: #fff;
+}
+
 /* styling the hamburger menu for smaller screens */
 
 .hamburger{

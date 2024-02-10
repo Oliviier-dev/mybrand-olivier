@@ -254,20 +254,20 @@ nav > .logo{
 }
 
 .myworks > div:first-child > .image{
-    background: url(images/restaurantpage.JPG);
+    background: url(UI/images/restaurantpage.JPG);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .myworks > div:nth-child(2) > .image{
-    background: url(images/battleship.JPG);
+    background: url(UI/images/battleship.JPG);
     background-size: cover;
     background-position: center;
 }
 
 .myworks > div:nth-child(3) > .image{
-    background: url(images/landingpage.JPG);
+    background: url(UI/images/landingpage.JPG);
     background-size: cover;
     background-position: center;
 }

@@ -173,10 +173,13 @@ input:not(:placeholder-shown) + span{
     margin-top: 6px;
 }
 
-.help > span{
+.help > span > a{
     color: #0D46D9;
-    margin-bottom: 30px;
     cursor: pointer;
+}
+
+.help > span{
+    margin-bottom: 30px;
 }
 
 footer{

@@ -70,7 +70,7 @@ nav > .logo{
     padding-inline-start: 0px;
 }
 
-.login-btn{
+.login-btn > a{
     background-color: #1840CF;
     padding: 4px 18px;
     display: flex;
@@ -278,7 +278,7 @@ nav > .logo{
     gap: 30px;
 }
 
-.myworks > div > .desc > .buttons > button{
+.myworks > div > .desc > .buttons > a > button{
     padding: 12px 36px;
     border-radius: 26px;
     cursor: pointer;
@@ -378,6 +378,7 @@ input::placeholder{
 }
 
 label > span{
+    color: #757575;
     position: absolute;
     top: 0;
     left: 0;
@@ -540,7 +541,7 @@ footer {
 
 @media screen and (max-width: 897px) {
 
-    .myworks > div > .desc > .buttons > button{
+    .myworks > div > .desc > .buttons > a > button{
         font-size: 16px;
         padding: 12px 22px;
     }
@@ -682,7 +683,7 @@ footer {
         flex: 1;
     }
 
-    .myworks > div > .desc > .buttons > button{
+    .myworks > div > .desc > .buttons > a > button{
         padding: 12px 30px;
     }
 

@@ -75,7 +75,7 @@ nav > .logo{
     padding-inline-start: 0px;
 }
 
-.login-btn{
+.login-btn > a{
     background-color: #1840CF;
     padding: 4px 18px;
     display: flex;
@@ -150,9 +150,9 @@ input:not(:placeholder-shown) + span{
     transform:translateY(10px);
 }
 
-.login-button{
+.login-button > a{
     /* margin-top: 70px; */
-    width: 40%;
+    width: 300px;
     height: 48px;
     color: #fff;
     background-color: #1840CF;
@@ -170,7 +170,7 @@ input:not(:placeholder-shown) + span{
     margin-top: 6px;
 }
 
-.help > span{
+.help > span, .newacc > a{
     color: #0D46D9;
     font-size: 14px;
     margin-bottom: 46px;
@@ -242,8 +242,8 @@ footer{
         width: 90%;
     }
 
-    .login-button{
-        width: 60%;
+    .login-button > a{
+        width: 200px;
     }
 }
 

@@ -70,7 +70,7 @@ nav > .logo{
     padding-inline-start: 0px;
 }
 
-.login-btn{
+.login-btn > a{
     background-color: #1840CF;
     padding: 4px 18px;
     display: flex;
@@ -80,19 +80,23 @@ nav > .logo{
 }
 
 .btnpost{
-    width: 300px;
+    width: 280px;
     background-color: #1840CF;
     padding: 12px 18px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 14px;
+    margin-top: 10px;
     font-weight: bold;
     font-size: 17px;
+    color: #fff;
+    text-decoration: none;
     border:none;
+    cursor: pointer;
 }
 
-.btnpost > a{
+.createblogdiv > a{
     color: #fff;
     text-decoration: none;
 }

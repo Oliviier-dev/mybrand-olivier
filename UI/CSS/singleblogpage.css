@@ -70,7 +70,7 @@ nav > .logo{
     padding-inline-start: 0px;
 }
 
-.login-btn{
+.login-btn > a{
     background-color: #1840CF;
     padding: 4px 18px;
     display: flex;

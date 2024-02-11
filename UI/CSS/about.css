@@ -70,7 +70,7 @@ nav > .logo{
     padding-inline-start: 0px;
 }
 
-.login-btn{
+.login-btn > a{
     background-color: #1840CF;
     padding: 4px 18px;
     display: flex;
@@ -126,7 +126,7 @@ nav > .logo{
     margin-top: 40px;
 }
 
-.buttons > button{
+.buttons > button, .buttons > button > a{
     padding: 14px 18px;
     border: none;
     background-color: #1840CF;
@@ -136,7 +136,7 @@ nav > .logo{
     font-size: 16px;
 }
 
-.buttons > button:nth-child(2) > a{
+.buttons > button > a{
     color: #fff;
     text-decoration: none;
 }
@@ -232,8 +232,9 @@ footer{
         gap: 10px;
     }
 
-    .buttons > button{
+    .buttons > button, .buttons > button > a{
         padding: 12px 12px;
-        font-size: 16px;
+        font-size: 12px;
+        text-align: center;
     }
 }

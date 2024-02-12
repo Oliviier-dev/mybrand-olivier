@@ -40,8 +40,6 @@ menubtn.addEventListener('click', () => {
     html.style.overflowY = 'hidden';
 })
 
-
-
 //if close button is clicked
 closebtn.addEventListener('click', () => {
     //set the meny to display none
@@ -55,3 +53,34 @@ closebtn.addEventListener('click', () => {
     body.style.overflowY = 'scroll';
     html.style.overflowY = 'scroll';
 })
+
+
+//function to track the with of the screen
+function mediaQueryTracker(width) {
+    if (width.matches) { // If media query matches 675px and above
+
+        //dont display the menu section        
+        menu.style.display = 'none';
+        closebtn.classList.add('hidden');
+        menubtn.classList.remove('hidden');
+
+        //setting the logo and hamburger to normal flow
+        hamburger.style.position = 'static';
+        logo.style.position = 'static';
+
+        //Making the whole page scrollable
+        body.style.overflowY = 'scroll';
+        html.style.overflowY = 'scroll';
+    }
+  }
+  
+  // width to use with the mediaQueryTracker function
+  var width = window.matchMedia("(min-width: 675px)");
+  
+  // caaling the function
+  mediaQueryTracker(width);
+  
+  // Attaching listener function on state changes
+  width.addEventListener("change", function() {
+    mediaQueryTracker(width);
+  });

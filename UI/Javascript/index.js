@@ -50,8 +50,8 @@ closebtn.addEventListener('click', () => {
     logo.style.position = 'static';
 
      //enable scrolling again
-    body.style.overflowY = 'scroll';
-    html.style.overflowY = 'scroll';
+    body.style.overflowY = 'auto';
+    html.style.overflowY = 'auto';
 })
 
 
@@ -69,8 +69,8 @@ function mediaQueryTracker(width) {
         logo.style.position = 'static';
 
         //Making the whole page scrollable
-        body.style.overflowY = 'scroll';
-        html.style.overflowY = 'scroll';
+        body.style.overflowY = 'auto';
+        html.style.overflowY = 'auto';
     }
   }
   

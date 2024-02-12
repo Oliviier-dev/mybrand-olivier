@@ -74,6 +74,8 @@ function mediaQueryTracker(width) {
     }
   }
   
+
+  
   // width to use with the mediaQueryTracker function
   var width = window.matchMedia("(min-width: 675px)");
   

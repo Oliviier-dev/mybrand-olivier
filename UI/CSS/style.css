@@ -334,7 +334,7 @@ button > a {
     width: clamp(0px, 100%, 240px);
 }
 
-.register > button{
+.register > form >  button{
     margin-top: 20px;
     padding: 10px 20px;
     color: #000;

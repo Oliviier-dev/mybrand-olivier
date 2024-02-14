@@ -10,3 +10,23 @@ myForm.addEventListener('submit', function(event){
     validateEmail(emailValue);
     validateMessage(messageValue);
 })
+
+
+
+function validateName(name){
+    let nameLabel = document.getElementById('namelabel');
+    let namePlaceholder = document.getElementById('nameplaceholder');
+
+    if(name.length < 1){
+        nameLabel.style.borderBottomColor = '#c80202';
+        namePlaceholder.style.color = '#c80202';
+        namePlaceholder.innerText = 'Please enter your name';
+
+    } else{
+        nameLabel.style.borderBottomColor = '#02c837';
+        namePlaceholder.style.color = '#02c837';
+        namePlaceholder.innerText = 'Name';
+        return true;
+    }
+
+}

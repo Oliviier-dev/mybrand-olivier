@@ -186,7 +186,7 @@ nav > .logo{
     position: relative;
 }
 
-.commentform{ 
+.commentform > form{ 
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -196,7 +196,7 @@ nav > .logo{
     font-size: 22px;
 }
 
-.commentform > div > input{
+.commentform > form > div > input{
     width: 300px;
     font-size: 16px;
     padding: 10px 10px;
@@ -207,7 +207,7 @@ nav > .logo{
     outline: none;
 }
 
-.commentform > div > textarea{
+.commentform > form > div > textarea{
     outline: none;
     width:300px;
     font-size: 16px;
@@ -217,7 +217,7 @@ nav > .logo{
     border-radius: 12px;
 }
 
-.comments > button{
+.comments > .commentform > form > div > button{
     position: absolute;
     cursor: pointer;
     display: flex;
@@ -305,7 +305,7 @@ footer {
         height: 400px;
     }
 
-    .commentform > button{
+    .commentform > form > div > button{
         margin-bottom: 50px;
     }
 
@@ -484,15 +484,15 @@ footer {
 }
 
 @media screen and (max-width: 400px){
-    .commentform > div > input{
+    .commentform > form > div > input{
         width: 250px;
     }
 
-    .commentform > div > textarea{
+    .commentform > form > div > textarea{
         width: 250px;
     }
 
-    .comments > button{
+    .comments > .commentform > form > div > button{
         position: absolute;
         width: 100px;
         left: 170px;

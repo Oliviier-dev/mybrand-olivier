@@ -91,7 +91,7 @@ function checkFormValidity() {
             setTimeout(function() {
                 notificationsBar.classList.remove('visible');
             }, 2000);
-        }, 100);
+        }, 1000);
 
     }   
 

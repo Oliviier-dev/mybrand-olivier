@@ -1,5 +1,10 @@
 let myForm = document.getElementById('myForm');
 
+//Variables to track the validates inputs
+let nameValidated = false;
+let emailValidated = false;
+let messageValidated = false;
+
 //listening for submit event in order to validate
 myForm.addEventListener('submit', function(event){
     event.preventDefault();
@@ -10,6 +15,8 @@ myForm.addEventListener('submit', function(event){
     validateName(nameValue);
     validateEmail(emailValue);
     validateMessage(messageValue);
+    checkFormValidity();
+
 })
 
 //function to validate the name input
@@ -26,7 +33,7 @@ function validateName(name){
         nameLabel.style.borderBottomColor = '#02c837';
         namePlaceholder.style.color = '#02c837';
         namePlaceholder.innerText = 'Name';
-        return true;
+        nameValidated = true;
     }
 
 }
@@ -39,7 +46,7 @@ function validateMessage(message){
         messageLabel.style.borderBottomColor = '#c80202';
     } else{
         messageLabel.style.borderBottomColor = '#02c837';
-        return true;
+        messageValidated = true;
     }
 
 }
@@ -60,7 +67,16 @@ function validateEmail(email){
         emailLabel.style.borderBottomColor = '#02c837';
         emailPlaceholder.style.color = '#02c837';
         emailPlaceholder.innerText = 'Email';
-        return true;
+        emailValidated = true;
     }
 
+}
+
+//function to check whether everything has been validated
+function checkFormValidity() {
+    if(emailValidated && nameValidated && messageValidated){
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+    }
 }

@@ -85,11 +85,8 @@ function checkFormValidity() {
         document.getElementById('nameplaceholder').style.color = '#757575';
         document.getElementById('emailplaceholder').style.color = '#757575';
 
-
         setTimeout(function() {
             notificationsBar.classList.add('visible');
-            // console.log(notificationsBar)
-            // notificationsBar.style.display = 'block';
     
             setTimeout(function() {
                 notificationsBar.classList.remove('visible');
@@ -98,6 +95,7 @@ function checkFormValidity() {
 
     }   
 
+    //Set back the validate values to false after a user have sent his message
     nameValidated = false;
     emailValidated = false;
     messageValidated = false;

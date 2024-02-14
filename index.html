@@ -173,19 +173,19 @@
                 <h2>CONTACT ME</h2>
                 <p>Open for discussions! Send me a message or get in touch.</p>
                 <div class="register">
-                    <form>
-                        <label for="name">
+                    <form id="myForm">
+                        <label for="name" id="namelabel">
                             <input type="text" id="name" placeholder="Name" autocomplete="off">
-                            <span>Name</span>
+                            <span id="nameplaceholder">Name</span>
                         </label>
-                        <label for="email">
-                            <input type="email" id="email" placeholder="Email" autocomplete="off">
-                            <span>Email</span>
+                        <label for="email" id="emaillabel">
+                            <input type="text" id="email" placeholder="Email" autocomplete="off">
+                            <span id="emailplaceholder">Email</span>
                         </label>
-                        <label for="message">
-                            <textarea name="" id="" cols="33" rows="2" placeholder="Enter your message" required></textarea>
+                        <label for="message" id="messagelabel">
+                            <textarea name="" id="message" cols="33" rows="2" placeholder="Enter your message"></textarea>
                         </label>
-                        <button>SEND</button>
+                        <button type="submit">SEND</button>
                     </form>
                 </div>
             </div>

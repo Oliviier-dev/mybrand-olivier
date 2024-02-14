@@ -1,5 +1,6 @@
 let myForm = document.getElementById('myForm');
 
+//listening for submit event in order to validate
 myForm.addEventListener('submit', function(event){
     event.preventDefault();
     let nameValue = document.getElementById('name').value;
@@ -11,8 +12,7 @@ myForm.addEventListener('submit', function(event){
     validateMessage(messageValue);
 })
 
-
-
+//function to validate the name input
 function validateName(name){
     let nameLabel = document.getElementById('namelabel');
     let namePlaceholder = document.getElementById('nameplaceholder');
@@ -31,8 +31,7 @@ function validateName(name){
 
 }
 
-
-
+//function to validate the message input
 function validateMessage(message){
     let messageLabel = document.getElementById('messagelabel');
 
@@ -45,8 +44,7 @@ function validateMessage(message){
 
 }
 
-
-
+//function to validate the email input
 function validateEmail(email){
     let emailLabel = document.getElementById('emaillabel');
     let emailPlaceholder = document.getElementById('emailplaceholder');

@@ -178,7 +178,8 @@ input:not(:placeholder-shown) + span{
 }
 
 .help > span > a{
-    color: #0D46D9;
+    color: #fff;
+    text-decoration: underline;
     cursor: pointer;
 }
 

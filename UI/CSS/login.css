@@ -176,7 +176,8 @@ input:not(:placeholder-shown) + span{
 }
 
 .help > span, .newacc > a{
-    color: #0D46D9;
+    color: #fff;
+    text-decoration: underline;
     font-size: 14px;
     margin-bottom: 46px;
     cursor: pointer;

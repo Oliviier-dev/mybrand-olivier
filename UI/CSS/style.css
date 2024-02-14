@@ -441,8 +441,8 @@ input:not(:placeholder-shown) + span{
 }
 
 #notis{
-    width: 160px;
-    height: 30px;
+    width: 200px;
+    height: 40px;
     border-radius: 20px;
     display: flex;
     justify-content: center;

@@ -30,3 +30,17 @@ function validateName(name){
     }
 
 }
+
+
+
+function validateMessage(message){
+    let messageLabel = document.getElementById('messagelabel');
+
+    if(message.length < 1){
+        messageLabel.style.borderBottomColor = '#c80202';
+    } else{
+        messageLabel.style.borderBottomColor = '#02c837';
+        return true;
+    }
+
+}

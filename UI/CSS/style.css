@@ -440,6 +440,46 @@ input:not(:placeholder-shown) + span{
     margin: 3px 0px;
 }
 
+#notis{
+    width: 160px;
+    height: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    font-weight: bold;
+    background-color: #fff;
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    color: #000;
+    transform: translate(-50%, -50%);
+    animation: fallAnimation 0.5s ease forwards;
+    display: none;
+    z-index: 999;
+}
+
+.circle{
+    color: green;
+}
+
+@keyframes fallAnimation {
+    0% {
+        top: -100px;
+    }
+    100% {
+        top: 20px;
+    }
+}
+
+#notis.visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
 /* Styling the footer */
 
 footer {

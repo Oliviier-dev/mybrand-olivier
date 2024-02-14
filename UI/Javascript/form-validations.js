@@ -1,4 +1,5 @@
 let myForm = document.getElementById('myForm');
+let notificationsBar = document.getElementById('notis');
 
 //Variables to track the validates inputs
 let nameValidated = false;
@@ -78,5 +79,27 @@ function checkFormValidity() {
         document.getElementById('name').value = '';
         document.getElementById('email').value = '';
         document.getElementById('message').value = '';
-    }
+        document.getElementById('messagelabel').style.borderBottomColor = '#fff';
+        document.getElementById('emaillabel').style.borderBottomColor = '#fff';
+        document.getElementById('namelabel').style.borderBottomColor = '#fff';
+        document.getElementById('nameplaceholder').style.color = '#757575';
+        document.getElementById('emailplaceholder').style.color = '#757575';
+
+
+        setTimeout(function() {
+            notificationsBar.classList.add('visible');
+            // console.log(notificationsBar)
+            // notificationsBar.style.display = 'block';
+    
+            setTimeout(function() {
+                notificationsBar.classList.remove('visible');
+            }, 2000);
+        }, 100);
+
+    }   
+
+    nameValidated = false;
+    emailValidated = false;
+    messageValidated = false;
+
 }

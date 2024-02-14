@@ -25,7 +25,7 @@ function validateName(name){
     let nameLabel = document.getElementById('namelabel');
     let namePlaceholder = document.getElementById('nameplaceholder');
 
-    if(name.length < 1){
+    if(name.length < 2){
         nameLabel.style.borderBottomColor = '#c80202';
         namePlaceholder.style.color = '#c80202';
         namePlaceholder.innerText = 'Please enter your name';

@@ -155,8 +155,9 @@ input:not(:placeholder-shown) + span{
     transform:translateY(10px);
 }
 
-.login-button > a{
+.login-button > button{
     /* margin-top: 70px; */
+    border: none;
     width: 300px;
     height: 48px;
     color: #fff;
@@ -303,7 +304,7 @@ footer{
         width: 90%;
     }
 
-    .login-button > a{
+    .login-button > button{
         width: 200px;
     }
 }

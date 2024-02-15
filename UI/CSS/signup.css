@@ -156,7 +156,7 @@ input:not(:placeholder-shown) + span{
 
 .signup-button{
     /* margin-top: 70px; */
-    width: 40%;
+    width: 100%;
     height: 48px;
     color: #fff;
     background-color: #980C0C;
@@ -166,6 +166,17 @@ input:not(:placeholder-shown) + span{
     justify-content: center;
     border-radius: 40px;
     cursor: pointer;
+}
+
+.signup-button > button{
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #980C0C;
+    border-radius: 40px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
 }
 
 .help{
@@ -186,6 +197,10 @@ input:not(:placeholder-shown) + span{
 .help > span{
     margin-bottom: 30px;
 }
+
+
+
+
 
 footer{
     text-align: center;
@@ -310,7 +325,7 @@ footer{
     }
 
     .signup-button{
-        width: 60%;
+        width: 100%;
     }
 }
 

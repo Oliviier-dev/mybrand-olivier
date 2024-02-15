@@ -39,3 +39,38 @@ function validateEmail(email){
     }
 
 }
+
+
+//function to validate the password input
+function validatePassword(password, passwordRetype){
+    let passwordLabel = document.getElementById('passwordlabel');
+    let passwordPlaceholder = document.getElementById('passwordplaceholder');
+    
+    let retypepasswordLabel = document.getElementById('retypepasswordlabel');
+    let retypepasswordPlaceholder = document.getElementById('retypepasswordplaceholder');
+
+    if(password.length < 6){
+        passwordLabel.style.borderBottomColor = '#c80202';
+        passwordPlaceholder.style.color = '#c80202';
+        passwordPlaceholder.innerText = 'Password must be at least 6 characters long';
+
+    } else{
+        passwordLabel.style.borderBottomColor = '#02c837';
+        passwordPlaceholder.style.color = '#02c837';
+        passwordPlaceholder.innerText = 'Password';
+        passwordValidated = true;
+    }
+
+    if(password !== passwordRetype || passwordRetype == '' || passwordValidated == false) {
+        retypepasswordLabel.style.borderBottomColor = '#c80202';
+        retypepasswordPlaceholder.style.color = '#c80202';
+        retypepasswordPlaceholder.innerText = 'Password does not match';
+    } else{
+        retypepasswordLabel.style.borderBottomColor = '#02c837';
+        retypepasswordPlaceholder.style.color = '#02c837';
+        retypepasswordPlaceholder.innerText = 'Confirm Password';
+        retypePasswordValidated = true;
+    }
+
+
+}

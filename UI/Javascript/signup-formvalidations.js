@@ -52,7 +52,7 @@ function validatePassword(password, passwordRetype){
     if(password.length < 6){
         passwordLabel.style.borderBottomColor = '#c80202';
         passwordPlaceholder.style.color = '#c80202';
-        passwordPlaceholder.innerText = 'Password must be at least 6 characters long';
+        passwordPlaceholder.innerText = 'Password must be at least 6 characters';
 
     } else{
         passwordLabel.style.borderBottomColor = '#02c837';

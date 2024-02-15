@@ -74,3 +74,34 @@ function validatePassword(password, passwordRetype){
 
 
 }
+
+
+//function to check whether everything has been validated
+function checkFormValidity() {
+    if(emailValidated && passwordValidated && retypePasswordValidated){
+        document.getElementById('email').value = '';
+        document.getElementById('password').value = '';
+        document.getElementById('retypepassword').value = '';
+        document.getElementById('emaillabel').style.borderBottomColor = '#fff';
+        document.getElementById('passwordlabel').style.borderBottomColor = '#fff';
+        document.getElementById('retypepasswordlabel').style.borderBottomColor = '#fff';
+        document.getElementById('emailplaceholder').style.color = '#fff';
+        document.getElementById('passwordplaceholder').style.color = '#fff';
+        document.getElementById('retypepasswordplaceholder').style.color = '#fff';
+
+        setTimeout(function() {
+            notificationsBar.classList.add('visible');
+    
+            setTimeout(function() {
+                notificationsBar.classList.remove('visible');
+            }, 2000);
+        }, 1000);
+
+    }   
+
+    //Set back the validate values to false after a user have sent his message
+    nameValidated = false;
+    emailValidated = false;
+    messageValidated = false;
+
+}

@@ -53,27 +53,30 @@
 
     <div class="createblogdiv">
         <h2>New Blog:</h2>
-        <div class="item">
-            <span>Blog Title:</span>
-            <input type="text">
-        </div>
-        <div class="item">
-            <span>Blog Snippet:</span>
-            <input type="text">
-        </div>
-        <div class="item">
-            <span>Blog Category:</span>
-            <input type="text">
-        </div>
-        <div class="item">
-            <span>Blog Image Url:</span>
-            <input type="text">
-        </div>
-        <div class="item">
-            <span>Blog Body:</span>
-            <textarea name="" id="" cols="30" rows="20"></textarea>
-        </div>
-        <a class="postbtn" href="singleblogpage.html"><button class="btnpost">POST</button></a>
+        <form action="" id="blogForm">
+            <div class="item">
+                <span>Blog Title:</span>
+                <input type="text" id="title">
+            </div>
+            <div class="item">
+                <span>Blog Snippet:</span>
+                <input type="text" id="snippet">
+            </div>
+            <div class="item">
+                <span>Blog Category:</span>
+                <input type="text" id="category">
+            </div>
+            <div class="item">
+                <span>Blog Image Url:</span>
+                <input type="text" id="img">
+            </div>
+            <div class="item">
+                <span>Blog Body:</span>
+                <textarea name="" id="body" cols="30" rows="20"></textarea>
+            </div>
+            <button type="submit" class="btnpost">POST</button>
+            <!-- <a class="postbtn" href="singleblogpage.html"><button class="btnpost">POST</button></a> -->
+        </form>
     </div>
 
     <footer>Copyright &#169; Olivier 2024.</footer>

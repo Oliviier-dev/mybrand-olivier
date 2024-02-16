@@ -100,7 +100,7 @@ nav > .logo{
     cursor: pointer;
 }
 
-.createblogdiv > a{
+.createblogdiv > form > a{
     color: #fff;
     text-decoration: none;
 }
@@ -108,6 +108,10 @@ nav > .logo{
 .createblogdiv{
     width: 750px;
     margin: auto;
+}
+
+.createblogdiv > form{
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -118,7 +122,7 @@ nav > .logo{
     margin-bottom: 0px;
 }
 
-.createblogdiv > .item{
+.createblogdiv > form > .item{
     display: flex;
     flex-direction: column;
     gap: 6px;

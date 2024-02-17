@@ -1,3 +1,33 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+// Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDkU4etxLr4_YDy1nxsIliilDe6sVxPEaU",
+    authDomain: "mybrand-login.firebaseapp.com",
+    projectId: "mybrand-login",
+    storageBucket: "mybrand-login.appspot.com",
+    messagingSenderId: "789592444381",
+    appId: "1:789592444381:web:749ddd1b55ebbf24c97a34"
+};
+  
+  // Initialize Firebase
+const firebaseApp = initializeApp(firebaseConfig);
+const auth = getAuth(firebaseApp);
+
+onAuthStateChanged(auth, (user) =>{
+
+    console.log(user);
+    if(user) {
+        console.log("we in");
+        window.location.href = "../pages/login.html";
+    } else{
+        console.log("we out");
+    }
+
+});
+
+
 let myForm = document.getElementById('myForm');
 let notificationsBar = document.getElementById('notis');
 
@@ -6,7 +36,7 @@ let passwordValidated = false;
 let retypePasswordValidated = false;
 
 
-myForm.addEventListener('submit', function(event){
+myForm.addEventListener('submit', async function(event){
     event.preventDefault();
     let emailValue = document.getElementById('email').value;
     let passwordlValue = document.getElementById('password').value;
@@ -14,7 +44,23 @@ myForm.addEventListener('submit', function(event){
     
     validatePassword(passwordlValue, passwordRetypeValue);
     validateEmail(emailValue);
-    checkFormValidity();
+    let valid = checkFormValidity();
+    // console.log(valid);
+    // console.log(emailValidated);
+    
+    if(valid === 1){
+        try{
+            const userCredential = await createUserWithEmailAndPassword(
+             auth,
+             emailValue,
+             passwordlValue
+         );
+         console.log(userCredential);
+     
+         } catch(error){
+             console.log(error.code);
+         }
+    }
 
 })
 
@@ -89,6 +135,12 @@ function checkFormValidity() {
         document.getElementById('passwordplaceholder').style.color = '#fff';
         document.getElementById('retypepasswordplaceholder').style.color = '#fff';
 
+        //Set back the validate values to false after a user have sent his message
+
+        emailValidated = false;
+        passwordValidated = false;
+        retypePasswordValidated = false;
+
         setTimeout(function() {
             notificationsBar.classList.add('visible');
     
@@ -97,11 +149,8 @@ function checkFormValidity() {
             }, 2000);
         }, 1000);
 
-    }   
+        return 1;
 
-    //Set back the validate values to false after a user have sent his message
-    nameValidated = false;
-    emailValidated = false;
-    messageValidated = false;
+    }  
 
 }

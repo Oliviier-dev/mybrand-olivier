@@ -60,16 +60,30 @@ myForm.addEventListener('submit', async function(event){
             }
         } catch(error) {
             // Handle login errors
+            console.log(error.code);
 
-            notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>Invalid Credentials`;
+            if(error.code == "auth/network-request-failed"){
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>An error occured, Try again`;
 
-            setTimeout(function() {
-                notificationsBar.classList.add('visible');
-        
                 setTimeout(function() {
-                    notificationsBar.classList.remove('visible');
-                }, 2000);
-            }, 1000);
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000);
+
+            } else{
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>Invalid Credentials`;
+
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000);
+            }
         }
     }
 

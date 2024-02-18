@@ -199,7 +199,9 @@ input:not(:placeholder-shown) + span{
 }
 
 #notis{
-    width: 200px;
+    max-width: 380px;
+    padding-left: 10px;
+    padding-right: 10px;
     height: 40px;
     border-radius: 20px;
     display: flex;
@@ -219,8 +221,16 @@ input:not(:placeholder-shown) + span{
 }
 
 .circle{
+    color: red;
+}
+
+#checkcircle{
     color: green;
 }
+
+/* .circle{
+    color: green;
+} */
 
 @keyframes fallAnimation {
     0% {

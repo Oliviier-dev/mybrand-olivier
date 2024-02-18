@@ -1,15 +1,78 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDkU4etxLr4_YDy1nxsIliilDe6sVxPEaU",
+    authDomain: "mybrand-login.firebaseapp.com",
+    projectId: "mybrand-login",
+    storageBucket: "mybrand-login.appspot.com",
+    messagingSenderId: "789592444381",
+    appId: "1:789592444381:web:749ddd1b55ebbf24c97a34"
+};
+  
+  // Initialize Firebase
+const firebaseApp = initializeApp(firebaseConfig);
+const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
+
+
+
 let myForm = document.getElementById('myForm');
+let notificationsBar = document.getElementById('notis');
 
 let emailValidated = false;
 
-myForm.addEventListener('submit', function(event){
+myForm.addEventListener('submit', async function(event){
     event.preventDefault();
-    console.log('hello')
+    // console.log('hello')
     let emailValue = document.getElementById('emaillogin').value;
-    // let passwordlValue = document.getElementById('password').value;
+    let passwordValue = document.getElementById('password').value;
     
-    validateEmail(emailValue);
-    // checkFormValidity();
+    // validateEmail(emailValue);
+    let valid = validateEmail(emailValue);
+
+    if(valid === 1){
+        try {
+            const userCredential = await signInWithEmailAndPassword(
+                auth,
+                emailValue,
+                passwordValue
+            );
+    
+            // Get user's role from Firestore
+            const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+                const userRole = userData.role;
+    
+                if (userRole === 'admin') {
+                    // Redirect admin to admin dashboard
+                    window.location.href = "adminpage.html";
+                    
+                } else {
+                    // Redirect regular user to user dashboard
+                    window.location.href = "blogs.html";
+                }
+            } else {
+                console.log("User data not found.");
+            }
+        } catch(error) {
+            // Handle login errors
+
+            notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>Invalid Credentials`;
+
+            setTimeout(function() {
+                notificationsBar.classList.add('visible');
+        
+                setTimeout(function() {
+                    notificationsBar.classList.remove('visible');
+                }, 2000);
+            }, 1000);
+        }
+    }
+
 })
 
 
@@ -25,17 +88,18 @@ function validateEmail(email){
         emailPlaceholder.style.color = '#c80202';
         emailPlaceholder.innerText = 'Please enter a valid email';
     } else{
-        emailLabel.style.borderBottomColor = '#02c837';
-        emailPlaceholder.style.color = '#02c837';
+        emailLabel.style.borderBottomColor = '#fff';
+        // emailPlaceholder.style.color = '#02c837';
         emailPlaceholder.innerText = 'Email';
         emailValidated = true;
-        checkFormValidity();   
+        // checkFormValidity();   
+        return 1;
     }
 
 }
 
-function checkFormValidity(){
-    if(emailValidated){
-        window.location.href = 'adminpage.html';
-    }
-}
+// function checkFormValidity(){
+//     if(emailValidated){
+//         // window.location.href = 'adminpage.html';
+//     }
+// }

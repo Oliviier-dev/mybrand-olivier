@@ -80,7 +80,8 @@ nav > .logo{
 }
 
 .login-btn > a{
-    background-color: #1840CF;
+    /* background-color: #1840CF; */
+    background-color: #0B0621;
     padding: 4px 18px;
     display: flex;
     align-items: center;
@@ -211,6 +212,7 @@ nav > .logo{
 .commentsdesc, .messagedesc{
     display: flex;
     align-items: flex-start;
+    align-items: center;
     gap: 12px;
     width: 80%;
 }
@@ -218,6 +220,10 @@ nav > .logo{
 .commentsdesc > div > h3, .commentsdesc > div > p, .messagedesc > div > h3, .messagedesc > div >p{
     margin: 0px;
 } 
+
+.messagedesc > div > h4{
+    margin: 10px 0px;
+}
 
 .comment{
     display: flex;
@@ -232,7 +238,7 @@ nav > .logo{
 .allmessages{
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 30px;
 }
 
 footer {

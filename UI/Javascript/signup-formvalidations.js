@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -14,22 +15,24 @@ const firebaseConfig = {
   // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
 
-onAuthStateChanged(auth, (user) =>{
+// onAuthStateChanged(auth, (user) =>{
 
-    console.log(user);
-    if(user) {
-        console.log("we in");
-        window.location.href = "../pages/login.html";
-    } else{
-        console.log("we out");
-    }
+//     console.log(user);
+//     if(user) {
+//         console.log("we in");
+//         // window.location.href = "../pages/login.html";
+//     } else{
+//         console.log("we out");
+//     }
 
-});
+// });
 
 
 let myForm = document.getElementById('myForm');
 let notificationsBar = document.getElementById('notis');
+// let erroricon = document.getElementsByClassName('circle');
 
 let emailValidated = false;
 let passwordValidated = false;
@@ -54,11 +57,55 @@ myForm.addEventListener('submit', async function(event){
              auth,
              emailValue,
              passwordlValue
-         );
-         console.log(userCredential);
+            );
+
+            // Add user data to Firestore
+            await setDoc(doc(db, "users", userCredential.user.uid), {
+                email: emailValue,
+                role: "user"
+                // You can add more user data here if needed
+            });
+            // console.log(userCredential);
+            
+            notificationsBar.innerHTML = `<span class="material-symbols-outlined cirle" id="checkcircle">check_circle</span>Account Created`;
+
+    
+            setTimeout(function() {
+            notificationsBar.classList.add('visible');
+
+                setTimeout(function() {
+                    notificationsBar.classList.remove('visible');
+                    // Redirect after notification is displayed
+                    window.location.href = "../pages/login.html";
+                }, 1500);
+            }, 500);
+
      
          } catch(error){
-             console.log(error.code);
+            // console.log(error.code);
+             if(error.code == "auth/email-already-in-use"){
+                // console.log('got it');
+                // notificationsBar.classList.add('error');
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>Email already exists`;
+
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000);
+             } else{
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>Error occured, Try again`;
+
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000);
+             }
          }
     }
 
@@ -140,14 +187,6 @@ function checkFormValidity() {
         emailValidated = false;
         passwordValidated = false;
         retypePasswordValidated = false;
-
-        setTimeout(function() {
-            notificationsBar.classList.add('visible');
-    
-            setTimeout(function() {
-                notificationsBar.classList.remove('visible');
-            }, 2000);
-        }, 1000);
 
         return 1;
 

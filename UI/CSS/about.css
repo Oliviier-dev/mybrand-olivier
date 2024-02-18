@@ -75,7 +75,8 @@ nav > .logo{
 }
 
 .login-btn > a{
-    background-color: #1840CF;
+    /* background-color: #1840CF; */
+    background-color: #0B0621;
     padding: 4px 18px;
     display: flex;
     flex-wrap: wrap;

@@ -16,7 +16,7 @@
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="blogs.html">Blogs</a></li>
-                <li class="login-btn"><a href="../../index.html">Log out</a></li>
+                <li class="login-btn loginout-btn"><a href="../../index.html"></a></li>
             </ul>
         </div>
         <div class="socials">
@@ -37,7 +37,7 @@
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../pages/about.html">About</a></li>
                 <li><a href="../pages/blogs.html">Blogs</a></li>
-                <li class=""><a href="../../index.html">Log out</a></li>
+                <li class="" id="loginout-btn"><a href="../../index.html">Log out</a></li>
                 <!-- <li><a href="../pages/signup.html">Sign up</a></li> -->
             </ul>
         </div>
@@ -101,11 +101,22 @@
         <div class="messages">
             <h2>Messages received</h2>
             <div class="allmessages">
-                <div class="message">
+                <!-- <div class="message">
                     <div class="messagedesc">
                         <div class="image"></div>
                         <div>
                             <h3>Marie Jane</h3>
+                            <h4>youremail@gmai.com</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae id debitis suscipit maiores? Inventore ipsum impedit modi perferendis, laudantium quam!</p>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="message">
+                    <div class="messagedesc">
+                        <div class="image"></div>
+                        <div>
+                            <h3>Marie Jane</h3>
+                            <h4>youremail@gmai.com</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae id debitis suscipit maiores? Inventore ipsum impedit modi perferendis, laudantium quam!</p>
                         </div>
                     </div>
@@ -115,20 +126,12 @@
                         <div class="image"></div>
                         <div>
                             <h3>Marie Jane</h3>
+                            <h4>youremail@gmai.com</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae id debitis suscipit maiores? Inventore ipsum impedit modi perferendis, laudantium quam!</p>
                         </div>
                     </div>
-                </div>
-                <div class="message">
-                    <div class="messagedesc">
-                        <div class="image"></div>
-                        <div>
-                            <h3>Marie Jane</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae id debitis suscipit maiores? Inventore ipsum impedit modi perferendis, laudantium quam!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="pages">
+                </div> -->
+                <div class="pages pagesmessages">
                     <span class="material-symbols-outlined">navigate_before</span>
                     <span>1</span>
                     <span>2</span>
@@ -194,5 +197,7 @@
     <footer>Copyright &#169; Olivier 2024.</footer>
 
     <script src="../Javascript/index.js"></script>
+    <script type="module" src="../Javascript/localstorage.js"></script>
+    <script type="module" src="../Javascript/login-check.js"></script>
 </body>
 </html>

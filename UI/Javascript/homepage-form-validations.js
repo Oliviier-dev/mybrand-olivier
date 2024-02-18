@@ -71,14 +71,28 @@ function validateEmail(email){
         emailValidated = true;
     }
 
-}
+};
+
+
+let name = document.getElementById('name');
+let email = document.getElementById('email');
+let message = document.getElementById('message');
+
+
 
 //function to check whether everything has been validated
 function checkFormValidity() {
     if(emailValidated && nameValidated && messageValidated){
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('message').value = '';
+
+        storeuserMessage(name, email, message);
+
+        name.value = '';
+        email.value = '';
+        message.value = '';
+
+        // document.getElementById('name').value = '';
+        // document.getElementById('email').value = '';
+        // document.getElementById('message').value = '';
         document.getElementById('messagelabel').style.borderBottomColor = '#fff';
         document.getElementById('emaillabel').style.borderBottomColor = '#fff';
         document.getElementById('namelabel').style.borderBottomColor = '#fff';
@@ -100,4 +114,18 @@ function checkFormValidity() {
     emailValidated = false;
     messageValidated = false;
 
+}
+
+
+//local storage
+
+function storeuserMessage(name, email, message){
+
+    let existingMessages = JSON.parse(localStorage.getItem('userMessages')) || [];
+
+    let userMessage = [name.value, email.value, message.value];
+
+    existingMessages.push(userMessage);
+    
+    localStorage.setItem('userMessages', JSON.stringify(existingMessages));
 }

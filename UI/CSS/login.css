@@ -176,6 +176,10 @@ input:not(:placeholder-shown) + span{
     margin-top: 6px;
 }
 
+.help > .forget{
+    color: #3c3850;
+}
+
 .help > span, .newacc > a{
     color: #fff;
     text-decoration: underline;

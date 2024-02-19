@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 
     let editButtons = document.querySelectorAll('.editBlogbtn');
-    let deleteButtons = document.querySelectorAll('.editBlogbtn');
+    let deleteButtons = document.querySelectorAll('.deleteBlogbtn');
 
     if (editButtons.length > 0 && deleteButtons.length > 0) {
         
@@ -120,14 +120,36 @@ function editBlog(e){
 
     let headingText = blogHeading.innerText;
 
-    console.log(headingText);
+    // console.log(headingText);
 
     for (let i = 0; i < blogs.length; i++){
         if(blogs[i].title == headingText){
             localStorage.setItem('editBlog', JSON.stringify(blogs[i]));
             localStorage.setItem('editBlogIndex', i);
             window.location.href = "../pages/createnewblog.html";
-            localStorage.removeItem(blogs[i]);
+            // localStorage.removeItem(blogs[i]);
+            break;
+        }
+    }
+
+}
+
+
+function deleteBlog(e){
+
+    let blogs = JSON.parse(localStorage.getItem('Blogs')) || [];
+    let blog = e.target.parentNode.parentNode;
+    let blogHeading = blog.querySelector('.desc h3');
+
+    let headingText = blogHeading.innerText;
+    console.log(headingText);
+    for (let i = 0; i < blogs.length; i++){
+        if(blogs[i].title == headingText){
+
+            blogs.splice(i, 1);
+            localStorage.setItem('Blogs', JSON.stringify(blogs));
+            break;
+
         }
     }
 

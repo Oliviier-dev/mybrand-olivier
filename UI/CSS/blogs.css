@@ -138,7 +138,7 @@ nav > .logo{
     justify-content: center;
 }
 
-.blog1 > .blogimage{
+/* .blog1 > .blogimage{
     background: url(../images/IMG-7864.JPG);   
 }
 
@@ -156,7 +156,7 @@ nav > .logo{
 
 .blog5 > .blogimage{
     background: url(../images/IMG-7864.JPG);   
-}
+} */
 
 .blog > .blogimage ,.blogimage{
     width: 290px;

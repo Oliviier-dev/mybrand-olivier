@@ -1,6 +1,24 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-    displayBlogsAdmin();
-    displayUserMessages();
+
+    if (window.location.pathname.includes('/adminpage')) {
+        displayBlogsAdmin();
+        displayUserMessages();
+    }
+
+    let editButtons = document.querySelectorAll('.editBlogbtn');
+    let deleteButtons = document.querySelectorAll('.editBlogbtn');
+
+    if (editButtons.length > 0 && deleteButtons.length > 0) {
+        
+        editButtons.forEach(button => {
+            button.addEventListener('click', editBlog);
+        });
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', deleteBlog);
+        });
+    }
+
 }); 
 
 
@@ -74,9 +92,11 @@ function displayBlogsAdmin(){
 
         let editbutton = document.createElement('button');
         editbutton.innerText = 'Edit';
+        editbutton.classList.add('editBlogbtn');
 
         let deletebutton = document.createElement('button');
         deletebutton.innerText = 'Delete';
+        deletebutton.classList.add('deleteBlogbtn');
 
         buttonsDiv.append(editbutton);
         buttonsDiv.append(deletebutton);
@@ -86,6 +106,29 @@ function displayBlogsAdmin(){
         
         pagesBlogs.before(blogDiv);
 
+    }
+
+}
+
+
+function editBlog(e){
+
+    let blogs = JSON.parse(localStorage.getItem('Blogs')) || [];
+
+    let blog = e.target.parentNode.parentNode;
+    let blogHeading = blog.querySelector('.desc h3');
+
+    let headingText = blogHeading.innerText;
+
+    console.log(headingText);
+
+    for (let i = 0; i < blogs.length; i++){
+        if(blogs[i].title == headingText){
+            localStorage.setItem('editBlog', JSON.stringify(blogs[i]));
+            localStorage.setItem('editBlogIndex', i);
+            window.location.href = "../pages/createnewblog.html";
+            localStorage.removeItem(blogs[i]);
+        }
     }
 
 }

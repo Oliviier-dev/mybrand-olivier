@@ -8,7 +8,7 @@ function displayUserMessages(){
     // let allMessages = document.querySelector('.allmessages');
     let pagesMessages = document.querySelector('.pagesmessages');
 
-    let messages = JSON.parse(localStorage.getItem('userMessages'));
+    let messages = JSON.parse(localStorage.getItem('userMessages')) || [];
     // console.log(messages);
 
     for(let i = 0; i < messages.length; i++){
@@ -50,7 +50,7 @@ function displayUserMessages(){
 
 function displayBlogsAdmin(){
     let pagesBlogs = document.querySelector('.pagesBlogs');
-    let blogs = JSON.parse(localStorage.getItem('Blogs'));
+    let blogs = JSON.parse(localStorage.getItem('Blogs')) || [];
 
     for(let i = 0; i < blogs.length; i++){
 

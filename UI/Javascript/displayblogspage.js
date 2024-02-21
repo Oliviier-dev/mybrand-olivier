@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", (event) => {
     displayOnBlogsPage();
+    viewBlog();
+    
 }); 
 
 function displayOnBlogsPage(){
@@ -19,6 +21,7 @@ function displayOnBlogsPage(){
 
         let anchorTag = document.createElement('a');
         anchorTag.href = "singleblogpage.html";
+        anchorTag.classList.add('singleblog');
 
         let blogDesc = document.createElement('div');
         blogDesc.classList.add('desc')
@@ -103,5 +106,28 @@ function displayOnBlogsPage(){
         blogs.append(blogDiv);
 
     }    
+
+}
+
+function viewBlog(){
+    // console.log('hhe');
+    let blogs = JSON.parse(localStorage.getItem('Blogs')) || [];
+    let blogLinks = document.querySelectorAll('.singleblog');
+
+    if(blogLinks.length > 0){
+        console.log(blogLinks);
+        blogLinks.forEach(blog => {
+            blog.addEventListener('click', function(){
+                let title = blog.querySelector('.snippet p').innerText;
+                for (let i = 0; i < blogs.length; i++){
+                    if(blogs[i].title == title){
+                        console.log('gotta', title);
+                        localStorage.setItem('viewBlog', JSON.stringify(blogs[i]));
+                        // localStorage.setItem('editBlogIndex', i);
+                    }
+                }
+            })
+        });
+    }
 
 }

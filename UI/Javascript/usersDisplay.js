@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, getDocs, doc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs, doc, deleteDoc, updateDoc, query, where } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -23,7 +23,7 @@ function displayUserAccounts(users) {
         const userDiv = document.createElement('div');
         userDiv.innerHTML = `
             <p>Email: ${user.email}</p>
-            <p>Role: ${user.role}</p>
+            <p>Role: <span class="userRole">${user.role}</span></p>
             <div><button class="deleteUserBtn">Delete</button>
             <button class="changeUserRoleBtn">Change Role</button>
             </div>
@@ -50,22 +50,38 @@ async function getUserAccounts() {
 }
 
 // Function to delete a user
-async function deleteUser(userId) {
+async function deleteUser(userEmail) {
     try {
-        await deleteDoc(doc(db, 'users', userId));
-        console.log('User successfully deleted');
-        getUserAccounts(); // Refresh user list
+        // Query Firestore to find the user document based on email
+        const querySnapshot = await getDocs(query(collection(db, 'users'), where('email', '==', userEmail)));
+
+        // Iterate over the query snapshot and delete each document found
+        querySnapshot.forEach(async doc => {
+            await deleteDoc(doc.ref);
+            // console.log(`User with email ${userEmail} successfully deleted`);
+        });
+
+        // Refresh user list after deletion
+        getUserAccounts();
     } catch (error) {
-        console.error('Error deleting user: ', error);
+        // console.error('Error deleting user: ', error);
     }
 }
 
 // Function to change user role
-async function changeUserRole(userId, newRole) {
+async function changeUserRole(userEmail, newRole) {
     try {
-        await updateDoc(doc(db, 'users', userId), { role: newRole });
-        console.log('User role successfully updated');
-        getUserAccounts(); // Refresh user list
+        // Query Firestore to find the user document based on email
+        const querySnapshot = await getDocs(query(collection(db, 'users'), where('email', '==', userEmail)));
+
+        // Iterate over the query snapshot and update each document found
+        querySnapshot.forEach(async doc => {
+            await updateDoc(doc.ref, { role: newRole });
+            console.log(`Role of user with email ${userEmail} successfully updated to ${newRole}`);
+        });
+
+        // Refresh user list after role change
+        getUserAccounts();
     } catch (error) {
         console.error('Error updating user role: ', error);
     }
@@ -73,3 +89,40 @@ async function changeUserRole(userId, newRole) {
 
 // Call the function to get user accounts when the page loads
 getUserAccounts();
+
+
+document.addEventListener('click', async function(event) {
+    const target = event.target;
+
+    // If the clicked element is a delete button
+    if (target.classList.contains('deleteUserBtn')) {
+        const userEmail = target.closest('div').previousElementSibling.previousElementSibling.textContent.split('Email: ')[1].trim();
+        console.log(userEmail);
+        await deleteUser(userEmail);
+    }
+
+    // If the clicked element is a change role button
+    if (target.classList.contains('changeUserRoleBtn')) {
+        // Find the closest container div
+    const containerDiv = target.closest('div').parentElement;
+    
+    // Find the userRole element within the container div
+    const userRoleElement = containerDiv.querySelector('.userRole');
+    
+    // Get the text content of the userRole element
+    const userRoleContent = userRoleElement.textContent;
+    
+    // Determine the new role
+    const newRole = userRoleContent === 'admin' ? 'user' : 'admin';
+    
+    // Extract the userEmail from the previous <p> element
+    const userEmail = containerDiv.querySelector('p').textContent.split('Email: ')[1].trim();
+    console.log(userEmail);
+    
+    // Call the changeUserRole function
+    await changeUserRole(userEmail, newRole);
+    
+    // Update the user role displayed in the DOM
+    userRoleElement.textContent = newRole;
+    }
+});

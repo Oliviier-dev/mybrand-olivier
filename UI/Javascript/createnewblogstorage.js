@@ -26,7 +26,8 @@ function storeBlogData(){
         image: blogImage.value,
         author: blogAuthor.value,
         createdAT: createdAT,
-        body: blogBody.value 
+        body: blogBody.value ,
+        comments:[]
     }
 
     existingBlogs.push(newBlog);

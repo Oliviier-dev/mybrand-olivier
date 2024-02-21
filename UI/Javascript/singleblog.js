@@ -92,3 +92,35 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 })
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const reactionButtons = document.querySelectorAll('.react > div');
+
+    reactionButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const isSelected = button.classList.contains('selected');
+            const countSpan = button.querySelector('.count');
+            let count = countSpan.textContent === '' ? 0 : parseInt(countSpan.textContent);
+            
+            // Deselect all reaction buttons except the clicked one
+            reactionButtons.forEach(btn => {
+                if (btn !== button && btn.classList.contains('selected')) {
+                    btn.classList.remove('selected');
+                    const otherCountSpan = btn.querySelector('.count');
+                    const otherCount = otherCountSpan.textContent === '' ? 0 : parseInt(otherCountSpan.textContent);
+                    if (otherCount > 0) {
+                        otherCountSpan.textContent = otherCount - 1;
+                    }
+                }
+            });
+            
+            // Toggle selection of the clicked button
+            button.classList.toggle('selected');
+            
+            // Update the count
+            count = isSelected ? count - 1 : count + 1;
+            countSpan.textContent = count === 0 ? '' : count;
+        });
+    });
+});

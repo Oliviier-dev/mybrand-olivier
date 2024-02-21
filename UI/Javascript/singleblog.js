@@ -61,6 +61,34 @@ document.addEventListener("DOMContentLoaded", function() {
     articleDiv.append(infoDiv);
     articleDiv.append(bodyDiv);
 
-    reactions.before(articleDiv)
+    reactions.before(articleDiv);
+
+    let allComments = document.querySelector('.items');
+    
+    for(let i = 0; i < blog.comments.length; i++){
+        let commentDiv = document.createElement('div');
+        commentDiv.classList.add('item');
+
+        let commenterImageDiv = document.createElement('div');
+        commenterImageDiv.classList.add('imagee');
+
+        let comment = document.createElement('div');
+        comment.classList.add('content');
+
+        let commenterName = document.createElement('h4');
+        let commenterComment = document.createElement('span');
+
+        commenterName.innerText = blog.comments[i].commentorName;
+        commenterComment.innerText = blog.comments[i].commentorcomment;
+
+        comment.append(commenterName);
+        comment.append(commenterComment);
+
+        commentDiv.append(commenterImageDiv);    
+        commentDiv.append(comment);
+
+        allComments.appendChild(commentDiv)
+    }
+
 
 })

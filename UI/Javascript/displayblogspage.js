@@ -57,7 +57,7 @@ function displayOnBlogsPage(){
         reactionsDiv.append(reactinsDesc);
 
         let commentsSpan = document.createElement('span');
-        commentsSpan.innerHTML = `<span class="commentscount">17</span> comments`;
+        commentsSpan.innerHTML = `<span class="commentscount">${blogsStored[i].comments.length}</span> comments`;
 
         blogInfo.append(reactionsDiv);
         blogInfo.append(commentsSpan);
@@ -121,7 +121,7 @@ function viewBlog(){
                 let title = blog.querySelector('.snippet p').innerText;
                 for (let i = 0; i < blogs.length; i++){
                     if(blogs[i].title == title){
-                        console.log('gotta', title);
+                        // console.log('gotta', title);
                         localStorage.setItem('viewBlog', JSON.stringify(blogs[i]));
                         // localStorage.setItem('editBlogIndex', i);
                     }

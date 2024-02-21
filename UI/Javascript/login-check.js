@@ -91,6 +91,11 @@ onAuthStateChanged(auth, (user) => {
             let anchorTag = loginoutButtons[i].querySelector('a');
             anchorTag.innerHTML = 'Log in';
             anchorTag.style.backgroundColor = '#1840CF';
+            if (window.location.href.includes("index.html")) {
+                anchorTag.href = "UI/pages/login.html";
+            } else {
+                anchorTag.href = "login.html";
+            }
         }
         // console.log("No user is signed in.");
     }

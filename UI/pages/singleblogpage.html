@@ -78,10 +78,10 @@
             <span>React:</span>
         </div>
         <div class="react">
-            <div class="like"><span class="count">3</span><span><img src="../images/Thumbs Up.svg" alt=""></span></div>
-            <div class="heart"><span class="count">4</span><span><img src="../images/Red Heart.svg" alt=""></span></div>
-            <div class="smile"><span class="count">2</span><span><img src="../images/Grinning Face.svg" alt=""></span></div>
-            <div class="wow"><span class="count">7</span><span><img src="../images/Face With Open Mouth.svg" alt=""></span></div>
+            <div class="like"><span class="count"></span><span><img src="../images/Thumbs Up.svg" alt=""></span></div>
+            <div class="heart"><span class="count"></span><span><img src="../images/Red Heart.svg" alt=""></span></div>
+            <div class="smile"><span class="count"></span><span><img src="../images/Grinning Face.svg" alt=""></span></div>
+            <div class="wow"><span class="count"></span><span><img src="../images/Face With Open Mouth.svg" alt=""></span></div>
         </div>
     </div>
 
@@ -101,27 +101,9 @@
     <div class="topcomments">
         <span>Top comments:</span>
         <div class="items">
-            <!-- <div class="item">
-                <div class="imagee"></div>
-                <div class="content">
-                    <h4>Billie Jean</h4>
-                    <span>Great share, I was wondering how everything works behind the scenes.</span>
-                </div>
-            </div> -->
-            <!-- <div class="item">
-                <div class="imagee"></div>
-                <div class="content">
-                    <h4>Marie jane</h4>
-                    <span>Integer sodales mi vel diam commodo, accumsan efficitur elit sollicitudin. Suspendisse bibendum sollicitudin turpis, dictum aliquam felis euismod non. Pellentesque nec urna metus. Quisque pulvinar metus sed egestas tincidunt. Donec ut felis nunc.</span>
-                </div>
-            </div>
-            <div class="item">
-                <div class="imagee"></div>
-                <div class="content">
-                    <h4>Billie Jean</h4>
-                    <span>Great share, I was wondering how everything works behind the scenes.</span>
-                </div>
-            </div> -->
+            
+            
+
         </div>
     </div>
 
@@ -133,99 +115,5 @@
     <script type="module" src="../Javascript/comments-page.js"></script>
     <script type="module" src="../Javascript/singleblog.js"></script>
     <script type="module" src="../Javascript/login-check.js"></script>
-    <script>
-        const likeButtons = document.querySelectorAll('.reactions .like');
-        let liked = false;
-
-        // Add click event listener to each like button
-        likeButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const countElement = button.querySelector('.count');
-                let count = parseInt(countElement.textContent);
-
-                if(!liked){
-                    count++;
-                    countElement.textContent = count;
-                    countElement.parentNode.style.backgroundColor = '#14a9d6';
-                    liked = true;
-                } else{
-                    count--;
-                    countElement.textContent = count;
-                    countElement.parentNode.style.backgroundColor = '#D9D9D9'; 
-                    liked = false;  
-                }
-            });
-        });
-    </script>
-    <!-- <script>
-        // Retrieve blogs from localStorage
-        const blogs = JSON.parse(localStorage.getItem('blogs')) || [];
-        console.log(blogs);
-
-        // Function to create HTML structure for a single blog post
-        function createBlogPost(blog) {
-            const articleDiv = document.createElement('div');
-            articleDiv.classList.add('article');
-
-            const imageDiv = document.createElement('div');
-            imageDiv.classList.add('image');
-            articleDiv.appendChild(imageDiv);
-
-            const titlePara = document.createElement('p');
-            titlePara.classList.add('title');
-            titlePara.textContent = blog.title;
-            articleDiv.appendChild(titlePara);
-
-            const infoDiv = document.createElement('div');
-            infoDiv.classList.add('info');
-            articleDiv.appendChild(infoDiv);
-
-            const writerDiv = document.createElement('div');
-            writerDiv.classList.add('writer');
-            infoDiv.appendChild(writerDiv);
-
-            const writerImageDiv = document.createElement('div');
-            writerImageDiv.classList.add('image');
-            writerDiv.appendChild(writerImageDiv);
-
-            const writerSpan = document.createElement('span');
-            writerSpan.textContent = "Billie jean";
-            writerDiv.appendChild(writerSpan);
-
-            const dateDiv = document.createElement('div');
-            dateDiv.classList.add('date');
-            infoDiv.appendChild(dateDiv);
-
-            const dateSpan = document.createElement('span');
-            dateSpan.classList.add('date');
-            dateSpan.textContent = "19 jan, 2022";
-            dateDiv.appendChild(dateSpan);
-
-            const timeReadSpan = document.createElement('span');
-            timeReadSpan.textContent = "5 min read";
-            dateDiv.appendChild(timeReadSpan);
-
-            const bodyDiv = document.createElement('div');
-            bodyDiv.classList.add('body');
-
-            // Split body content by paragraphs
-            const paragraphs = blog.body.split('\n\n');
-            paragraphs.forEach(paragraph => {
-                const p = document.createElement('p');
-                p.textContent = paragraph;
-                bodyDiv.appendChild(p);
-            });
-
-            articleDiv.appendChild(bodyDiv);
-
-            // Append articleDiv to document body
-            document.getElementById('blogsList').appendChild(articleDiv);
-        }
-
-        // Loop through blogs and create HTML structure for each blog post
-        blogs.forEach(blog => {
-            createBlogPost(blog);
-        });
-    </script> -->
 </body>
 </html>

@@ -125,6 +125,8 @@ function editBlog(e){
     for (let i = 0; i < blogs.length; i++){
         if(blogs[i].title == headingText){
             localStorage.setItem('editBlog', JSON.stringify(blogs[i]));
+            localStorage.setItem('editBlogComments', JSON.stringify(blogs[i].comments));
+            // console.log(blogs[i].comments);
             localStorage.setItem('editBlogIndex', i);
             window.location.href = "../pages/createnewblog.html";
             // localStorage.removeItem(blogs[i]);

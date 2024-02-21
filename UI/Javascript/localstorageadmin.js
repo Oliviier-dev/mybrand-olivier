@@ -139,6 +139,7 @@ function deleteBlog(e){
 
     let blogs = JSON.parse(localStorage.getItem('Blogs')) || [];
     let blog = e.target.parentNode.parentNode;
+    // console.log(blog);
     let blogHeading = blog.querySelector('.desc h3');
 
     let headingText = blogHeading.innerText;
@@ -148,6 +149,7 @@ function deleteBlog(e){
 
             blogs.splice(i, 1);
             localStorage.setItem('Blogs', JSON.stringify(blogs));
+            blog.style.display = 'none';
             break;
 
         }

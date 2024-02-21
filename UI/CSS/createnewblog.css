@@ -84,6 +84,17 @@ nav > .logo{
     border-radius: 24px;
 }
 
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.header > a {
+    color: #fff;
+}
+
 .btnpost{
     width: 280px;
     background-color: #1840CF;

@@ -297,6 +297,10 @@ nav > .logo{
     z-index: 999;
 }
 
+.selected{
+    background-color: rgb(6, 183, 183) !important;
+}
+
 .circle{
     color: red;
 }

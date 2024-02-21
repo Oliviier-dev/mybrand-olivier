@@ -7,7 +7,7 @@ commentsForm.addEventListener('submit', function(event){
     let name = document.getElementById('username');
     let comment = document.getElementById('comment');
 
-    commentSent = validateInput(name, comment, commentSent);
+    validateInput(name, comment, commentSent);
 })
 
 
@@ -56,15 +56,39 @@ function validateInput(name, comment, commentSent){
                 notificationsBar.classList.remove('visible');
             }, 2000);
         }, 1000); 
-        return commentSent;
+        // return commentSent;
     }
-    return commentSent;
+    // console.log(commentSent)
+    // return commentSent;
 
 }
 
 function displayComment(name, comment){
 
     // console.log(name, comment);
+
+    let blogJSON = localStorage.getItem('viewBlog');
+    let allBlogs = JSON.parse(localStorage.getItem('Blogs')) || [];
+    //console.log(allBlogs)
+    let blog = JSON.parse(blogJSON);
+
+    let blogTitle = blog.title;
+    
+    let commentorName = name.value;
+    let commentorcomment = comment.value;
+    // console.log(allBlogs);
+
+    for(let i = 0; i < allBlogs.length; i++){
+        if(allBlogs[i].title == blogTitle){
+            allBlogs[i].comments.push({commentorName, commentorcomment});
+            localStorage.setItem('Blogs', JSON.stringify(allBlogs));
+            localStorage.setItem('viewBlog', JSON.stringify(allBlogs[i]));
+            break;
+        }
+    }
+
+    // console.log(blog);
+
     var newItem = document.createElement('div');
     newItem.classList.add('item');
 

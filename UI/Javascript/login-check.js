@@ -38,7 +38,7 @@ onAuthStateChanged(auth, (user) => {
                 signOut(auth).then(() => {
 
                     //Sign-out successful.
-                    console.log("User signed out successfully.");
+                    // console.log("User signed out successfully.");
 
                     window.location.href = "../../index.html";
 

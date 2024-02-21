@@ -115,7 +115,7 @@ function viewBlog(){
     let blogLinks = document.querySelectorAll('.singleblog');
 
     if(blogLinks.length > 0){
-        console.log(blogLinks);
+        // console.log(blogLinks);
         blogLinks.forEach(blog => {
             blog.addEventListener('click', function(){
                 let title = blog.querySelector('.snippet p').innerText;

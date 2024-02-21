@@ -69,7 +69,7 @@ onAuthStateChanged(auth, (user) => {
 
                     //Sign-out successful.
                     // console.log("User signed out successfully.");
-                    if (window.location.href !== "../../index.html"){
+                    if (window.location.href.includes("index.html")) {
                         window.location.href = "index.html";
                     } else{
                         window.location.href = "../../index.html";

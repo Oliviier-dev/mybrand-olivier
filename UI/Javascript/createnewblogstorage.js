@@ -27,7 +27,7 @@ function storeBlogData(){
         author: blogAuthor.value,
         createdAT: createdAT,
         body: blogBody.value ,
-        comments:[]
+        comments: JSON.parse(localStorage.getItem('editBlogComments')) || []
     }
 
     existingBlogs.push(newBlog);
@@ -40,6 +40,7 @@ function storeBlogData(){
     blogImage.value = '';    
     blogAuthor.value = '';    
     blogBody.value = '';
+    localStorage.removeItem('editBlogComments');
     
     
     setTimeout(function() {

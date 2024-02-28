@@ -13,6 +13,8 @@ export const createComment = async (req: Request, res: Response) => {
             return res.status(404).json({ message: "Blog not found" });
         }
 
+        //const commentedBlog = await Blog.findById(blogId).populate("comments");
+
         const newComment = await Comment.create({ name, comment, blog: blogId });
 
         // Push the new comment directly into the comments array of the blog

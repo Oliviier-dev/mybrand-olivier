@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
-import Message from '../models/usemessages';
+import Message from '../models/usermessages';
 
 const router = express.Router();
 

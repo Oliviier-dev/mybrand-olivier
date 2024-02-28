@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import blogRoutes from './routes/blogRoutes';
+import messageRoutes from './routes/messagesRoutes';
 
 const app: Application = express();
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 
 // Routes
 app.use('/blog', blogRoutes);
+app.use('/', messageRoutes);
 
 // Error handling middleware
 app.use(function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {

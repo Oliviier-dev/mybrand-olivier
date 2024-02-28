@@ -6,8 +6,20 @@ const router = express.Router();
 // Get a list of blogs from the db
 router.get('/blogs', async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const blogs = await Blog.find({});
+        const blogs = await Blog.find({}).populate("comments");
         res.send(blogs);
+    } catch (err) {
+        next(err);
+    }
+});
+
+
+//get a single blog
+router.get('/blogs/:id', async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        //console.log(req.params);
+        const blog = await Blog.findById(req.params.id).populate("comments");
+        res.send(blog);
     } catch (err) {
         next(err);
     }

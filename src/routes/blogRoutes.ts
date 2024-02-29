@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import Blog from '../models/blogs';
+const { requireAuth } = require('../middleware/authmiddleware')
 
 const router = express.Router();
 
@@ -26,7 +27,7 @@ router.get('/blogs/:id', async (req: Request, res: Response, next: NextFunction)
 });
 
 // Add a new blog to the db
-router.post('/createnew', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/createnew', requireAuth, async (req: Request, res: Response, next: NextFunction) => {
     try {
         const blog = await Blog.create(req.body);
         res.send(blog);

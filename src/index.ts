@@ -28,17 +28,17 @@ app.use(authRoutes);
 
 
 //cookies
-app.get('/set-cookies', (req, res) => {
-    //res.setHeader('set-Cookie', 'newUser=true');
-    res.cookie('newUser', false);
-    res.send('you got cookies');
-});
+// app.get('/set-cookies', (req, res) => {
+//     //res.setHeader('set-Cookie', 'newUser=true');
+//     res.cookie('newUser', false);
+//     res.send('you got cookies');
+// });
 
-app.get('/read-cookies', (req, res) => {
-    const cookies = req.cookies;
-    console.log(cookies);
-    res.json(cookies);
-});
+// app.get('/read-cookies', (req, res) => {
+//     const cookies = req.cookies;
+//     console.log(cookies);
+//     res.json(cookies);
+// });
 
 // Error handling middleware
 app.use(function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {

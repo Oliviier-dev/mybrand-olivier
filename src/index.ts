@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import blogRoutes from './routes/blogRoutes';
 import messageRoutes from './routes/messagesRoutes';
 import commentsRoutes from './routes/commentsRoutes';
+const authRoutes = require('./routes/authRoutes');
 
 const app: Application = express();
 
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 app.use('/blog', blogRoutes);
 app.use('/', messageRoutes);
 app.use('/', commentsRoutes);
+app.use(authRoutes);
 
 // Error handling middleware
 app.use(function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {

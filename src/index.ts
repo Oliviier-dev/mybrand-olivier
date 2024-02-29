@@ -5,6 +5,7 @@ import blogRoutes from './routes/blogRoutes';
 import messageRoutes from './routes/messagesRoutes';
 import commentsRoutes from './routes/commentsRoutes';
 const authRoutes = require('./routes/authRoutes');
+const cookieParser = require('cookie-parser');
 
 const app: Application = express();
 
@@ -17,12 +18,27 @@ mongoose.connect('mongodb://localhost:27017/mybrand').then(() => {
 
 // Use body-parser middleware
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 // Routes
 app.use('/blog', blogRoutes);
 app.use('/', messageRoutes);
 app.use('/', commentsRoutes);
 app.use(authRoutes);
+
+
+//cookies
+app.get('/set-cookies', (req, res) => {
+    //res.setHeader('set-Cookie', 'newUser=true');
+    res.cookie('newUser', false);
+    res.send('you got cookies');
+});
+
+app.get('/read-cookies', (req, res) => {
+    const cookies = req.cookies;
+    console.log(cookies);
+    res.json(cookies);
+});
 
 // Error handling middleware
 app.use(function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {

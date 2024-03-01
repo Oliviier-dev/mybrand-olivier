@@ -6,6 +6,11 @@ import messageRoutes from './routes/messagesRoutes';
 import commentsRoutes from './routes/commentsRoutes';
 const authRoutes = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser');
+import dotenv from "dotenv";
+
+
+// CONFIGURE DOTENV
+dotenv.config();
 
 const app: Application = express();
 

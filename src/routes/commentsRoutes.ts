@@ -9,7 +9,7 @@ const router = express.Router();
 router.post("/blogs/:blogId/comments", createComment);
 
 // LIST COMMENTS
-router.get("/blogs/:blogId/comments", requireAuth, isAdmin, getCommentsByBlogId);
+router.get("/blogs/:blogId/comments", getCommentsByBlogId);
 
 
 //liking a blog

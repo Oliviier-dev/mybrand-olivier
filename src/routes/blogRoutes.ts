@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import Blog from '../models/blogs';
-const { requireAuth } = require('../middleware/authmiddleware')
+const { requireAuth, isAdmin } = require('../middleware/authmiddleware')
 
 const router = express.Router();
 
@@ -27,17 +27,18 @@ router.get('/blogs/:id', async (req: Request, res: Response, next: NextFunction)
 });
 
 // Add a new blog to the db
-router.post('/createnew', requireAuth, async (req: Request, res: Response, next: NextFunction) => {
+router.post('/createnew', requireAuth, isAdmin, async (req: Request, res: Response, next: NextFunction) => {
     try {
         const blog = await Blog.create(req.body);
         res.send(blog);
     } catch (err) {
+        console.error('Error creating blog:', err);
         next(err);
     }
 });
 
 // Update a blog in the db
-router.put('/blogs/:id', async (req: Request, res: Response, next: NextFunction) => {
+router.put('/blogs/:id', requireAuth, isAdmin, async (req: Request, res: Response, next: NextFunction) => {
     try {
         await Blog.findByIdAndUpdate({ _id: req.params.id }, req.body);
         const updatedBlog = await Blog.findOne({ _id: req.params.id });
@@ -48,7 +49,7 @@ router.put('/blogs/:id', async (req: Request, res: Response, next: NextFunction)
 });
 
 // Delete a blog from the db
-router.delete('/blogs/:id', async (req: Request, res: Response, next: NextFunction) => {
+router.delete('/blogs/:id', requireAuth, isAdmin, async (req: Request, res: Response, next: NextFunction) => {
     try {
         const deletedBlog = await Blog.findByIdAndDelete({ _id: req.params.id });
         res.send(deletedBlog);

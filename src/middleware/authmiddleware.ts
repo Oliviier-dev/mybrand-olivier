@@ -1,5 +1,10 @@
 import { Request, Response } from 'express';
 const jwt = require('jsonwebtoken');
+import dotenv from "dotenv";
+
+
+// CONFIGURE DOTENV
+dotenv.config();
 
 const requireAuth = (req: Request, res: Response, next: (err?: Error) => void) => {
 
@@ -8,10 +13,10 @@ const requireAuth = (req: Request, res: Response, next: (err?: Error) => void) =
     //check json web token exists and is verified
 
     if(token){
-        jwt.verify(token, 'blog olivier secret', (err: any, decodedToken: any) => {
+        jwt.verify(token,  process.env.JWT_SECRET, (err: any, decodedToken: any) => {
             if(err){
                 console.log(err.message);
-                res.redirect('/login');
+                //res.redirect('/login');
             } else{
                 console.log(decodedToken);
                 next();
@@ -19,8 +24,39 @@ const requireAuth = (req: Request, res: Response, next: (err?: Error) => void) =
         })
     }
     else{
-        res.redirect('/login');
+        res.status(403).send('Access forbidden: You are not logged in');
     }
 }
 
-module.exports = { requireAuth };
+
+
+const isAdmin = (req: Request, res: Response, next: (err?: Error) => void) => {
+    // Retrieve the JWT token from the request cookie
+    const token = req.cookies.jwt;
+
+    // Check if token exists
+    if (token) {
+        // Verify the token
+        jwt.verify(token, process.env.JWT_SECRET, (err: any, decodedToken: any) => {
+            if (err) {
+                // If verification fails (e.g., token expired or invalid), return a 403 Forbidden response
+                res.status(403).send('Access forbidden: You do not have permission to access this resource.');
+            } else {
+                // If token is valid, check if the user has the admin role
+                if (decodedToken.role === 'admin') {
+                    // If the user is an admin, allow access to the next middleware/route handler
+                    next();
+                } else {
+                    // If the user is not an admin, return a 403 Forbidden response
+                    res.status(403).send('Access forbidden: You do not have permission to access this resource.');
+                }
+            }
+        });
+    } else {
+        // If token doesn't exist, return a 403 Forbidden response
+        res.status(403).send('Access forbidden: You do not have permission to access this resource.');
+    }
+};
+
+
+module.exports = { requireAuth, isAdmin };

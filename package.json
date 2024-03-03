@@ -8,6 +8,10 @@
     "start": "ts-node ./src/index.ts",
     "dev": "nodemon --exec ts-node ./src/index.ts"
   },
+  "cyclicConfig": {
+    "port": 3000,
+    "timeout": 50000
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

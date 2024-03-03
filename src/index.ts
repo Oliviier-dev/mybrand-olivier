@@ -13,19 +13,34 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app: Application = express();
+const PORT = process.env.PORT || 3000
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/mybrand').then(() => {
+/*mongoose.connect('mongodb://localhost:27017/mybrand').then(() => {
     console.log('Connected to MongoDB');
 }).catch((error) => {
     console.error('Error connecting to MongoDB:', error);
-});
+});*/
+
+mongoose.set('strictQuery', false);
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI!);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+}
 
 // Use body-parser middleware
 app.use(bodyParser.json());
 app.use(cookieParser());
 
 // Routes
+app.get('/', (req, res) => {
+    res.send('Welcome')
+})
 app.use('/blog', blogRoutes);
 app.use('/', messageRoutes);
 app.use('/', commentsRoutes);
@@ -52,7 +67,15 @@ app.use(function(err: any, req: express.Request, res: express.Response, next: ex
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000;
+/*const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on  port ${PORT}`);
-});
+});*/
+
+//connecting to db
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log("listening for requests");
+    })
+})
+

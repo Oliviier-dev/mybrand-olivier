@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import Blog from '../models/blogs';
-const { requireAuth, isAdmin } = require('../middleware/authmiddleware')
+const { requireAuth, isAdmin } = require('../middleware/authmiddleware');
+import schemaValidator from "../middleware/schemaValidator";
 
 const router = express.Router();
 
@@ -27,7 +28,7 @@ router.get('/blogs/:id', async (req: Request, res: Response, next: NextFunction)
 });
 
 // Add a new blog to the db
-router.post('/createnew', requireAuth, isAdmin, async (req: Request, res: Response, next: NextFunction) => {
+router.post('/createnew', schemaValidator("/blog/createnew"), requireAuth, isAdmin, async (req: Request, res: Response, next: NextFunction) => {
     try {
         const blog = await Blog.create(req.body);
         res.send(blog);

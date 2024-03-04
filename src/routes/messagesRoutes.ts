@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import Message from '../models/usermessages';
-const { requireAuth, isAdmin } = require('../middleware/authmiddleware')
+const { requireAuth, isAdmin } = require('../middleware/authmiddleware');
+import schemaValidator from "../middleware/schemaValidator";
 
 const router = express.Router();
 
@@ -20,7 +21,7 @@ router.use((err: any, req: Request, res: Response, next: NextFunction) => {
 });
 
 // Add a new message to the db
-router.post('/contactme', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/contactme', schemaValidator("/contactme"), async (req: Request, res: Response, next: NextFunction) => {
     try {
         const messages = await Message.create(req.body);
         res.send(messages);

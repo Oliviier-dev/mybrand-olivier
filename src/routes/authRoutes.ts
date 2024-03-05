@@ -19,9 +19,55 @@ router.post(
     }
 );
 
+
+
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: Login
+ *     description: Log in with email and password to obtain authentication token.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 description: The email address of the user.
+ *               password:
+ *                 type: string
+ *                 format: password
+ *                 description: The password of the user.
+ *     responses:
+ *       200:
+ *         description: Login successful. Returns a JWT token.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                   description: JWT token for accessing protected endpoints.
+ *       400:
+ *         description: Bad request. Invalid email or password provided.
+ *       401:
+ *         description: Unauthorized. Email or password is incorrect.
+ *       500:
+ *         description: Internal server error. Failed to log in.
+ * 
+ *       security:
+ *       - jwtAuth: []   # Use the defined security scheme "jwtAuth"
+ */
+
+
 router.post(
     "/login",
-    schemaValidator("/signup"),
+    schemaValidator("/login"),
     authController.login_post,
     (req: Request, res: Response) => {
       return res.send("Logged in successfully");

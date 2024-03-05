@@ -6,6 +6,8 @@ import messageRoutes from './routes/messagesRoutes';
 import commentsRoutes from './routes/commentsRoutes';
 const authRoutes = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUI = require('swagger-ui-express');
 import dotenv from "dotenv";
 
 
@@ -14,6 +16,22 @@ dotenv.config();
 
 const app: Application = express();
 const PORT = process.env.PORT || 3000
+
+
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: "My brand API",
+      version: '1.0.0',
+      description: "My brand documentation with swagger"
+    },
+  },
+  apis: ['./src/routes/*.ts'],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+
 
 // Connect to MongoDB
 /*mongoose.connect('mongodb://localhost:27017/mybrand').then(() => {
@@ -41,10 +59,11 @@ app.use(cookieParser());
 app.get('/', (req, res) => {
     res.send('Welcome')
 })
-app.use('/blog', blogRoutes);
-app.use('/', messageRoutes);
-app.use('/', commentsRoutes);
-app.use(authRoutes);
+
+app.use('/api/blog', blogRoutes);
+app.use('/api', messageRoutes);
+app.use('/api', commentsRoutes);
+app.use('/api/auth',authRoutes);
 
 
 //cookies

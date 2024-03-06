@@ -6,10 +6,11 @@ import messageRoutes from './routes/messagesRoutes';
 import commentsRoutes from './routes/commentsRoutes';
 const authRoutes = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser');
+import YAML from "yamljs";
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
+const swaggerDocument = YAML.load("./src/config/swagger.yaml");
 import dotenv from "dotenv";
-
 
 // CONFIGURE DOTENV
 dotenv.config();
@@ -17,7 +18,9 @@ dotenv.config();
 const app: Application = express();
 const PORT = process.env.PORT || 3000
 
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
+/*
 const swaggerOptions = {
   swaggerDefinition: {
     info: {
@@ -30,7 +33,7 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));*/
 
 
 // Connect to MongoDB

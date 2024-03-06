@@ -1,0 +1,205 @@
+openapi: 3.0.0
+info:
+  description: API documentation for My brand Backend APIs
+  version: "1.0.0"
+  title: My Brand Olivier API
+servers:
+  - url: http://localhost:3000/
+paths:
+  /api/auth/login:
+    post:
+      tags:
+        - Users
+      summary: Logging in a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LogInUserInput"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /api/blog/blogs:
+    get:
+      tags:
+        - Blogs
+      summary: Getting all the blogs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Blog"
+  /api/blog/blogs/{id}:
+    get:
+      tags:
+        - Blogs
+      summary: Getting a single blogs
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Blog"
+    put:
+      summary: Update a blog
+      tags:
+        - Blogs
+      security:
+        - jwtAuth:
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the blog to update
+      requestBody:
+        description: Update an existing blog
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateBlogRequest"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogResponse"
+    delete:
+      summary: Delete a blog
+      tags:
+        - Blogs
+      security:
+        - jwtAuth:
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+  /api/blog/createnew:
+    post:
+      summary: Create a new blog
+      tags:
+        - Blogs
+      security:
+        - jwtAuth:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateBlogRequest"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogResponse"
+
+
+components:
+  schemas:
+    Blog:
+      type: object
+      properties:
+        _id:
+          type: string
+        title:
+          type: string
+        snippet:
+          type: string
+        imageUrl:
+          type: string
+        category:
+          type: string
+        author:
+          type: string
+        body:
+          type: string
+        createdAt:
+          type: string
+        comments:
+          type: array
+        likes:
+          type: array
+    CreateUserInput:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    User:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    CreateBlogRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        snippet:
+          type: string
+        imageUrl:
+          type: string
+        category:
+          type: string
+        author:
+          type: string
+        body:
+          type: string
+    BlogResponse:
+      type: object
+      properties:
+        blog:
+          $ref: "#/components/schemas/Blog"
+    UpdateBlogRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        snippet:
+          type: string
+        imageUrl:
+          type: string
+        category:
+          type: string
+        author:
+          type: string
+        body:
+          type: string

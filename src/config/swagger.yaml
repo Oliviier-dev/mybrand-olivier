@@ -57,14 +57,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateBlogRequest"
+              $ref: "#/components/schemas/BlogCreateEdit"
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BlogResponse"
+                $ref: "#/components/schemas/Blog"
     delete:
       summary: Delete a blog
       tags:
@@ -98,14 +98,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateBlogRequest"
+              $ref: "#/components/schemas/BlogCreateEdit"
       responses:
         "201":
           description: Created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BlogResponse"
+                $ref: "#/components/schemas/Blog"
   /api/auth/login:
     post:
       tags:
@@ -134,7 +134,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateUserInput"
+              $ref: "#/components/schemas/User"
       responses:
         '200':
           description: OK
@@ -159,6 +159,8 @@ paths:
       summary: Get a list of all messages
       tags:
         - Messages
+      security:
+        - jwtAuth:
       responses:
         '200':
           description: OK
@@ -193,6 +195,8 @@ paths:
       summary: Deleting a message
       tags:
         - Messages
+      security:
+        - jwtAuth:
       parameters:
         - in: path
           name: id
@@ -208,7 +212,80 @@ paths:
                 type: array
               items:
                 $ref: "#/components/schemas/Message"
-
+  /api/blogs/{blogId}/like:
+    post:
+      summary: Like a blog
+      tags:
+        - Comment and Like to a blog
+      security:
+        - jwtAuth:
+      parameters:
+        - in: path
+          name: blogId
+          required: true
+          schema:
+            type: string
+            format: objectId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+              items:
+                $ref: "#/components/schemas/Blog"
+  /api/blogs/{blogId}/comments:
+    get:
+      summary: Get all comments of a specific blog
+      tags:
+        - Comment and Like to a blog
+      security:
+        - jwtAuth:
+      parameters:
+        - in: path
+          name: blogId
+          required: true
+          schema:
+            type: string
+            format: objectId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+              items:
+                $ref: "#/components/schemas/Comment"
+    post:
+      summary: Comment on a blog
+      tags:
+        - Comment and Like to a blog
+      security:
+        - jwtAuth:
+      parameters:
+        - in: path
+          name: blogId
+          required: true
+          schema:
+            type: string
+            format: objectId
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comments"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+              items:
+                $ref: "#/components/schemas/Comment"
 
 components:
   schemas:
@@ -252,27 +329,7 @@ components:
           type: string
         password:
           type: string
-    CreateBlogRequest:
-      type: object
-      properties:
-        title:
-          type: string
-        snippet:
-          type: string
-        imageUrl:
-          type: string
-        category:
-          type: string
-        author:
-          type: string
-        body:
-          type: string
-    BlogResponse:
-      type: object
-      properties:
-        blog:
-          $ref: "#/components/schemas/Blog"
-    UpdateBlogRequest:
+    BlogCreateEdit:
       type: object
       properties:
         title:
@@ -295,4 +352,20 @@ components:
         email:
           type: string
         message:
+          type: string
+    Comment:
+      type: object
+      properties:
+        name:
+          type: string
+        comment:
+          type: string
+        Blog:
+          type: string
+    Comments:
+      type: object
+      properties:
+        name:
+          type: string
+        comment:
           type: string

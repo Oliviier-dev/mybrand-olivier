@@ -6,24 +6,6 @@ info:
 servers:
   - url: http://localhost:3000/
 paths:
-  /api/auth/login:
-    post:
-      tags:
-        - Users
-      summary: Logging in a user
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/LogInUserInput"
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/User"
   /api/blog/blogs:
     get:
       tags:
@@ -124,6 +106,108 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BlogResponse"
+  /api/auth/login:
+    post:
+      tags:
+        - Users
+      summary: Logging in a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /api/auth/signup:
+    post:
+      tags:
+        - Users
+      summary: Creating a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserInput"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /api/auth/logout:
+    post:
+      tags:
+        - Users
+      summary: Logging out a user
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /api/usermessages:
+    get:
+      summary: Get a list of all messages
+      tags:
+        - Messages
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+              items:
+                $ref: "#/components/schemas/Message"
+  /api/contactme:
+    post:
+      summary: Send a message
+      tags:
+        - Messages
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Message"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+              items:
+                $ref: "#/components/schemas/Message"
+  /api/usermessages/{id}:
+    delete:
+      summary: Deleting a message
+      tags:
+        - Messages
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+              items:
+                $ref: "#/components/schemas/Message"
 
 
 components:
@@ -202,4 +286,13 @@ components:
         author:
           type: string
         body:
+          type: string
+    Message:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        message:
           type: string

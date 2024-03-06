@@ -46,7 +46,7 @@ export const likeBlog = async (req:Request, res:Response) => {
             const newLike = await Like.create({ blogId, userId });
     
             // Push the new like directly into the likes array of the blog
-            blog.likes.push(newLike._id);
+            blog.likes.push(newLike.userId);
     
             await blog.save();
     

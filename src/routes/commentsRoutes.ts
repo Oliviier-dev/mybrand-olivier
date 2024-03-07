@@ -1,5 +1,5 @@
 import express from 'express';
-import { createComment, getCommentsByBlogId } from '../controllers/commentController';
+import { createComment, getCommentsByBlogId, deleteCommentByBlogId } from '../controllers/commentController';
 import { likeBlog } from '../controllers/likesController';
 const { requireAuth, isAdmin } = require('../middleware/authmiddleware')
 
@@ -10,6 +10,9 @@ router.post("/blogs/:blogId/comments", createComment);
 
 // LIST COMMENTS
 router.get("/blogs/:blogId/comments", getCommentsByBlogId);
+
+//deleting a comment
+router.delete("/blogs/:blogId/:commentId", requireAuth, isAdmin, deleteCommentByBlogId);
 
 
 //liking a blog

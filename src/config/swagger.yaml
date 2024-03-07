@@ -290,6 +290,28 @@ paths:
                 type: array
               items:
                 $ref: "#/components/schemas/Comment"
+  /api/blogs/{blogId}/{commentId}:
+    delete:
+      summary: Deleting a comment
+      tags:
+        - Comment and Like to a blog
+      security:
+        - jwtAuth:
+      parameters:
+        - in: path
+          name: commentId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+              items:
+                $ref: "#/components/schemas/Blog"
 
 components:
   schemas:

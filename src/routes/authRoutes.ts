@@ -1,15 +1,11 @@
 import { Router, Request, Response } from "express";
 const authController = require('../controllers/authController');
+const { requireAuth, isAdmin } = require('../middleware/authmiddleware');
 import schemaValidator from "../middleware/schemaValidator";
 
 const router = Router();
 
-// router.get('/signup', authController.signup_get);
-// router.post('/signup', authController.signup_post);
-// router.get('/login', authController.login_get);
-// router.post('/login', authController.login_post);
-// router.post('/logout', authController.logout);
-
+//signing a user up
 router.post(
     "/signup",
     schemaValidator("/signup"),
@@ -19,6 +15,8 @@ router.post(
     }
 );
 
+
+//Logging a user in
 router.post(
     "/login",
     schemaValidator("/login"),
@@ -28,6 +26,16 @@ router.post(
     }
 );
 
+//logging a user out
 router.post('/logout', authController.logout);
+
+//getting all users
+router.get('/users', requireAuth, isAdmin, authController.allUsers);
+
+//updating the users role
+router.put('/users/:userId', requireAuth, isAdmin, authController.updateUserRole);
+
+//deleting a user
+router.delete('/users/:userId', requireAuth, isAdmin, authController.deleteUser);
 
 module.exports = router;

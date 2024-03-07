@@ -4,9 +4,9 @@ info:
   version: "1.0.0"
   title: My Brand Olivier API
 servers:
-  - url: http://localhost:8000/api/v1
+  - url: http://localhost:3000/
     description: Local development server
-  - url: mybrand-olivier-production.up.railway.app
+  - url: mybrand-olivier-production.up.railway.app/api-docs/
     description: Production development server
 paths:
   /api/blog/blogs:

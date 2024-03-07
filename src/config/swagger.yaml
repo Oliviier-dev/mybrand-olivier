@@ -154,6 +154,62 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/User"
+  /api/auth/users:
+    get:
+      summary: Get a list of all users
+      tags:
+        - Users
+      security:
+        - jwtAuth:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+              items:
+                $ref: "#/components/schemas/User"
+  /api/auth/users/{userId}:
+    put:
+      summary: Update a users role
+      tags:
+        - Users
+      security:
+        - jwtAuth:
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+            format: objectId
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+    delete:
+      summary: Delete a user
+      tags:
+        - Users
+      security:
+        - jwtAuth:
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
   /api/usermessages:
     get:
       summary: Get a list of all messages

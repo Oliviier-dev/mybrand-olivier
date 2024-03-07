@@ -240,8 +240,6 @@ paths:
       summary: Get all comments of a specific blog
       tags:
         - Comment and Like to a blog
-      security:
-        - jwtAuth:
       parameters:
         - in: path
           name: blogId
@@ -265,8 +263,6 @@ paths:
       summary: Comment on a blog
       tags:
         - Comment and Like to a blog
-      security:
-        - jwtAuth:
       parameters:
         - in: path
           name: blogId
@@ -361,4 +357,11 @@ components:
         comment:
           type: string
         Blog:
+          type: string
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
           type: string

@@ -256,8 +256,11 @@ paths:
             application/json:
               schema:
                 type: array
-              items:
-                $ref: "#/components/schemas/Comment"
+                properties:
+                  name:
+                    type: string
+                  comment:
+                    type: string
     post:
       summary: Comment on a blog
       tags:
@@ -276,7 +279,12 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Comments"
+              type: object
+              properties:
+                name:
+                  type: string
+                comment:
+                  type: string
       responses:
         '200':
           description: OK
@@ -312,14 +320,6 @@ components:
           type: array
         likes:
           type: array
-    CreateUserInput:
-      type: object
-      properties:
-        email:
-          type: string
-        password:
-          type: string
-    User:
       type: object
       required:
         - email
@@ -361,11 +361,4 @@ components:
         comment:
           type: string
         Blog:
-          type: string
-    Comments:
-      type: object
-      properties:
-        name:
-          type: string
-        comment:
           type: string

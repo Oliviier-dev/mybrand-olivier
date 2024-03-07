@@ -45,3 +45,22 @@ export const getCommentsByBlogId = async (req: Request, res: Response) => {
         res.status(500).json({ message: "Internal server error" });
     }
 };
+
+//deleting a comment
+export const deleteCommentByBlogId = async (req: Request, res: Response) => {
+    try {
+        const { commentId } = req.params;
+        
+        // Remove the comment directly from the comments collection
+        const comment = await Comment.findByIdAndDelete(commentId);
+
+        if (!comment) {
+            return res.status(404).json({ message: "Comment not found" });
+        }
+
+        res.status(200).json(comment);
+    } catch (error) {
+        console.error("Error deleting comment:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+}

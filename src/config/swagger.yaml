@@ -6,6 +6,8 @@ info:
 servers:
   - url: http://localhost:3000/api-docs
     description: Local development server
+  - url: mybrand-olivier-production.up.railway.app/api-docs
+    description: Production development server
 paths:
   /api/blog/blogs:
     get:

@@ -358,10 +358,17 @@ paths:
         - jwtAuth:
       parameters:
         - in: path
+          name: blogId
+          schema:
+            type: string
+          required: true
+          description: The ID of the blog containing the comment
+        - in: path
           name: commentId
           schema:
             type: string
           required: true
+          description: The ID of the comment to be deleted
       responses:
         '200':
           description: OK

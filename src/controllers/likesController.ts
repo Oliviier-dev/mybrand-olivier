@@ -32,24 +32,24 @@ export const likeBlog = async (req:Request, res:Response) => {
         const existingLike = await Like.findOne({ blogId, userId });
     
         if (existingLike) {
-            // If user has already liked the blog, remove the like
-            await existingLike.deleteOne({ _id: existingLike._id });
-    
-            // Remove the like from the blog's likes array
-            blog.likes = blog.likes.filter(like => like.toString() !== existingLike._id.toString());
-            
-            await blog.save();
-    
-            return res.status(200).json({ message: "Blog unliked successfully" });
+             // If user has already liked the blog, remove the like
+             await existingLike.deleteOne();
+
+             // Remove the like from the blog's likes array
+             blog.likes = blog.likes.filter(like => like.toString() !== userId);
+ 
+             await blog.save();
+ 
+             return res.status(200).json({ message: "Blog unliked successfully" });
         } else {
             // If user has not liked the blog yet, create a new like
             const newLike = await Like.create({ blogId, userId });
-    
+
             // Push the new like directly into the likes array of the blog
-            blog.likes.push(newLike.userId);
-    
+            blog.likes.push(userId);
+
             await blog.save();
-    
+
             return res.status(200).json({ message: "Blog liked successfully" });
         }
         

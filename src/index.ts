@@ -15,7 +15,7 @@ import dotenv from "dotenv";
 // CONFIGURE DOTENV
 dotenv.config();
 
-const app: Application = express();
+export const app: Application = express();
 const PORT = process.env.PORT || 3000
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
@@ -57,4 +57,3 @@ connectDB().then(() => {
         console.log("listening for requests");
     })
 })
-

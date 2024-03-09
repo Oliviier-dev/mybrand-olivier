@@ -1,5 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import Blog from '../models/blogs';
+import Comment from '../models/comments';
+import {Like} from '../models/likes';
 const { requireAuth, isAdmin } = require('../middleware/authmiddleware');
 import schemaValidator from "../middleware/schemaValidator";
 
@@ -22,6 +24,12 @@ router.get('/blogs/:id', async (req: Request, res: Response, next: NextFunction)
     try {
         //console.log(req.params);
         const blog = await Blog.findById(req.params.id).populate("comments");
+
+        if (!blog) {
+            // If blog is not found, return a 404 response
+            return res.status(404).send("Blog not found");
+        }
+        
         res.send(blog);
     } catch (err) {
         next(err);
@@ -55,6 +63,8 @@ router.put('/blogs/:id', requireAuth, isAdmin, async (req: Request, res: Respons
 router.delete('/blogs/:id', requireAuth, isAdmin, async (req: Request, res: Response, next: NextFunction) => {
     try {
         const deletedBlog = await Blog.findByIdAndDelete({ _id: req.params.id });
+        const deletedLike = await Like.deleteMany({ blogId: req.params.id });
+        const deletedComment = await Comment.deleteMany({ blog: req.params.id });
         res.send(deletedBlog);
     } catch (err) {
         next(err);

@@ -29,11 +29,24 @@ module.exports.signup_post = async(req: Request, res: Response) => {
     const { email, password, role } = req.body;
     
     try {
+         // Check if email already exists
+         const existingUser = await User.findOne({ email });
+         if (existingUser) {
+             return res.status(400).json({ error: 'Email already exists' });
+         }
 
         const user = await User.create({ email, password, role });
         res.status(201).json({ user: { _id: user._id, email: user.email, role: user.role } });
 
-    } catch (err) {
+    } catch (err: any) {
+
+        // Handle validation errors
+        if (err.name === 'ValidationError') {
+            return res.status(400).json({ error: err.message });
+        } else if ( err && err.code === 11000 ) {
+            res.status(400).send('The email already exists');
+            return;
+        }
 
         console.log(err);
         res.status(400).send('error, user not created');
@@ -44,18 +57,24 @@ module.exports.signup_post = async(req: Request, res: Response) => {
 
 module.exports.login_post = async(req: Request, res: Response) => {
     const { email, password } = req.body;
+
+    // Check if email or password is missing
+    if (!email || !password) {
+        return res.status(422).json({ error: 'Email and password are required.' });
+    }
+
     try {
-
         const user = await User.login(email, password);
-        const token = createToken(user._id, user.role);
-        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 })
-        res.status(200).json({ user: { _id: user._id, email: user.email, role:user.role }, token });
-
+        if (user) {
+            const token = createToken(user._id, user.role);
+            res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+            return res.status(200).json({ user: { _id: user._id, email: user.email, role: user.role }, token });
+        } else {
+            return res.status(400).json({ error: 'Invalid credentials. Please check your email and password.' });
+        }
     } catch (error) {
-
-        //res.status(400).send('error, user not Logged In');
-        res.status(400).json({ error: 'Error logging in. Please check your credentials.' });
-        
+        console.error(error);
+        return res.status(500).json({ error: 'An error occurred while logging in.' });
     }
 }
 

@@ -49,7 +49,7 @@ export const getCommentsByBlogId = async (req: Request, res: Response) => {
 //deleting a comment
 export const deleteCommentByBlogId = async (req: Request, res: Response) => {
     try {
-        const { commentId } = req.params;
+        const { commentId, blogId } = req.params;
         
         // Remove the comment directly from the comments collection
         const comment = await Comment.findByIdAndDelete(commentId);
@@ -57,6 +57,19 @@ export const deleteCommentByBlogId = async (req: Request, res: Response) => {
         if (!comment) {
             return res.status(404).json({ message: "Comment not found" });
         }
+
+        // Find the blog by its ID
+        const blog = await Blog.findById(blogId);
+
+        if (!blog) {
+            return res.status(404).json({ message: "Blog not found" });
+        }
+
+        // Remove the comment ID from the comments array of the blog
+        blog.comments = blog.comments.filter(comment => comment.toString() !== commentId);
+
+        // Save the changes to the blog
+        await blog.save();
 
         res.status(200).json(comment);
     } catch (error) {

@@ -53,6 +53,11 @@ router.put('/blogs/:id', requireAuth, isAdmin, async (req: Request, res: Respons
     try {
         await Blog.findByIdAndUpdate({ _id: req.params.id }, req.body);
         const updatedBlog = await Blog.findOne({ _id: req.params.id });
+
+        if (!updatedBlog) {
+            return res.status(404).send("Blog not found");
+        }
+        //console.log(updatedBlog);
         res.send(updatedBlog);
     } catch (err) {
         next(err);

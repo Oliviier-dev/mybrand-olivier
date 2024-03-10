@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 const User = require('../models/user');
 import dotenv from "dotenv";
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 
 // CONFIGURE DOTENV
@@ -64,11 +65,25 @@ module.exports.login_post = async(req: Request, res: Response) => {
     }
 
     try {
-        const user = await User.login(email, password);
+        //const user = await User.login(email, password);
+        const user = await User.findOne({ email });
+        const userpassword = user.password;
+        //console.log(userpassword, password, user);
+
         if (user) {
-            const token = createToken(user._id, user.role);
-            res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-            return res.status(200).json({ user: { _id: user._id, email: user.email, role: user.role }, token });
+            //console.log(user);
+            const auth = await bcrypt.compare(password, userpassword);
+            //console.log(auth);
+            if(auth){
+                const token = createToken(user._id, user.role);
+                //console.log(token);
+                res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+                return res.status(200).json({ user: { _id: user._id, email: user.email, role: user.role }, token });
+            } else{
+                //console.log("failed");
+                res.status(400)
+            }
+            //console.log('out');
         } else {
             return res.status(400).json({ error: 'Invalid credentials. Please check your email and password.' });
         }

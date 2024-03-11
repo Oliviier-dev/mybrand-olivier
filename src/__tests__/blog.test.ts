@@ -23,30 +23,6 @@ afterAll(async () => {
   }
 });
 
-// Insert a test blog into the database
-/*
-beforeEach(async () => {
-  await Blog.create({
-    "title": "Healthy Eating Habits for a Balanced Diet",
-    "snippet": "Learn about the importance of maintaining healthy eating habits for overall well-being.",
-    "imageUrl": "https://example.com/healthyfood.jpg",
-    "category": "Health",
-    "author": "Emily Johnson",
-    "body": "Maintaining a balanced diet is essential for promoting good health and preventing chronic diseases. Incorporating a variety of nutrient-rich foods into your meals ensures that your body receives the vitamins, minerals, and other essential nutrients it needs to function optimally. Aim to include a colorful array of fruits and vegetables, whole grains, lean proteins, and healthy fats in your daily diet. Additionally, stay hydrated by drinking plenty of water throughout the day. By making informed food choices and practicing portion control, you can achieve and maintain a healthy weight while supporting your overall well-being."
-  });
-});*/
-
-// Clear test data from the database after each test
-/*
-afterEach(async () => {
-  const testBlog = await Blog.findOne({title: "Healthy Eating Habits for a Balanced Diet"});
-    if (!testBlog) {
-      throw new Error("Test blog not found in the database");
-    }
-    const blogId = testBlog._id;
-  await Blog.findByIdAndDelete({_id: blogId});
-});*/
-
 // Getting a blog by ID
 describe("Get a single blog by ID", () => {
 

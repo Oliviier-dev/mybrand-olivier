@@ -18,14 +18,6 @@ const createToken = (id:any, role: any) => {
 }
 
 
-module.exports.signup_get = (req: Request, res: Response) => {
-    res.send('Signup get');
-}
-
-module.exports.login_get = (req: Request, res: Response) => {
-    res.send('login get');
-}
-
 module.exports.signup_post = async(req: Request, res: Response) => {
     const { email, password, role } = req.body;
     

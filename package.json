@@ -4,7 +4,7 @@
   "description": "",
   "main": "./src/index.ts",
   "scripts": {
-    "test": "jest",
+    "test": "set PORT=0&&jest --verbose",
     "start": "ts-node ./src/index.ts",
     "dev": "nodemon --exec ts-node ./src/index.ts"
   },
@@ -12,7 +12,9 @@
     "preset": "ts-jest",
     "testEnvironment": "node",
     "forceExit": true,
-    "clearMocks": true
+    "clearMocks": true,
+    "coverageDirectory": "coverage",
+    "collectCoverage": true
   },
   "keywords": [],
   "author": "",

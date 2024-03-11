@@ -148,7 +148,7 @@ describe("Users", () => {
 
     describe("Given the admin is logged in", () => {
 
-        it("Should Delete the role", async() => {
+        it("Should Delete the user", async() => {
             const loginResponse  = await request(app)
             .post('/api/auth/login')
             .send({

@@ -7,6 +7,9 @@ import dotenv from "dotenv";
 // CONFIGURE DOTENV
 dotenv.config();
 
+const adminEmail = process.env.ADMIN_EMAIL;
+const adminPassword = process.env.ADMIN_PASSWORD;
+
 beforeAll(async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI!);
@@ -58,8 +61,8 @@ describe("Users", () => {
             const loginResponse  = await request(app)
             .post('/api/auth/login')
             .send({
-            email: "admin1234@gmail.com",
-            password: "admin1234"
+                email: adminEmail,
+                password: adminPassword
             });
 
             const updateUser = await User.findOne({ email: "usertest@gmail.com" });
@@ -126,8 +129,8 @@ describe("Users", () => {
             const loginResponse  = await request(app)
             .post('/api/auth/login')
             .send({
-            email: "admin1234@gmail.com",
-            password: "admin1234"
+                email: adminEmail,
+                password: adminPassword
             });
 
             // Extract the cookies from the login response
@@ -152,8 +155,8 @@ describe("Users", () => {
             const loginResponse  = await request(app)
             .post('/api/auth/login')
             .send({
-            email: "admin1234@gmail.com",
-            password: "admin1234"
+                email: adminEmail,
+                password: adminPassword
             });
 
             const deleteUser = await User.findOne({ email: "usertest@gmail.com" });

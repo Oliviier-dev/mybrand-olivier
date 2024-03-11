@@ -10,6 +10,9 @@ import dotenv from "dotenv";
 // CONFIGURE DOTENV
 dotenv.config();
 
+const adminEmail = process.env.ADMIN_EMAIL;
+const adminPassword = process.env.ADMIN_PASSWORD;
+
 beforeAll(async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI!);
@@ -102,8 +105,8 @@ describe("Commenting on a blog", () => {
             const loginResponse  = await request(app)
             .post('/api/auth/login')
             .send({
-            email: "admin1234@gmail.com",
-            password: "admin1234"
+              email: adminEmail,
+              password: adminPassword
             });
 
             const testBlog = await Blog.findOne({title: "Test comment blog"});

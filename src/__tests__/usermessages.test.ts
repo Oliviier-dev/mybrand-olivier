@@ -51,7 +51,7 @@ describe("Messages", () => {
 
     });
 
-    describe("Given teh admin retrives all the messages", () => {
+    describe("Given the admin retrives all the messages", () => {
 
         it("should return all the messages", async() => {
 

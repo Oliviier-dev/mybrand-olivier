@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import blogRoutes from './routes/blogRoutes';
 import messageRoutes from './routes/messagesRoutes';
 import commentsRoutes from './routes/commentsRoutes';
@@ -17,6 +18,14 @@ dotenv.config();
 
 export const app: Application = express();
 const PORT = process.env.PORT || 3000
+
+const corsOptions ={
+  origin:'*', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions));
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 

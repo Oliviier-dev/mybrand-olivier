@@ -23,6 +23,7 @@ let myForm = document.getElementById('myForm');
 let notificationsBar = document.getElementById('notis');
 
 let emailValidated = false;
+let passwordValidated = false
 
 myForm.addEventListener('submit', async function(event){
     event.preventDefault();
@@ -31,9 +32,103 @@ myForm.addEventListener('submit', async function(event){
     let passwordValue = document.getElementById('password').value;
     
     // validateEmail(emailValue);
-    let valid = validateEmail(emailValue);
+    let valid = validateEmailAndPassword(emailValue, passwordValue);
 
-    if(valid === 1){
+    const userCredentials = {
+        email: emailValue,
+        password: passwordValue
+    };
+
+    if(emailValidated && passwordValidated){
+        fetch('https://mybrand-olivier-production.up.railway.app/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'content-Type' : 'application/json'
+            },
+            body: JSON.stringify(userCredentials)
+        })
+        .then(response => {
+            if(!response.ok) {
+
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>An error occured, Try again`;
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000); 
+
+            }
+            return response.json();
+        })
+        .then(data => {
+
+            if(data.error === 'An error occurred while logging in.'){
+
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>Email not registered`;
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000); 
+
+            } else if(data.status === 'failed'){
+
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>Enter a valid email`;
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000); 
+
+            } else if(data.error === 'Invalid credentials. Please check your email and password.'){
+
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>Incorrect password`;
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000); 
+
+            } else{
+    
+                if(data.user.role == 'admin'){
+
+                    window.location.href = "adminpage.html";
+
+                } else if(data.user.role == 'user'){
+
+                    window.location.href = "blogs.html";
+
+                }
+
+            }
+            console.log('Message sent:', data);
+        })
+        .catch(error => {
+
+            notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>Error logging in, Try again`;
+            setTimeout(function() {
+                notificationsBar.classList.add('visible');
+        
+                setTimeout(function() {
+                    notificationsBar.classList.remove('visible');
+                }, 2000);
+            }, 1000); 
+
+            console.error('There was a problem sending the message:', error);
+        });
+    }
+
+
+    /*if(valid === 1){
         try {
             const userCredential = await signInWithEmailAndPassword(
                 auth,
@@ -85,19 +180,18 @@ myForm.addEventListener('submit', async function(event){
                 }, 1000);
             }
         }
-    }
+    }*/
 
 })
 
 
-function validateEmail(email){
+function validateEmailAndPassword(email, password){
     let emailLabel = document.getElementById('emaillabel');
     let emailPlaceholder = document.getElementById('emailplaceholder');
 
-    let atPosition = email.indexOf('@');
-    let dotPosition = email.lastIndexOf('.');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if(atPosition < 1 || dotPosition < atPosition + 2 || dotPosition + 2 >= email.length){
+    if(!emailRegex.test(email)){
         emailLabel.style.borderBottomColor = '#c80202';
         emailPlaceholder.style.color = '#c80202';
         emailPlaceholder.innerText = 'Please enter a valid email';
@@ -106,9 +200,21 @@ function validateEmail(email){
         // emailPlaceholder.style.color = '#02c837';
         emailPlaceholder.innerText = 'Email';
         emailValidated = true;
-        // checkFormValidity();   
-        return 1;
+        // checkFormValidity();
     }
+
+
+    let passwordLabel = document.getElementById('passwordlabel');
+    let passwordPlaceholder = document.getElementById('passwordplaceholder');
+
+    if(password.length < 1){
+        passwordLabel.style.borderBottomColor = '#c80202';
+        passwordPlaceholder.style.color = '#c80202';
+        passwordPlaceholder.innerText = 'Password must be provided';
+    } else{
+        passwordValidated = true;
+    }
+
 
 }
 

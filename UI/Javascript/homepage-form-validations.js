@@ -91,7 +91,7 @@ function checkFormValidity() {
             message: message.value
         };
 
-        fetch('http://localhost:3000/api/contactme', {
+        fetch('https://mybrand-olivier-production.up.railway.app/api/contactme', {
             method: 'POST',
             headers: {
                 'content-Type' : 'application/json'

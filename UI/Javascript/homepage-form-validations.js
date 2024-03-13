@@ -57,10 +57,9 @@ function validateEmail(email){
     let emailLabel = document.getElementById('emaillabel');
     let emailPlaceholder = document.getElementById('emailplaceholder');
 
-    let atPosition = email.indexOf('@');
-    let dotPosition = email.lastIndexOf('.');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if(atPosition < 1 || dotPosition < atPosition + 2 || dotPosition + 2 >= email.length){
+    if(!emailRegex.test(email)){
         emailLabel.style.borderBottomColor = '#c80202';
         emailPlaceholder.style.color = '#c80202';
         emailPlaceholder.innerText = 'Please enter a valid email';
@@ -84,28 +83,90 @@ let message = document.getElementById('message');
 function checkFormValidity() {
     if(emailValidated && nameValidated && messageValidated){
 
+
+
+        const messageData = {
+            name: name.value,
+            email: email.value,
+            message: message.value
+        };
+
+        fetch('http://localhost:3000/api/contactme', {
+            method: 'POST',
+            headers: {
+                'content-Type' : 'application/json'
+            },
+            body: JSON.stringify(messageData)
+        })
+        .then(response => {
+            if(!response.ok) {
+
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>An error occured, Try again`;
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000); 
+
+            }
+            return response.json();
+        })
+        .then(data => {
+
+            if(data.status === 'failed'){
+
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle error">error</span>Provide valid details`;
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000); 
+
+            } else{
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">check_circle</span>Message sent`;
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000);
+
+                }
+            console.log('Message sent:', data);
+        })
+        .catch(error => {
+
+            notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>An error occured, Try again`;
+            setTimeout(function() {
+                notificationsBar.classList.add('visible');
+        
+                setTimeout(function() {
+                    notificationsBar.classList.remove('visible');
+                }, 2000);
+            }, 1000); 
+
+            console.error('There was a problem sending the message:', error);
+        });
+
+
+
+
         storeuserMessage(name, email, message);
 
         name.value = '';
         email.value = '';
         message.value = '';
 
-        // document.getElementById('name').value = '';
-        // document.getElementById('email').value = '';
-        // document.getElementById('message').value = '';
         document.getElementById('messagelabel').style.borderBottomColor = '#fff';
         document.getElementById('emaillabel').style.borderBottomColor = '#fff';
         document.getElementById('namelabel').style.borderBottomColor = '#fff';
         document.getElementById('nameplaceholder').style.color = '#757575';
         document.getElementById('emailplaceholder').style.color = '#757575';
-
-        setTimeout(function() {
-            notificationsBar.classList.add('visible');
-    
-            setTimeout(function() {
-                notificationsBar.classList.remove('visible');
-            }, 2000);
-        }, 1000);
 
     }   
 

@@ -465,6 +465,10 @@ input:not(:placeholder-shown) + span{
     color: green;
 }
 
+.circle.error{
+    color: red;
+}
+
 @keyframes fallAnimation {
     0% {
         top: -100px;

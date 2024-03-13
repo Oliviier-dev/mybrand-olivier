@@ -130,7 +130,7 @@ nav > .logo{
 
 .blog{
     width: 340px;
-    height: 460px;
+    height: 440px;
     border: 2px solid #fff;
     display: flex;
     border-radius: 14px;
@@ -165,7 +165,7 @@ nav > .logo{
     background-size: cover;
     background-position: center;
     margin: auto;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     margin-top: 0px;
 }
 

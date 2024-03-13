@@ -117,7 +117,7 @@ function checkFormValidity() {
 
             if(data.status === 'failed'){
 
-                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle error">error</span>Provide valid details`;
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle error">error</span>Provide valid email`;
                 setTimeout(function() {
                     notificationsBar.classList.add('visible');
             

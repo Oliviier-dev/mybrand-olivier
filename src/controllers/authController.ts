@@ -73,7 +73,7 @@ module.exports.login_post = async(req: Request, res: Response) => {
                 return res.status(200).json({ user: { _id: user._id, email: user.email, role: user.role }, token });
             } else{
                 //console.log("failed");
-                res.status(400)
+                return res.status(400).json({ error: 'Invalid credentials. Please check your email and password.' });
             }
             //console.log('out');
         } else {

@@ -42,21 +42,105 @@ let retypePasswordValidated = false;
 myForm.addEventListener('submit', async function(event){
     event.preventDefault();
     let emailValue = document.getElementById('email').value;
-    let passwordlValue = document.getElementById('password').value;
+    let passwordValue = document.getElementById('password').value;
     let passwordRetypeValue = document.getElementById('retypepassword').value;
     
-    validatePassword(passwordlValue, passwordRetypeValue);
+    validatePassword(passwordValue, passwordRetypeValue);
     validateEmail(emailValue);
     let valid = checkFormValidity();
     // console.log(valid);
     // console.log(emailValidated);
-    
+
+
     if(valid === 1){
+
+        const userCredentials = {
+            email: emailValue,
+            password: passwordValue
+        };
+
+        fetch('https://mybrand-olivier-production.up.railway.app/api/auth/signup', {
+            method: 'POST',
+            headers: {
+                'content-Type' : 'application/json'
+            },
+            body: JSON.stringify(userCredentials)
+        })
+        .then(response => {
+            if(!response.ok) {
+
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>An error occured, Try again`;
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000); 
+
+            }
+            return response.json();
+        })
+        .then(data => {
+
+            if(data.status === 'failed'){
+
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>Provide valid email`;
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000); 
+
+            } else if(data.error === 'Email already exists'){
+
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle error">error</span>Email already exists`;
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000);
+
+            } else{
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined cirle" id="checkcircle">check_circle</span>Account Created`;
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000);
+
+                }
+            console.log('Message sent:', data);
+        })
+        .catch(error => {
+
+            notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>An error occured, Try again`;
+            setTimeout(function() {
+                notificationsBar.classList.add('visible');
+        
+                setTimeout(function() {
+                    notificationsBar.classList.remove('visible');
+                }, 2000);
+            }, 1000); 
+
+            console.error('There was a problem sending the message:', error);
+        });
+
+    }
+
+    
+    /*if(valid === 1){
         try{
             const userCredential = await createUserWithEmailAndPassword(
              auth,
              emailValue,
-             passwordlValue
+             passwordValue
             );
 
             // Add user data to Firestore
@@ -107,7 +191,7 @@ myForm.addEventListener('submit', async function(event){
                 }, 1000);
              }
          }
-    }
+    }*/
 
 })
 
@@ -117,10 +201,9 @@ function validateEmail(email){
     let emailLabel = document.getElementById('emaillabel');
     let emailPlaceholder = document.getElementById('emailplaceholder');
 
-    let atPosition = email.indexOf('@');
-    let dotPosition = email.lastIndexOf('.');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if(atPosition < 1 || dotPosition < atPosition + 2 || dotPosition + 2 >= email.length){
+    if(!emailRegex.test(email)){
         emailLabel.style.borderBottomColor = '#c80202';
         emailPlaceholder.style.color = '#c80202';
         emailPlaceholder.innerText = 'Please enter a valid email';

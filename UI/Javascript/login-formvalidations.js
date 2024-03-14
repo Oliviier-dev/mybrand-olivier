@@ -101,7 +101,7 @@ myForm.addEventListener('submit', async function(event){
                 var expiresInMilliseconds = 3 * 24 * 60 * 60 * 1000;
                 var now = new Date();
                 var expires = new Date(now.getTime() + expiresInMilliseconds);
-                document.cookie = `jwtt=${data.token}; path=/; Max-Age=${expiresInMilliseconds / 1000}; expires=${expires.toUTCString()}`;
+                document.cookie = `jwt=${data.token}; path=/; Max-Age=${expiresInMilliseconds / 1000}; expires=${expires.toUTCString()}`;
 
                 function getCookie(name) {
                     const cookieString = document.cookie;
@@ -116,7 +116,7 @@ myForm.addEventListener('submit', async function(event){
                     return null;
                 }
 
-                var tokenCookie = getCookie('jwtt');
+                var tokenCookie = getCookie('jwt');
 
                 // Split the token into its three parts: header, payload, and signature
                 var parts = tokenCookie.split('.');

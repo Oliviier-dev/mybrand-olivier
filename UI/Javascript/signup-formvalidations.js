@@ -114,8 +114,8 @@ myForm.addEventListener('submit', async function(event){
                         notificationsBar.classList.remove('visible');
                     }, 2000);
                 }, 1000);
-
                 }
+                window.location.href = "../pages/login.html";
             console.log('Message sent:', data);
         })
         .catch(error => {

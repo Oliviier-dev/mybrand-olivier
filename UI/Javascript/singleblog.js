@@ -1,6 +1,25 @@
 document.addEventListener("DOMContentLoaded", function() {
-    let blogJSON = localStorage.getItem('viewBlog');
-    let blog = JSON.parse(blogJSON);
+
+
+    // Parse the query string of the URL
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    // Get the value of the 'id' parameter from the URL
+    const blogID = urlParams.get('id');
+    console.log(blogID);
+
+    fetch(`https://mybrand-olivier-production.up.railway.app/api/blog/blogs/${blogID}`)
+        .then(response => response.json())
+        .then(blogDetails => {
+            // Process the fetched blog details and display them
+            console.log(blogDetails);
+
+
+
+
+            //let blogJSON = localStorage.getItem('viewBlog');
+    let blog = blogDetails;
     // console.log(blog);
 
     let reactions = document.querySelector('.reactions');
@@ -10,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let imageDiv = document.createElement('div');
     imageDiv.classList.add('image');
-    imageDiv.style.backgroundImage = `url("${blog.image}")`;
+    imageDiv.style.backgroundImage = `url("${blog.imageUrl}")`;
 
     let articleTitle = document.createElement('p');
     articleTitle.classList.add('title');
@@ -34,9 +53,17 @@ document.addEventListener("DOMContentLoaded", function() {
     let dateDiv = document.createElement('div')
     dateDiv.classList.add('date');
 
+    const dateString = blog.createdAt;
+    const dateObject = new Date(dateString);
+    const year = dateObject.getFullYear();
+    const month = String(dateObject.getMonth() + 1).padStart(2, "0"); // Month is zero-based, so we add 1
+    const day = String(dateObject.getDate()).padStart(2, "0");
+    const formattedDate = `${year}-${month}-${day}`;
+
+
     let date = document.createElement('span');
     date.classList.add('date');
-    date.innerText = blog.createdAT; //fdgh
+    date.innerText = formattedDate; //fdgh
 
     let minutesRead = document.createElement('span');
     minutesRead.innerText = "5 min read";
@@ -89,6 +116,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         allComments.appendChild(commentDiv)
     }
+
+
+
+
+        })
+        .catch(error => console.error('Error fetching blog details:', error));
+
+
 
 
 })

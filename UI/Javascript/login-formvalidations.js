@@ -45,7 +45,8 @@ myForm.addEventListener('submit', async function(event){
             headers: {
                 'content-Type' : 'application/json'
             },
-            body: JSON.stringify(userCredentials)
+            body: JSON.stringify(userCredentials),
+            credentials: 'include'
         })
         .then(response => {
             if(!response.ok) {
@@ -98,14 +99,49 @@ myForm.addEventListener('submit', async function(event){
                 }, 1000); 
 
             } else{
-    
+                var expiresInMilliseconds = 3 * 24 * 60 * 60 * 1000;
+                var now = new Date();
+                var expires = new Date(now.getTime() + expiresInMilliseconds);
+                document.cookie = `jwtt=${data.token}; path=/; Max-Age=${expiresInMilliseconds / 1000}; expires=${expires.toUTCString()}`;
+
+                function getCookie(name) {
+                    const cookieString = document.cookie;
+                    const cookies = cookieString.split('; ');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i];
+                        const [cookieName, cookieValue] = cookie.split('=');
+                        if (cookieName === name) {
+                            return cookieValue;
+                        }
+                    }
+                    return null;
+                }
+
+                var tokenCookie = getCookie('jwtt');
+
+// Split the token into its three parts: header, payload, and signature
+var parts = tokenCookie.split('.');
+var header = parts[0];
+var payload = parts[1];
+var signature = parts[2];
+
+// Decode each part using atob()
+var decodedHeader = JSON.parse(atob(header));
+var decodedPayload = JSON.parse(atob(payload));
+// The signature is not typically decoded as it's used for validation, not for reading
+
+// Now you have access to the decoded header and payload
+console.log("Decoded Header:", decodedHeader);
+console.log("Decoded Payload:", decodedPayload);
+
                 if(data.user.role == 'admin'){
 
-                    window.location.href = "adminpage.html";
+                    //window.location.href = "adminpage.html";
+                    //location.assign('/');
 
                 } else if(data.user.role == 'user'){
 
-                    window.location.href = "blogs.html";
+                    //window.location.href = "blogs.html";
 
                 }
 

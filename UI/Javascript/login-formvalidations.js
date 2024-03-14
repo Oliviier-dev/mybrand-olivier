@@ -45,8 +45,7 @@ myForm.addEventListener('submit', async function(event){
             headers: {
                 'content-Type' : 'application/json'
             },
-            body: JSON.stringify(userCredentials),
-            //credentials: 'include'
+            body: JSON.stringify(userCredentials)
         })
         .then(response => {
             if(!response.ok) {

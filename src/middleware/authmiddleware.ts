@@ -8,7 +8,13 @@ dotenv.config();
 
 const requireAuth = (req: Request, res: Response, next: (err?: Error) => void) => {
 
-    const token = req.cookies.jwt;
+    const tokenn = req.cookies.jwt;
+
+    const authHeader = req.headers['authorization'];
+    let token = authHeader && authHeader.split(' ')[1];
+    //console.log(token);
+    token = (token) ? token : tokenn;
+
 
     //check json web token exists and is verified
 
@@ -32,7 +38,12 @@ const requireAuth = (req: Request, res: Response, next: (err?: Error) => void) =
 
 const isAdmin = (req: Request, res: Response, next: (err?: Error) => void) => {
     // Retrieve the JWT token from the request cookie
-    const token = req.cookies.jwt;
+    const tokenn = req.cookies.jwt;
+
+    const authHeader = req.headers['authorization'];
+    let token = authHeader && authHeader.split(' ')[1];
+    //console.log(token);
+    token = (token) ? token : tokenn;
 
     // Check if token exists
     if (token) {

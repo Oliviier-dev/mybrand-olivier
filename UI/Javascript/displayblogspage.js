@@ -20,6 +20,9 @@ function displayOnBlogsPage(){
             // console.log('hooray');
             let blogDiv = document.createElement('div');
             blogDiv.classList.add('blog', `blog${i+1}`);
+
+             // Store the blog ID in the dataset attribute
+             blogDiv.dataset.blogId = data[i]._id;
     
             let blogImage = document.createElement('div');
             blogImage.classList.add('blogimage');
@@ -28,8 +31,17 @@ function displayOnBlogsPage(){
     
     
             let anchorTag = document.createElement('a');
-            anchorTag.href = "singleblogpage.html";
+            anchorTag.href = "#";
             anchorTag.classList.add('singleblog');
+
+
+            anchorTag.addEventListener('click', function() {
+                // Retrieve the ID of the clicked blog
+                let clickedBlogID = blogDiv.dataset.blogId;
+                console.log(clickedBlogID);
+                window.location.href = `singleblogpage.html?id=${clickedBlogID}`;
+            });
+
     
             let blogDesc = document.createElement('div');
             blogDesc.classList.add('desc')

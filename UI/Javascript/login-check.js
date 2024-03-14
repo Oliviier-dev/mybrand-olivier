@@ -4,7 +4,7 @@ import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10
 
 document.addEventListener('DOMContentLoaded', function() {
 
-
+/*
 // Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDkU4etxLr4_YDy1nxsIliilDe6sVxPEaU",
@@ -18,7 +18,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
-const db = getFirestore(firebaseApp);
+const db = getFirestore(firebaseApp);*/
 
 let loginoutButtons = document.querySelectorAll('.loginout-btn');
 let homeorAdminLink = document.querySelectorAll('.homeOrAdmin');
@@ -27,7 +27,7 @@ let homeorAdminLink = document.querySelectorAll('.homeOrAdmin');
 
 
 // Track authentication state changes
-onAuthStateChanged(auth, (user) => {
+/*onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in.
         // console.log("User is signed in:", user);
@@ -99,7 +99,77 @@ onAuthStateChanged(auth, (user) => {
         }
         // console.log("No user is signed in.");
     }
-});
+});*/
+
+
+
+(function loginCheck() {
+    function getCookie(name) {
+        const cookieString = document.cookie;
+        const cookies = cookieString.split('; ');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i];
+            const [cookieName, cookieValue] = cookie.split('=');
+            if (cookieName === name) {
+                return decodeURIComponent(cookieValue);
+            }
+        }
+        return null;
+    }
+
+    var tokenCookie = getCookie('jwt');
+
+    if (tokenCookie) {
+        // Decode the JWT token payload
+        var parts = tokenCookie.split('.');
+        var payload = parts[1];
+        var decodedPayload = JSON.parse(atob(payload));
+        console.log("Decoded Payload:", decodedPayload.role);
+
+        if (decodedPayload.role === 'admin') {
+            // Change home button to admin dashboard link
+            for (let i = 0; i < homeorAdminLink.length; i++) {
+                let anchorTag = homeorAdminLink[i].querySelector('a');
+                anchorTag.innerHTML = 'Admin';
+                if (window.location.href.includes("index.html")) {
+                    anchorTag.href = "UI/pages/adminpage.html";
+                } else {
+                    anchorTag.href = "adminpage.html";
+                }
+            }
+        }
+
+        // Set logout functionality
+        for (let i = 0; i < loginoutButtons.length; i++) {
+            let anchorTag = loginoutButtons[i].querySelector('a');
+            anchorTag.innerHTML = 'Log out';
+            anchorTag.style.backgroundColor = '#980C0C';
+
+            loginoutButtons[i].addEventListener('click', function () {
+                // Clear the token cookie
+                document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                // Redirect to appropriate page after logout
+                if (window.location.href.includes("index.html")) {
+                    window.location.href = "index.html";
+                } else {
+                    window.location.href = "../../index.html";
+                }
+            });
+        }
+    } else {
+        // No user is signed in
+        for (let i = 0; i < loginoutButtons.length; i++) {
+            let anchorTag = loginoutButtons[i].querySelector('a');
+            anchorTag.innerHTML = 'Log in';
+            anchorTag.style.backgroundColor = '#1840CF';
+            if (window.location.href.includes("index.html")) {
+                anchorTag.href = "UI/pages/login.html";
+            } else {
+                anchorTag.href = "login.html";
+            }
+        }
+    }
+})();
 
 
 });

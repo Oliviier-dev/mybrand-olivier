@@ -20,7 +20,8 @@ export const app: Application = express();
 const PORT = process.env.PORT || 3000
 
 const corsOptions ={
-  origin:'*', 
+  //origin: 'http://127.0.0.1:5500',
+  origin:'https://github.com/Oliviier-dev/mybrand-olivier', 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200,
 }

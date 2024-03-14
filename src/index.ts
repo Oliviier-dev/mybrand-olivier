@@ -21,7 +21,8 @@ const PORT = process.env.PORT || 3000
 
 const corsOptions ={
   //origin: 'http://127.0.0.1:5500',
-  origin:'https://oliviier-dev.github.io', 
+  //origin:'https://oliviier-dev.github.io',
+  origin: '*', 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200,
 }

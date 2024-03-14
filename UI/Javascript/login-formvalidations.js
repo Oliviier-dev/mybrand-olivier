@@ -118,29 +118,28 @@ myForm.addEventListener('submit', async function(event){
 
                 var tokenCookie = getCookie('jwtt');
 
-// Split the token into its three parts: header, payload, and signature
-var parts = tokenCookie.split('.');
-var header = parts[0];
-var payload = parts[1];
-var signature = parts[2];
+                // Split the token into its three parts: header, payload, and signature
+                var parts = tokenCookie.split('.');
+                var header = parts[0];
+                var payload = parts[1];
+                var signature = parts[2];
 
-// Decode each part using atob()
-var decodedHeader = JSON.parse(atob(header));
-var decodedPayload = JSON.parse(atob(payload));
-// The signature is not typically decoded as it's used for validation, not for reading
+                // Decode each part using atob()
+                var decodedHeader = JSON.parse(atob(header));
+                var decodedPayload = JSON.parse(atob(payload));
+                // The signature is not typically decoded as it's used for validation, not for reading
 
-// Now you have access to the decoded header and payload
-console.log("Decoded Header:", decodedHeader);
-console.log("Decoded Payload:", decodedPayload);
+                // Now you have access to the decoded header and payload
+                console.log("Decoded Header:", decodedHeader);
+                console.log("Decoded Payload:", decodedPayload);
 
                 if(data.user.role == 'admin'){
 
-                    //window.location.href = "adminpage.html";
-                    //location.assign('/');
+                    window.location.href = "adminpage.html";
 
                 } else if(data.user.role == 'user'){
 
-                    //window.location.href = "blogs.html";
+                    window.location.href = "blogs.html";
 
                 }
 

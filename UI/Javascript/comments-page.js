@@ -194,7 +194,7 @@ function displayComments (){
 
 
         let allComments = document.querySelector('.items');
-    
+        allComments.innerHTML = '';     
         for(let i = 0; i < blogComments.length; i++){
             let commentDiv = document.createElement('div');
             commentDiv.classList.add('item');

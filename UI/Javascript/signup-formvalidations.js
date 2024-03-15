@@ -105,7 +105,13 @@ myForm.addEventListener('submit', async function(event){
                     }, 2000);
                 }, 1000);
 
-            } else{
+            } else if(data.user.email === emailValue){
+
+                document.getElementById('email').value = '';
+                document.getElementById('password').value = '';
+                document.getElementById('retypepassword').value = '';
+
+
                 notificationsBar.innerHTML = `<span class="material-symbols-outlined cirle" id="checkcircle">check_circle</span>Account Created`;
                 setTimeout(function() {
                     notificationsBar.classList.add('visible');
@@ -255,9 +261,6 @@ function validatePassword(password, passwordRetype){
 //function to check whether everything has been validated
 function checkFormValidity() {
     if(emailValidated && passwordValidated && retypePasswordValidated){
-        document.getElementById('email').value = '';
-        document.getElementById('password').value = '';
-        document.getElementById('retypepassword').value = '';
         document.getElementById('emaillabel').style.borderBottomColor = '#fff';
         document.getElementById('passwordlabel').style.borderBottomColor = '#fff';
         document.getElementById('retypepasswordlabel').style.borderBottomColor = '#fff';

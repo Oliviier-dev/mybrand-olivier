@@ -144,6 +144,9 @@ function displayBlogsAdmin(){
 
             let blogDiv = document.createElement('div');
             blogDiv.classList.add('blog');
+
+             // Store the blog ID in the dataset attribute
+             blogDiv.dataset.blogId = data[i]._id;
             
             let blogDesc = document.createElement('div');
             blogDesc.classList.add('desc');
@@ -163,6 +166,17 @@ function displayBlogsAdmin(){
             let editbutton = document.createElement('button');
             editbutton.innerText = 'Edit';
             editbutton.classList.add('editBlogbtn');
+
+
+            editbutton.addEventListener('click', function() {
+                // Retrieve the ID of the clicked blog
+                let clickedBlogID = blogDiv.dataset.blogId;
+                console.log(clickedBlogID);
+                
+                window.location.href = `createnewblog.html?id=${clickedBlogID}`;
+
+            });
+
     
             let deletebutton = document.createElement('button');
             deletebutton.innerText = 'Delete';

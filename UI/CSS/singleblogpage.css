@@ -301,6 +301,10 @@ nav > .logo{
     background-color: rgb(6, 183, 183) !important;
 }
 
+#checkcircle{
+    color: green;
+}
+
 .circle{
     color: red;
 }

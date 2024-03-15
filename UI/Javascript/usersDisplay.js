@@ -1,20 +1,39 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, getDocs, doc, deleteDoc, updateDoc, query, where } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+//function to get the cookie
+function getCookie(name) {
+    const cookieString = document.cookie;
+    const cookies = cookieString.split('; ');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const [cookieName, cookieValue] = cookie.split('=');
+        if (cookieName === name) {
+            return cookieValue;
+        }
+    }
+    return null;
+}
 
-// Initialize Firebase
-const firebaseConfig = {
-    apiKey: "AIzaSyDkU4etxLr4_YDy1nxsIliilDe6sVxPEaU",
-    authDomain: "mybrand-login.firebaseapp.com",
-    projectId: "mybrand-login",
-    storageBucket: "mybrand-login.appspot.com",
-    messagingSenderId: "789592444381",
-    appId: "1:789592444381:web:749ddd1b55ebbf24c97a34"
-};
+var tokenCookie = getCookie('jwt');
 
-const firebaseApp = initializeApp(firebaseConfig);
-const db = getFirestore(firebaseApp); // Initialize Firestore
 
-// Function to display user accounts
+//Getting all the users
+
+fetch('https://mybrand-olivier-production.up.railway.app/api/auth/users', {
+headers: {
+    'Authorization': `Bearer ${tokenCookie}`,
+    'Content-Type': 'application/json'
+}
+})
+.then(data => {
+    return data.json();
+})
+.then(users => {
+    displayUserAccounts(users);
+    console.log(users);
+});
+
+
+
+//function to display all the users
 function displayUserAccounts(users) {
     const userListDiv = document.getElementById('userList');
     userListDiv.innerHTML = ''; // Clear previous content
@@ -32,6 +51,59 @@ function displayUserAccounts(users) {
     });
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, getDocs, doc, deleteDoc, updateDoc, query, where } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// Initialize Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyDkU4etxLr4_YDy1nxsIliilDe6sVxPEaU",
+    authDomain: "mybrand-login.firebaseapp.com",
+    projectId: "mybrand-login",
+    storageBucket: "mybrand-login.appspot.com",
+    messagingSenderId: "789592444381",
+    appId: "1:789592444381:web:749ddd1b55ebbf24c97a34"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp); // Initialize Firestore*/
+
+// Function to display user accounts
+/*function displayUserAccounts(users) {
+    const userListDiv = document.getElementById('userList');
+    userListDiv.innerHTML = ''; // Clear previous content
+
+    users.forEach(user => {
+        const userDiv = document.createElement('div');
+        userDiv.innerHTML = `
+            <p>Email: ${user.email}</p>
+            <p>Role: <span class="userRole">${user.role}</span></p>
+            <div><button class="deleteUserBtn">Delete</button>
+            <button class="changeUserRoleBtn">Change Role</button>
+            </div>
+        `;
+        userListDiv.appendChild(userDiv);
+    });
+}*/
+
+/*
 // Function to retrieve user accounts from Firestore
 async function getUserAccounts() {
     try {
@@ -47,8 +119,9 @@ async function getUserAccounts() {
     } catch (error) {
         console.error('Error getting user accounts: ', error);
     }
-}
+}*/
 
+/*
 // Function to delete a user
 async function deleteUser(userEmail) {
     try {
@@ -66,8 +139,9 @@ async function deleteUser(userEmail) {
     } catch (error) {
         // console.error('Error deleting user: ', error);
     }
-}
+}*/
 
+/*
 // Function to change user role
 async function changeUserRole(userEmail, newRole) {
     try {
@@ -86,7 +160,9 @@ async function changeUserRole(userEmail, newRole) {
         console.error('Error updating user role: ', error);
     }
 }
+*/
 
+/*
 // Call the function to get user accounts when the page loads
 getUserAccounts();
 
@@ -125,4 +201,4 @@ document.addEventListener('click', async function(event) {
     // Update the user role displayed in the DOM
     userRoleElement.textContent = newRole;
     }
-});
+});*/

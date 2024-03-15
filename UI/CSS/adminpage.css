@@ -300,12 +300,32 @@ nav > .logo{
     z-index: 999;
 }
 
+.circle{
+    color: red;
+}
+
 #checkcircle{
     color: green;
 }
 
-.error{
-    color: red;
+/* .circle{
+    color: green;
+} */
+
+@keyframes fallAnimation {
+    0% {
+        top: -100px;
+    }
+    100% {
+        top: 20px;
+    }
+}
+
+#notis.visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
 }
 
 

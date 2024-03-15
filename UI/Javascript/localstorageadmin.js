@@ -1,3 +1,6 @@
+let notificationsBar = document.getElementById('notis');
+
+
 document.addEventListener("DOMContentLoaded", (event) => {
 
     if (window.location.pathname.includes('/adminpage')) {
@@ -181,6 +184,65 @@ function displayBlogsAdmin(){
             let deletebutton = document.createElement('button');
             deletebutton.innerText = 'Delete';
             deletebutton.classList.add('deleteBlogbtn');
+
+
+            deletebutton.addEventListener('click', function() {
+                // Retrieve the ID of the clicked blog
+                let clickedBlogID = blogDiv.dataset.blogId;
+
+            fetch(`https://mybrand-olivier-production.up.railway.app/api/blog/blogs/${clickedBlogID}`, {
+            method: 'delete',
+            headers: {
+                'Authorization': `Bearer ${tokenCookie}`,
+                'content-Type' : 'application/json'
+            }
+            })
+            .then(response => {
+                if(!response.ok) {
+
+                    notificationsBar.innerHTML = `<span class="material-symbols-outlined circle error">error</span>An error Occured`;
+                    setTimeout(function() {
+                        notificationsBar.classList.add('visible');
+                
+                        setTimeout(function() {
+                            notificationsBar.classList.remove('visible');
+                        }, 2000);
+                    }, 1000); 
+
+                }
+                return response.json();
+            })
+            .then(data => {
+
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle" id= "checkcircle">error</span>Blog deleted successfully`;
+                    setTimeout(function() {
+                        notificationsBar.classList.add('visible');
+                
+                        setTimeout(function() {
+                            notificationsBar.classList.remove('visible');
+                        }, 2000);
+                    }, 1000); 
+
+                    location.reload();
+
+                console.log('Message sent:', data);
+            })
+            .catch(error => {
+
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle error">error</span>An error`;
+                setTimeout(function() {
+                    notificationsBar.classList.add('visible');
+            
+                    setTimeout(function() {
+                        notificationsBar.classList.remove('visible');
+                    }, 2000);
+                }, 1000); 
+
+                console.error('There was a problem sending the message:', error);
+            });
+
+    });
+
     
             buttonsDiv.append(editbutton);
             buttonsDiv.append(deletebutton);

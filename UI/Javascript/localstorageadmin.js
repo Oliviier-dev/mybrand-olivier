@@ -214,7 +214,7 @@ function displayBlogsAdmin(){
             })
             .then(data => {
 
-                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle" id= "checkcircle">error</span>Blog deleted successfully`;
+                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle" id= "checkcircle">check_circle</span>Blog deleted successfully`;
                     setTimeout(function() {
                         notificationsBar.classList.add('visible');
                 

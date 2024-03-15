@@ -1,3 +1,5 @@
+let notificationsBar = document.getElementById('notis');
+
 //function to get the cookie
 function getCookie(name) {
     const cookieString = document.cookie;
@@ -40,6 +42,7 @@ function displayUserAccounts(users) {
 
     users.forEach(user => {
         const userDiv = document.createElement('div');
+        userDiv.dataset.userId = user._id;
         userDiv.innerHTML = `
             <p>Email: ${user.email}</p>
             <p>Role: <span class="userRole">${user.role}</span></p>
@@ -48,9 +51,94 @@ function displayUserAccounts(users) {
             </div>
         `;
         userListDiv.appendChild(userDiv);
+
+        const deleteUserBtns = userDiv.querySelectorAll('.deleteUserBtn');
+        deleteUserBtns.forEach(button => {
+            button.addEventListener('click', function() {
+                // Retrieve the user ID from the data attribute
+                const userId = this.parentElement.parentElement.dataset.userId;
+                 // Call delete function and pass the user ID
+                deleteUser(userId);
+            });
+        });
+
     });
 }
 
+
+function deleteUser(userId){
+
+        fetch(`https://mybrand-olivier-production.up.railway.app/api/auth/users/${userId}`, {
+        method: 'delete',
+        headers: {
+            'Authorization': `Bearer ${tokenCookie}`,
+            'content-Type' : 'application/json'
+        }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+
+            displayUserAccounts(data.users);
+            notificationsBar.innerHTML = `<span class="material-symbols-outlined" id="checkcircle">check_circle</span>User Deleted`;
+            setTimeout(function() {
+                notificationsBar.classList.add('visible');
+        
+                setTimeout(function() {
+                    notificationsBar.classList.remove('visible');
+                }, 2000);
+            }, 1000);
+            console.log(data);
+        })
+        .catch(error => {
+
+            notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>An error occured, Try again`;
+            setTimeout(function() {
+                notificationsBar.classList.add('visible');
+        
+                setTimeout(function() {
+                    notificationsBar.classList.remove('visible');
+                }, 2000);
+            }, 1000);
+
+            console.error('There was a problem sending the message:', error);
+        });
+
+}
+
+/*
+deleteUserBtns.forEach(button => {
+    button.addEventListener('click', function(){
+
+        const userId = this.parentNode.previousElementSibling.dataset.blogId;
+
+        fetch(`https://mybrand-olivier-production.up.railway.app/api/auth/users/${userId}`, {
+        method: 'delete',
+        headers: {
+            'Authorization': `Bearer ${tokenCookie}`,
+            'content-Type' : 'application/json'
+        }
+        })
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+
+            notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>An error occured, Try again`;
+            setTimeout(function() {
+                notificationsBar.classList.add('visible');
+        
+                setTimeout(function() {
+                    notificationsBar.classList.remove('visible');
+                }, 2000);
+            }, 1000);
+
+            console.error('There was a problem sending the message:', error);
+        });
+
+    })
+}) */
 
 
 

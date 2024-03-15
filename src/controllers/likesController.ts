@@ -12,8 +12,14 @@ export const likeBlog = async (req:Request, res:Response) => {
 
     try {
         const { blogId } = req.params;
-        const token = req.cookies.jwt;
-    
+        // Retrieve the JWT token from the request cookie
+        const tokenn = req.cookies.jwt;
+
+        const authHeader = req.headers['authorization'];
+        let token = authHeader && authHeader.split(' ')[1];
+        //console.log(token);
+        token = (token) ? token : tokenn;
+        
         if (!token) {
             return res.status(401).json({ message: "Unauthorized, Please Log in" });
         }
@@ -40,7 +46,7 @@ export const likeBlog = async (req:Request, res:Response) => {
  
              await blog.save();
  
-             return res.status(200).json({ message: "Blog unliked successfully" });
+             return res.status(200).json({ message: "Blog unliked successfullyy", blog });
         } else {
             // If user has not liked the blog yet, create a new like
             const newLike = await Like.create({ blogId, userId });
@@ -50,7 +56,7 @@ export const likeBlog = async (req:Request, res:Response) => {
 
             await blog.save();
 
-            return res.status(200).json({ message: "Blog liked successfully" });
+            return res.status(200).json({ message: "Blog liked successfullyy", blog });
         }
         
     } catch (error:any) {

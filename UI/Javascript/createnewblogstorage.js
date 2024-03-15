@@ -1,4 +1,7 @@
 let createBlog = document.getElementById('blogForm');
+let createBlogButton = document.querySelector('.btnpost');
+let actionButtonValue = createBlogButton.textContent;
+
 let notificationsBar = document.getElementById('notis');
 
 let blogTitle = document.getElementById('title');
@@ -8,11 +11,22 @@ let blogImage = document.getElementById('img');
 let blogAuthor = document.getElementById('author');
 let blogBody = document.getElementById('body');
 
+// Parse the query string of the URL
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+// Get the value of the 'id' parameter from the URL
+const blogID = urlParams.get('id');
+
 
 createBlog.addEventListener('submit', function(e){
     e.preventDefault();
-    storeBlogData();
-})
+
+    if(!blogID){
+        storeBlogData();
+        console.log(actionButtonValue, 'post');
+    }
+});
 
 function storeBlogData(){
     //let existingBlogs = JSON.parse(localStorage.getItem('Blogs')) || [];

@@ -107,6 +107,8 @@ myForm.addEventListener('submit', async function(event){
 
             } else if(data.user.email === emailValue){
 
+                window.location.href = "../pages/login.html";
+
                 document.getElementById('email').value = '';
                 document.getElementById('password').value = '';
                 document.getElementById('retypepassword').value = '';
@@ -121,7 +123,6 @@ myForm.addEventListener('submit', async function(event){
                     }, 2000);
                 }, 1000);
                 }
-                window.location.href = "../pages/login.html";
             console.log('Message sent:', data);
         })
         .catch(error => {

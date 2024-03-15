@@ -126,7 +126,8 @@ module.exports.deleteUser = async(req: Request, res: Response) => {
     const userId = req.params.userId;
     try {
         const deletedUser = await User.findByIdAndDelete(userId).select('-password');
-        res.send(deletedUser);
+        const users = await User.find({}, '-password');
+        res.send({ deletedUser, users });
     } catch (err) {
         console.error("Error deleting user:", err);
     }

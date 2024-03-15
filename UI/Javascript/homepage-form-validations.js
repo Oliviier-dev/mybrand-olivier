@@ -141,6 +141,10 @@ function checkFormValidity() {
         })
         .catch(error => {
 
+            name.value = '';
+            email.value = '';
+            message.value = '';
+
             notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>An error occured, Try again`;
             setTimeout(function() {
                 notificationsBar.classList.add('visible');
@@ -157,10 +161,6 @@ function checkFormValidity() {
 
 
         storeuserMessage(name, email, message);
-
-        name.value = '';
-        email.value = '';
-        message.value = '';
 
         document.getElementById('messagelabel').style.borderBottomColor = '#fff';
         document.getElementById('emaillabel').style.borderBottomColor = '#fff';

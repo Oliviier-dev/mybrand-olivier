@@ -10,15 +10,15 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log(blogID);
 
     fetch(`https://mybrand-olivier-production.up.railway.app/api/blog/blogs/${blogID}`)
-        .then(response => response.json())
-        .then(blogDetails => {
-            // Process the fetched blog details and display them
-            console.log(blogDetails);
+    .then(response => response.json())
+    .then(blogDetails => {
+        // Process the fetched blog details and display them
+        console.log(blogDetails);
 
 
 
 
-            //let blogJSON = localStorage.getItem('viewBlog');
+        //let blogJSON = localStorage.getItem('viewBlog');
     let blog = blogDetails;
     // console.log(blog);
 
@@ -89,39 +89,8 @@ document.addEventListener("DOMContentLoaded", function() {
     articleDiv.append(bodyDiv);
 
     reactions.before(articleDiv);
-
-    let allComments = document.querySelector('.items');
-    
-    for(let i = 0; i < blog.comments.length; i++){
-        let commentDiv = document.createElement('div');
-        commentDiv.classList.add('item');
-
-        let commenterImageDiv = document.createElement('div');
-        commenterImageDiv.classList.add('imagee');
-
-        let comment = document.createElement('div');
-        comment.classList.add('content');
-
-        let commenterName = document.createElement('h4');
-        let commenterComment = document.createElement('span');
-
-        commenterName.innerText = blog.comments[i].commentorName;
-        commenterComment.innerText = blog.comments[i].commentorcomment;
-
-        comment.append(commenterName);
-        comment.append(commenterComment);
-
-        commentDiv.append(commenterImageDiv);    
-        commentDiv.append(comment);
-
-        allComments.appendChild(commentDiv)
-    }
-
-
-
-
-        })
-        .catch(error => console.error('Error fetching blog details:', error));
+    })
+    .catch(error => console.error('Error fetching blog details:', error));
 
 
 

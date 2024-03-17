@@ -174,7 +174,7 @@ describe("Users", () => {
             .expect(200)
             .expect('Content-Type', /json/)
             .expect((res) => {
-                const responseBody = res.body;
+                const responseBody = res.body.deletedUser;
                 expect(responseBody).toHaveProperty("_id");
                 expect(responseBody).toHaveProperty("email");
                 expect(responseBody).toHaveProperty("role");

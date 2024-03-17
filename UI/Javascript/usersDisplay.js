@@ -18,7 +18,6 @@ var tokenCookie = getCookie('jwt');
 
 
 //Getting all the users
-
 fetch('https://mybrand-olivier-production.up.railway.app/api/auth/users', {
 headers: {
     'Authorization': `Bearer ${tokenCookie}`,

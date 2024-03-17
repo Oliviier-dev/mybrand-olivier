@@ -46,7 +46,7 @@ export const likeBlog = async (req:Request, res:Response) => {
  
              await blog.save();
  
-             return res.status(200).json({ message: "Blog unliked successfullyy", blog });
+             return res.status(200).json({ message: "Blog unliked successfully", blog });
         } else {
             // If user has not liked the blog yet, create a new like
             const newLike = await Like.create({ blogId, userId });
@@ -56,7 +56,7 @@ export const likeBlog = async (req:Request, res:Response) => {
 
             await blog.save();
 
-            return res.status(200).json({ message: "Blog liked successfullyy", blog });
+            return res.status(200).json({ message: "Blog liked successfully", blog });
         }
         
     } catch (error:any) {

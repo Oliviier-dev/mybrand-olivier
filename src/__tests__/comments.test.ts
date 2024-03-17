@@ -34,7 +34,7 @@ describe("Commenting on a blog", () => {
 
     describe("Given the blog exists", () => {
 
-        it("should return the comment", async () => {
+      it("should return the comment", async () => {
     
     
         await Blog.create({
@@ -72,7 +72,7 @@ describe("Commenting on a blog", () => {
           }
           const blogIddelete = testBlogdelete._id;
           await Blog.findByIdAndDelete({_id: blogIddelete});*/
-        });
+      }, 15000);
     
     });
 

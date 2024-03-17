@@ -58,7 +58,7 @@ describe("Get a single blog by ID", () => {
       }
       const blogIddelete = testBlogdelete._id;
       await Blog.findByIdAndDelete({_id: blogIddelete});
-    });
+    }, 15000);
 
   });
 

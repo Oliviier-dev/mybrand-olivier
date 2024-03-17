@@ -62,6 +62,16 @@ function displayUserAccounts(users) {
             });
         });
 
+        const editUserBtns = userDiv.querySelectorAll('.changeUserRoleBtn');
+        editUserBtns.forEach(button => {
+            button.addEventListener('click', function() {
+                // Retrieve the user ID from the data attribute
+                const userId = this.parentElement.parentElement.dataset.userId;
+                 // Call edit function and pass the user ID
+                editUserROle(userId);
+            });
+        });
+
     });
 }
 
@@ -106,6 +116,51 @@ function deleteUser(userId){
         });
 
 }
+
+
+
+function editUserROle(userId){
+
+        fetch(`https://mybrand-olivier-production.up.railway.app/api/auth/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `Bearer ${tokenCookie}`,
+            'content-Type' : 'application/json'
+        }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+
+            displayUserAccounts(data.users);
+            notificationsBar.innerHTML = `<span class="material-symbols-outlined" id="checkcircle">check_circle</span>User Role Updated`;
+            setTimeout(function() {
+                notificationsBar.classList.add('visible');
+        
+                setTimeout(function() {
+                    notificationsBar.classList.remove('visible');
+                }, 2000);
+            }, 1000);
+            console.log(data);
+        })
+        .catch(error => {
+
+            notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>An error occured, Try again`;
+            setTimeout(function() {
+                notificationsBar.classList.add('visible');
+        
+                setTimeout(function() {
+                    notificationsBar.classList.remove('visible');
+                }, 2000);
+            }, 1000);
+
+            console.error('There was a problem sending the message:', error);
+        });
+
+}
+
+
 
 /*
 deleteUserBtns.forEach(button => {

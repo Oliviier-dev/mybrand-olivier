@@ -114,8 +114,9 @@ module.exports.updateUserRole = async(req: Request, res: Response) => {
         const userNewRole = (user.role === 'admin') ? 'user' : 'admin';
         
         await User.findByIdAndUpdate(userId, { role: userNewRole });
+        const users = await User.find({}, '-password');
     
-        res.status(200).json({ message: "User role updated successfully" });
+        res.status(200).json({ message: "User role updated successfully", users });
     } catch (error) {
         console.error("Error updating user role:", error);
         res.status(500).json({ message: "Internal server error" });

@@ -127,6 +127,11 @@ function checkFormValidity() {
                 }, 1000); 
 
             } else{
+
+                name.value = '';
+                email.value = '';
+                message.value = '';
+
                 notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">check_circle</span>Message sent`;
                 setTimeout(function() {
                     notificationsBar.classList.add('visible');
@@ -140,10 +145,6 @@ function checkFormValidity() {
             console.log('Message sent:', data);
         })
         .catch(error => {
-
-            name.value = '';
-            email.value = '';
-            message.value = '';
 
             notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>An error occured, Try again`;
             setTimeout(function() {

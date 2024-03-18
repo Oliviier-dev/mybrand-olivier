@@ -210,15 +210,6 @@ reactionButton.addEventListener('click', function () {
 })
 
 
-/*const isSelected = reactionButton.classList.contains('selected');
-            const countSpan = reactionButton.querySelector('.count');
-            let count = countSpan.textContent === '' ? 0 : parseInt(countSpan.textContent);
-            // Update the count
-            count = isSelected ? count - 1 : count + 1;
-            countSpan.textContent = count === 0 ? '' : count;*/
-
-
-
 function checkUserLikeStatus(likesarray, userId){
 
     const countSpan = reactionButton.querySelector('.count');

@@ -48,25 +48,7 @@ function validateInput(name, comment){
     } else if(nameValue.length > 2 && commentValue.length > 3){
 
         sendComment(nameValue, commentValue);
-
-        /*document.getElementById('username').value = '';
-        document.getElementById('comment').value = '';
-        commentSent = true;
-
-        notificationsBar.innerHTML = `<span class="material-symbols-outlined cirle" id="checkcircle">check_circle</span>Comment sent`;
-        document.getElementById('checkcircle').style.color = 'green';
-
-        setTimeout(function() {
-            notificationsBar.classList.add('visible');
-        
-            setTimeout(function() {
-                notificationsBar.classList.remove('visible');
-            }, 2000);
-        }, 1000); */
-        // return commentSent;
     }
-    // console.log(commentSent)
-    // return commentSent;
 
 }
 

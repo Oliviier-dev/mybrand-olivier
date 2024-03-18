@@ -161,61 +161,6 @@ myForm.addEventListener('submit', async function(event){
         });
     }
 
-
-    /*if(valid === 1){
-        try {
-            const userCredential = await signInWithEmailAndPassword(
-                auth,
-                emailValue,
-                passwordValue
-            );
-    
-            // Get user's role from Firestore
-            const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
-            if (userDoc.exists()) {
-                const userData = userDoc.data();
-                const userRole = userData.role;
-    
-                if (userRole === 'admin') {
-                    // Redirect admin to admin dashboard
-                    window.location.href = "adminpage.html";
-                    
-                } else {
-                    // Redirect regular user to user dashboard
-                    window.location.href = "blogs.html";
-                }
-            } else {
-                console.log("User data not found.");
-            }
-        } catch(error) {
-            // Handle login errors
-            console.log(error.code);
-
-            if(error.code == "auth/network-request-failed"){
-                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>An error occured, Try again`;
-
-                setTimeout(function() {
-                    notificationsBar.classList.add('visible');
-            
-                    setTimeout(function() {
-                        notificationsBar.classList.remove('visible');
-                    }, 2000);
-                }, 1000);
-
-            } else{
-                notificationsBar.innerHTML = `<span class="material-symbols-outlined circle">error</span>Invalid Credentials`;
-
-                setTimeout(function() {
-                    notificationsBar.classList.add('visible');
-            
-                    setTimeout(function() {
-                        notificationsBar.classList.remove('visible');
-                    }, 2000);
-                }, 1000);
-            }
-        }
-    }*/
-
 })
 
 

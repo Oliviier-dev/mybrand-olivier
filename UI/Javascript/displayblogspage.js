@@ -70,14 +70,14 @@ function displayOnBlogsPage(){
             reactinsCount.innerText = data[i].likes.length;
     
             let reactinsDesc = document.createElement('span');
-            reactinsDesc.innerText = 'reaction';
+            reactinsDesc.innerText = 'reactions';
     
             reactionsDiv.append(reactionImage);
             reactionsDiv.append(reactinsCount);
             reactionsDiv.append(reactinsDesc);
     
             let commentsSpan = document.createElement('span');
-            commentsSpan.innerHTML = `<span class="commentscount">${data[i].comments.length}</span> comment`;
+            commentsSpan.innerHTML = `<span class="commentscount">${data[i].comments.length}</span> comments`;
     
             blogInfo.append(reactionsDiv);
             blogInfo.append(commentsSpan);

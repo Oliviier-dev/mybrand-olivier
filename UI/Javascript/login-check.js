@@ -31,6 +31,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
+    
+    if(window.location.pathname.includes("login.html") || window.location.pathname.includes("signup.html")) {
+        // Check if user has admin JWT
+        var tokenCookie = getCookie('jwt');
+        if (tokenCookie) {
+            window.location.href = "../../index.html"; // Redirect to home page
+        }
+    }
 
 
 

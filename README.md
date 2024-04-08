@@ -1,5 +1,5 @@
 ## My Brand Olivier
- 
+[![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) 
 In this project, I will be building my personal website to showcase basic information about myself and <br>
 also help me to share ideas with my network.<br>
 
